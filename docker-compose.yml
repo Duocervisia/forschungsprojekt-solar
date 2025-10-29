@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    container_name: mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"   # MQTT
+      - "9001:9001"   # MQTT over WebSockets (optional)
+    volumes:
+      - ./mosquitto/config:/mosquitto/config:ro
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+
+  node-red:
+    build:
+      context: ./node-red
+      dockerfile: Dockerfile
+    container_name: node-red
+    restart: unless-stopped
+    ports:
+      - "1880:1880"  # Node-RED UI
+    depends_on:
+      - mosquitto
+    volumes:
+      - ./node-red/data:/data
+    environment:
+      - TZ=UTC
+
+networks:
+  default:
+    name: iot-net

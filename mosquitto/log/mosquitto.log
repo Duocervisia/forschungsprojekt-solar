@@ -1,0 +1,12 @@
+1761733079: mosquitto version 2.0.22 starting
+1761733079: Config loaded from /mosquitto/config/mosquitto.conf.
+1761733079: Opening ipv4 listen socket on port 1883.
+1761733079: Opening ipv6 listen socket on port 1883.
+1761733079: Opening websockets listen socket on port 9001.
+1761733079: mosquitto version 2.0.22 running
+1761733196: New connection from 172.18.0.1:51404 on port 1883.
+1761733196: Client <unknown> disconnected due to protocol error.
+1761733197: New connection from 172.18.0.1:51408 on port 1883.
+1761733197: Client <unknown> disconnected due to protocol error.
+1761733319: mosquitto version 2.0.22 terminating
+1761733319: Saving in-memory database to /mosquitto/data//mosquitto.db.
