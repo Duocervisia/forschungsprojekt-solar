@@ -66,7 +66,7 @@ ina226 = {
     'shunt_microampere_correction': -10, # microampere correction applied to INA226 current reading (in µA)
     'r_shunt_mohm': 10050, # shunt resistance used for calibration in mOhm (10.05 Ω -> 10050 mΩ)
     'pwr_pin': 25, #GPIO pin controlling power to INA226 trough AO3401 MOSFET
-    'pwr_on_delay_ms': 20, #delay after powering on INA226 before it can be used
+    'pwr_on_delay_ms': 100, #delay after powering on INA226 before it can be used
 }
 
 # shutdown at critical battery level

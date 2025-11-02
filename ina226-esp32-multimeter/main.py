@@ -12,35 +12,27 @@ def main():
     import internet
     from mqtt import mqtt
 
-    reader = CurrentReader()
-    reader.pwr(True)
-    print('power on')
-    sleep(2)
-    reader.pwr(False)
-    print('power off')
- 
+    print('Initializing CurrentReader...')
+    try:
+        reader = CurrentReader()
+    except Exception as exc:
+        print("Failed to initialize CurrentReader:", exc)
+        return
 
-    # print('Initializing CurrentReader...')
-    # try:
-    #     reader = CurrentReader()
-    # except Exception as exc:
-    #     print("Failed to initialize CurrentReader:", exc)
-    #     return
+    try:
+        reader.pwr(True)
+        result = reader.read()
+        reader.pwr(False)
 
-    # try:
-    #     sleep(2)
-    #     result = reader.read()
-    #     reader.power_off()
-
-    #     mqtt.publish(
-    #         config.mqtt['topics']['current'],
-    #         json.dumps(result),
-    #         qos=1
-    #     )
+        mqtt.publish(
+            config.mqtt['topics']['current'],
+            json.dumps(result),
+            qos=1
+        )
 
 
-    # except Exception as exc:
-    #     print("Error while running reader:", exc)
+    except Exception as exc:
+        print("Error while running reader:", exc)
 
     ds.ds_interval_seconds()
 

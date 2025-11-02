@@ -84,14 +84,6 @@ class CurrentReader:
 		# the INA226 is unpowered.
 		self.ina = None
 
-		if self.pwr_pin_cfg is not None:
-			try:
-				# pwr_pin: active-low MOSFET gate (AO3401) — set HIGH to keep INA powered off
-				self.pwr_pin = Pin(self.pwr_pin_cfg, Pin.OUT, value=0)
-			except Exception:
-				# non-fatal: leave pwr_pin as None if creating Pin failed
-				self.pwr_pin = None
-
 		# track whether we've powered the INA on via pwr(); starts as False
 		self._powered = False
 
@@ -146,36 +138,38 @@ class CurrentReader:
 			if self._powered:
 				return
 			# drive low to power on (active-low MOSFET gate)
-			if self.pwr_pin is not None:
-				try:
-					esp32.gpio_deep_sleep_hold(False)
-					self.pwr_pin = Pin(self.pwr_pin_cfg, Pin.OUT, value=0, hold=False)
-				except Exception:
-					pass
+			try:
+				esp32.gpio_deep_sleep_hold(False)
+				self.pwr_pin = Pin(self.pwr_pin_cfg, Pin.OUT, value=0, hold=False)
+			except Exception:
+				pass
 			# wait for device to become ready
 			time.sleep(self.pwr_on_delay_ms / 1000.0)
 			# initialize INA if not present
-			# if self.ina is None:
-			# 	try:
-			# 		self.ina = INA226(self.i2c, addr=self.ina_addr)
-			# 		if self.r_shunt_mohm is not None:
-			# 			try:
-			# 				self.ina.calibrate(r_shunt=self.r_shunt_mohm)
-			# 			except Exception as exc:
-			# 				print("Warning: failed to set custom calibration:", exc)
-			# 	except Exception as exc:
-			# 		raise RuntimeError("Failed to initialize INA226: {}".format(exc))
+			if self.ina is None:
+				try:
+					self.ina = INA226(self.i2c, addr=self.ina_addr)
+					if self.r_shunt_mohm is not None:
+						try:
+							self.ina.calibrate(r_shunt=self.r_shunt_mohm)
+						except Exception as exc:
+							print("Warning: failed to set custom calibration:", exc)
+				except Exception as exc:
+					raise RuntimeError("Failed to initialize INA226: {}".format(exc))
 			self._powered = True
 		else:
 			# power off
+			print("Powering off INA226...")
+			print(self._powered)
 			if not self._powered:
 				return
-			if self.pwr_pin is not None:
-				try:
-					esp32.gpio_deep_sleep_hold(True)
-					self.pwr_pin = Pin(self.pwr_pin_cfg, Pin.OUT, value=1, hold=True)
-				except Exception:
-					pass
+			print(self.pwr_pin)
+			try:
+				print("Powering off INA226...")
+				esp32.gpio_deep_sleep_hold(True)
+				self.pwr_pin = Pin(self.pwr_pin_cfg, Pin.OUT, value=1, hold=True)
+			except Exception:
+				pass
 			# deinitialize INA reference; will be recreated on next power-on
 			self.ina = None
 			self._powered = False

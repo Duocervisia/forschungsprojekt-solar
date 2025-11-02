@@ -8830,3 +8830,906 @@
 1762096390: Sending CONNACK to 393031353036376535623530 (0, 0)
 1762096399: Received PINGREQ from nodered19fdb8388c5683b7
 1762096399: Sending PINGRESP to nodered19fdb8388c5683b7
+1762096402: New connection from 172.18.0.1:53064 on port 1883.
+1762096404: Client 393031353036376535623530 already connected, closing old connection.
+1762096404: New client connected from 172.18.0.1:53064 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762096404: No will message specified.
+1762096404: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762096414: New connection from 172.18.0.1:53810 on port 1883.
+1762096414: Client 393031353036376535623530 already connected, closing old connection.
+1762096414: New client connected from 172.18.0.1:53810 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762096414: No will message specified.
+1762096414: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762096426: New connection from 172.18.0.1:43644 on port 1883.
+1762096426: Client 393031353036376535623530 already connected, closing old connection.
+1762096426: New client connected from 172.18.0.1:43644 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762096426: No will message specified.
+1762096426: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762096438: New connection from 172.18.0.1:36224 on port 1883.
+1762096440: Client 393031353036376535623530 already connected, closing old connection.
+1762096440: New client connected from 172.18.0.1:36224 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762096440: No will message specified.
+1762096440: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762096459: Received PINGREQ from nodered19fdb8388c5683b7
+1762096459: Sending PINGRESP to nodered19fdb8388c5683b7
+1762096459: New connection from 172.18.0.1:43998 on port 1883.
+1762096460: Client 393031353036376535623530 already connected, closing old connection.
+1762096460: New client connected from 172.18.0.1:43998 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762096460: No will message specified.
+1762096460: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762096472: New connection from 172.18.0.1:45326 on port 1883.
+1762096472: Client 393031353036376535623530 already connected, closing old connection.
+1762096472: New client connected from 172.18.0.1:45326 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762096472: No will message specified.
+1762096472: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762096519: Received PINGREQ from nodered19fdb8388c5683b7
+1762096519: Sending PINGRESP to nodered19fdb8388c5683b7
+1762096562: Client 393031353036376535623530 has exceeded timeout, disconnecting.
+1762096579: Received PINGREQ from nodered19fdb8388c5683b7
+1762096579: Sending PINGRESP to nodered19fdb8388c5683b7
+1762096639: Received PINGREQ from nodered19fdb8388c5683b7
+1762096639: Sending PINGRESP to nodered19fdb8388c5683b7
+1762096699: Received PINGREQ from nodered19fdb8388c5683b7
+1762096699: Sending PINGRESP to nodered19fdb8388c5683b7
+1762096759: Received PINGREQ from nodered19fdb8388c5683b7
+1762096759: Sending PINGRESP to nodered19fdb8388c5683b7
+1762096819: Received PINGREQ from nodered19fdb8388c5683b7
+1762096819: Sending PINGRESP to nodered19fdb8388c5683b7
+1762096879: Received PINGREQ from nodered19fdb8388c5683b7
+1762096879: Sending PINGRESP to nodered19fdb8388c5683b7
+1762096939: Received PINGREQ from nodered19fdb8388c5683b7
+1762096939: Sending PINGRESP to nodered19fdb8388c5683b7
+1762096948: New connection from 172.18.0.1:47852 on port 1883.
+1762096948: New client connected from 172.18.0.1:47852 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762096948: No will message specified.
+1762096948: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762096960: New connection from 172.18.0.1:37322 on port 1883.
+1762096960: Client 393031353036376535623530 already connected, closing old connection.
+1762096960: New client connected from 172.18.0.1:37322 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762096960: No will message specified.
+1762096960: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762096990: Client 393031353036376535623530 closed its connection.
+1762096991: New connection from 172.18.0.1:54322 on port 1883.
+1762096996: New client connected from 172.18.0.1:54322 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762096996: No will message specified.
+1762096996: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762096999: Received PINGREQ from nodered19fdb8388c5683b7
+1762096999: Sending PINGRESP to nodered19fdb8388c5683b7
+1762097003: New connection from 172.18.0.1:45902 on port 1883.
+1762097003: Client 393031353036376535623530 already connected, closing old connection.
+1762097003: New client connected from 172.18.0.1:45902 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097003: No will message specified.
+1762097003: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097059: Received PINGREQ from nodered19fdb8388c5683b7
+1762097059: Sending PINGRESP to nodered19fdb8388c5683b7
+1762097093: Client 393031353036376535623530 closed its connection.
+1762097106: New connection from 172.18.0.1:32820 on port 1883.
+1762097115: New client connected from 172.18.0.1:32820 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097115: No will message specified.
+1762097115: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097119: Received PINGREQ from nodered19fdb8388c5683b7
+1762097119: Sending PINGRESP to nodered19fdb8388c5683b7
+1762097121: New connection from 172.18.0.1:60040 on port 1883.
+1762097121: Client 393031353036376535623530 already connected, closing old connection.
+1762097121: New client connected from 172.18.0.1:60040 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097121: No will message specified.
+1762097121: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097133: New connection from 172.18.0.1:34090 on port 1883.
+1762097133: Client 393031353036376535623530 already connected, closing old connection.
+1762097133: New client connected from 172.18.0.1:34090 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097133: No will message specified.
+1762097133: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097145: New connection from 172.18.0.1:40382 on port 1883.
+1762097145: Client 393031353036376535623530 already connected, closing old connection.
+1762097145: New client connected from 172.18.0.1:40382 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097145: No will message specified.
+1762097145: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097179: Received PINGREQ from nodered19fdb8388c5683b7
+1762097179: Sending PINGRESP to nodered19fdb8388c5683b7
+1762097185: New connection from 172.18.0.1:48422 on port 1883.
+1762097185: Client 393031353036376535623530 already connected, closing old connection.
+1762097185: New client connected from 172.18.0.1:48422 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097185: No will message specified.
+1762097185: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097197: New connection from 172.18.0.1:45450 on port 1883.
+1762097197: Client 393031353036376535623530 already connected, closing old connection.
+1762097197: New client connected from 172.18.0.1:45450 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097197: No will message specified.
+1762097197: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097209: New connection from 172.18.0.1:41970 on port 1883.
+1762097209: Client 393031353036376535623530 already connected, closing old connection.
+1762097209: New client connected from 172.18.0.1:41970 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097209: No will message specified.
+1762097209: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097221: New connection from 172.18.0.1:57940 on port 1883.
+1762097221: Client 393031353036376535623530 already connected, closing old connection.
+1762097221: New client connected from 172.18.0.1:57940 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097221: No will message specified.
+1762097221: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097239: Received PINGREQ from nodered19fdb8388c5683b7
+1762097239: Sending PINGRESP to nodered19fdb8388c5683b7
+1762097240: Client 393031353036376535623530 closed its connection.
+1762097245: New connection from 172.18.0.1:50418 on port 1883.
+1762097245: New client connected from 172.18.0.1:50418 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097245: No will message specified.
+1762097245: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097245: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (89 bytes))
+1762097245: Sending PUBLISH to nodered19fdb8388c5683b7 (d0, q0, r0, m0, 'ct/current', ... (89 bytes))
+1762097245: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762097253: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1762097257: New connection from 172.18.0.1:43542 on port 1883.
+1762097257: Client 393031353036376535623530 already connected, closing old connection.
+1762097257: New client connected from 172.18.0.1:43542 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097257: No will message specified.
+1762097257: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097257: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (102 bytes))
+1762097257: Sending PUBLISH to nodered19fdb8388c5683b7 (d0, q0, r0, m0, 'ct/current', ... (102 bytes))
+1762097257: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762097268: New connection from 172.18.0.1:34510 on port 1883.
+1762097269: Client 393031353036376535623530 already connected, closing old connection.
+1762097269: New client connected from 172.18.0.1:34510 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097269: No will message specified.
+1762097269: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097269: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (102 bytes))
+1762097269: Sending PUBLISH to nodered19fdb8388c5683b7 (d0, q0, r0, m0, 'ct/current', ... (102 bytes))
+1762097269: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762097288: Client 393031353036376535623530 closed its connection.
+1762097299: Received PINGREQ from nodered19fdb8388c5683b7
+1762097299: Sending PINGRESP to nodered19fdb8388c5683b7
+1762097359: Received PINGREQ from nodered19fdb8388c5683b7
+1762097359: Sending PINGRESP to nodered19fdb8388c5683b7
+1762097419: Received PINGREQ from nodered19fdb8388c5683b7
+1762097419: Sending PINGRESP to nodered19fdb8388c5683b7
+1762097479: Received PINGREQ from nodered19fdb8388c5683b7
+1762097479: Sending PINGRESP to nodered19fdb8388c5683b7
+1762097539: Received PINGREQ from nodered19fdb8388c5683b7
+1762097539: Sending PINGRESP to nodered19fdb8388c5683b7
+1762097599: Received PINGREQ from nodered19fdb8388c5683b7
+1762097599: Sending PINGRESP to nodered19fdb8388c5683b7
+1762097659: Received PINGREQ from nodered19fdb8388c5683b7
+1762097659: Sending PINGRESP to nodered19fdb8388c5683b7
+1762097679: Received UNSUBSCRIBE from nodered19fdb8388c5683b7
+1762097679: 	ct/current
+1762097679: nodered19fdb8388c5683b7 ct/current
+1762097679: Sending UNSUBACK to nodered19fdb8388c5683b7
+1762097679: Received DISCONNECT from nodered19fdb8388c5683b7
+1762097679: Client nodered19fdb8388c5683b7 disconnected.
+1762097679: New connection from 172.18.0.4:53758 on port 1883.
+1762097679: New client connected from 172.18.0.4:53758 as nodered91614f9d27a850f0 (p2, c1, k60).
+1762097679: No will message specified.
+1762097679: Sending CONNACK to nodered91614f9d27a850f0 (0, 0)
+1762097679: Received SUBSCRIBE from nodered91614f9d27a850f0
+1762097679: 	ct/current (QoS 0)
+1762097679: nodered91614f9d27a850f0 0 ct/current
+1762097679: Sending SUBACK to nodered91614f9d27a850f0
+1762097690: New connection from 172.18.0.1:48138 on port 1883.
+1762097690: New client connected from 172.18.0.1:48138 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097690: No will message specified.
+1762097690: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097690: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762097690: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762097690: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762097702: New connection from 172.18.0.1:37124 on port 1883.
+1762097702: Client 393031353036376535623530 already connected, closing old connection.
+1762097702: New client connected from 172.18.0.1:37124 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097702: No will message specified.
+1762097702: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097702: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762097702: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762097702: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762097714: New connection from 172.18.0.1:42514 on port 1883.
+1762097714: Client 393031353036376535623530 already connected, closing old connection.
+1762097714: New client connected from 172.18.0.1:42514 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097714: No will message specified.
+1762097714: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097716: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (102 bytes))
+1762097716: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (102 bytes))
+1762097716: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762097726: New connection from 172.18.0.1:53806 on port 1883.
+1762097726: Client 393031353036376535623530 already connected, closing old connection.
+1762097726: New client connected from 172.18.0.1:53806 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097726: No will message specified.
+1762097726: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097726: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762097726: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762097726: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762097738: New connection from 172.18.0.1:47048 on port 1883.
+1762097738: Client 393031353036376535623530 already connected, closing old connection.
+1762097738: New client connected from 172.18.0.1:47048 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097738: No will message specified.
+1762097738: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097739: Received PINGREQ from nodered91614f9d27a850f0
+1762097739: Sending PINGRESP to nodered91614f9d27a850f0
+1762097743: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762097743: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762097743: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762097750: New connection from 172.18.0.1:49514 on port 1883.
+1762097750: Client 393031353036376535623530 already connected, closing old connection.
+1762097750: New client connected from 172.18.0.1:49514 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097750: No will message specified.
+1762097750: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097750: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762097750: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762097750: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762097762: New connection from 172.18.0.1:60154 on port 1883.
+1762097764: Client 393031353036376535623530 already connected, closing old connection.
+1762097764: New client connected from 172.18.0.1:60154 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097764: No will message specified.
+1762097764: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097774: New connection from 172.18.0.1:42062 on port 1883.
+1762097774: Client 393031353036376535623530 already connected, closing old connection.
+1762097774: New client connected from 172.18.0.1:42062 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097774: No will message specified.
+1762097774: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097786: New connection from 172.18.0.1:37546 on port 1883.
+1762097788: Client 393031353036376535623530 already connected, closing old connection.
+1762097788: New client connected from 172.18.0.1:37546 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097788: No will message specified.
+1762097788: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097798: New connection from 172.18.0.1:40420 on port 1883.
+1762097798: Client 393031353036376535623530 already connected, closing old connection.
+1762097798: New client connected from 172.18.0.1:40420 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097798: No will message specified.
+1762097798: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097799: Received PINGREQ from nodered91614f9d27a850f0
+1762097799: Sending PINGRESP to nodered91614f9d27a850f0
+1762097810: New connection from 172.18.0.1:46414 on port 1883.
+1762097810: Client 393031353036376535623530 already connected, closing old connection.
+1762097810: New client connected from 172.18.0.1:46414 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097810: No will message specified.
+1762097810: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097822: New connection from 172.18.0.1:52280 on port 1883.
+1762097822: Client 393031353036376535623530 already connected, closing old connection.
+1762097822: New client connected from 172.18.0.1:52280 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097822: No will message specified.
+1762097822: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097834: New connection from 172.18.0.1:60690 on port 1883.
+1762097836: Client 393031353036376535623530 already connected, closing old connection.
+1762097836: New client connected from 172.18.0.1:60690 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097836: No will message specified.
+1762097836: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097846: New connection from 172.18.0.1:34468 on port 1883.
+1762097846: Client 393031353036376535623530 already connected, closing old connection.
+1762097846: New client connected from 172.18.0.1:34468 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097846: No will message specified.
+1762097846: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097858: New connection from 172.18.0.1:56010 on port 1883.
+1762097858: Client 393031353036376535623530 already connected, closing old connection.
+1762097858: New client connected from 172.18.0.1:56010 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097858: No will message specified.
+1762097858: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097859: Received PINGREQ from nodered91614f9d27a850f0
+1762097859: Sending PINGRESP to nodered91614f9d27a850f0
+1762097870: New connection from 172.18.0.1:35548 on port 1883.
+1762097870: Client 393031353036376535623530 already connected, closing old connection.
+1762097870: New client connected from 172.18.0.1:35548 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097870: No will message specified.
+1762097870: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097882: New connection from 172.18.0.1:43676 on port 1883.
+1762097884: Client 393031353036376535623530 already connected, closing old connection.
+1762097884: New client connected from 172.18.0.1:43676 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097884: No will message specified.
+1762097884: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097894: New connection from 172.18.0.1:36480 on port 1883.
+1762097894: Client 393031353036376535623530 already connected, closing old connection.
+1762097894: New client connected from 172.18.0.1:36480 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097894: No will message specified.
+1762097894: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097906: New connection from 172.18.0.1:48210 on port 1883.
+1762097906: Client 393031353036376535623530 already connected, closing old connection.
+1762097906: New client connected from 172.18.0.1:48210 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097906: No will message specified.
+1762097906: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097918: New connection from 172.18.0.1:42010 on port 1883.
+1762097918: Client 393031353036376535623530 already connected, closing old connection.
+1762097918: New client connected from 172.18.0.1:42010 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097918: No will message specified.
+1762097918: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097919: Received PINGREQ from nodered91614f9d27a850f0
+1762097919: Sending PINGRESP to nodered91614f9d27a850f0
+1762097930: New connection from 172.18.0.1:50142 on port 1883.
+1762097932: Client 393031353036376535623530 already connected, closing old connection.
+1762097932: New client connected from 172.18.0.1:50142 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097932: No will message specified.
+1762097932: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097942: New connection from 172.18.0.1:40420 on port 1883.
+1762097942: Client 393031353036376535623530 already connected, closing old connection.
+1762097942: New client connected from 172.18.0.1:40420 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097942: No will message specified.
+1762097942: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097954: New connection from 172.18.0.1:55636 on port 1883.
+1762097954: Client 393031353036376535623530 already connected, closing old connection.
+1762097954: New client connected from 172.18.0.1:55636 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097954: No will message specified.
+1762097954: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097966: New connection from 172.18.0.1:40264 on port 1883.
+1762097970: Client 393031353036376535623530 closed its connection.
+1762097970: New client connected from 172.18.0.1:40264 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097970: No will message specified.
+1762097970: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097978: New connection from 172.18.0.1:39706 on port 1883.
+1762097978: Client 393031353036376535623530 already connected, closing old connection.
+1762097978: New client connected from 172.18.0.1:39706 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097978: No will message specified.
+1762097978: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762097979: Received PINGREQ from nodered91614f9d27a850f0
+1762097979: Sending PINGRESP to nodered91614f9d27a850f0
+1762097985: New connection from 172.18.0.1:52688 on port 1883.
+1762097988: Client 393031353036376535623530 closed its connection.
+1762097995: New client connected from 172.18.0.1:52688 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762097995: No will message specified.
+1762097995: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098000: Client 393031353036376535623530 closed its connection.
+1762098000: New connection from 172.18.0.1:59804 on port 1883.
+1762098000: New client connected from 172.18.0.1:59804 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098000: No will message specified.
+1762098000: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098012: New connection from 172.18.0.1:35872 on port 1883.
+1762098012: Client 393031353036376535623530 already connected, closing old connection.
+1762098012: New client connected from 172.18.0.1:35872 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098012: No will message specified.
+1762098012: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098024: New connection from 172.18.0.1:43262 on port 1883.
+1762098024: Client 393031353036376535623530 already connected, closing old connection.
+1762098024: New client connected from 172.18.0.1:43262 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098024: No will message specified.
+1762098024: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098036: New connection from 172.18.0.1:55282 on port 1883.
+1762098037: Client 393031353036376535623530 already connected, closing old connection.
+1762098037: New client connected from 172.18.0.1:55282 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098037: No will message specified.
+1762098037: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098039: Received PINGREQ from nodered91614f9d27a850f0
+1762098039: Sending PINGRESP to nodered91614f9d27a850f0
+1762098048: New connection from 172.18.0.1:56982 on port 1883.
+1762098048: Client 393031353036376535623530 already connected, closing old connection.
+1762098048: New client connected from 172.18.0.1:56982 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098048: No will message specified.
+1762098048: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098060: New connection from 172.18.0.1:53896 on port 1883.
+1762098060: Client 393031353036376535623530 already connected, closing old connection.
+1762098060: New client connected from 172.18.0.1:53896 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098060: No will message specified.
+1762098060: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098074: New connection from 172.18.0.1:54828 on port 1883.
+1762098074: Client 393031353036376535623530 already connected, closing old connection.
+1762098074: New client connected from 172.18.0.1:54828 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098074: No will message specified.
+1762098074: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098084: Client 393031353036376535623530 closed its connection.
+1762098084: New connection from 172.18.0.1:34970 on port 1883.
+1762098085: New client connected from 172.18.0.1:34970 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098085: No will message specified.
+1762098085: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098096: New connection from 172.18.0.1:40524 on port 1883.
+1762098096: Client 393031353036376535623530 already connected, closing old connection.
+1762098096: New client connected from 172.18.0.1:40524 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098096: No will message specified.
+1762098096: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098099: Received PINGREQ from nodered91614f9d27a850f0
+1762098099: Sending PINGRESP to nodered91614f9d27a850f0
+1762098108: New connection from 172.18.0.1:52100 on port 1883.
+1762098108: Client 393031353036376535623530 already connected, closing old connection.
+1762098108: New client connected from 172.18.0.1:52100 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098108: No will message specified.
+1762098108: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098120: New connection from 172.18.0.1:54242 on port 1883.
+1762098121: Client 393031353036376535623530 already connected, closing old connection.
+1762098121: New client connected from 172.18.0.1:54242 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098121: No will message specified.
+1762098121: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098132: New connection from 172.18.0.1:48294 on port 1883.
+1762098132: Client 393031353036376535623530 already connected, closing old connection.
+1762098132: New client connected from 172.18.0.1:48294 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098132: No will message specified.
+1762098132: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098144: New connection from 172.18.0.1:35628 on port 1883.
+1762098144: Client 393031353036376535623530 already connected, closing old connection.
+1762098144: New client connected from 172.18.0.1:35628 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098144: No will message specified.
+1762098144: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098156: New connection from 172.18.0.1:43954 on port 1883.
+1762098156: Client 393031353036376535623530 already connected, closing old connection.
+1762098156: New client connected from 172.18.0.1:43954 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098156: No will message specified.
+1762098156: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098159: Received PINGREQ from nodered91614f9d27a850f0
+1762098159: Sending PINGRESP to nodered91614f9d27a850f0
+1762098168: New connection from 172.18.0.1:48810 on port 1883.
+1762098168: Client 393031353036376535623530 already connected, closing old connection.
+1762098168: New client connected from 172.18.0.1:48810 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098168: No will message specified.
+1762098168: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098180: New connection from 172.18.0.1:56344 on port 1883.
+1762098180: Client 393031353036376535623530 already connected, closing old connection.
+1762098180: New client connected from 172.18.0.1:56344 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098180: No will message specified.
+1762098180: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098192: New connection from 172.18.0.1:60516 on port 1883.
+1762098192: Client 393031353036376535623530 already connected, closing old connection.
+1762098192: New client connected from 172.18.0.1:60516 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098192: No will message specified.
+1762098192: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098211: Client 393031353036376535623530 closed its connection.
+1762098219: Received PINGREQ from nodered91614f9d27a850f0
+1762098219: Sending PINGRESP to nodered91614f9d27a850f0
+1762098279: Received PINGREQ from nodered91614f9d27a850f0
+1762098279: Sending PINGRESP to nodered91614f9d27a850f0
+1762098339: Received PINGREQ from nodered91614f9d27a850f0
+1762098339: Sending PINGRESP to nodered91614f9d27a850f0
+1762098399: Received PINGREQ from nodered91614f9d27a850f0
+1762098399: Sending PINGRESP to nodered91614f9d27a850f0
+1762098459: Received PINGREQ from nodered91614f9d27a850f0
+1762098459: Sending PINGRESP to nodered91614f9d27a850f0
+1762098463: New connection from 172.18.0.1:37934 on port 1883.
+1762098464: New client connected from 172.18.0.1:37934 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098464: No will message specified.
+1762098464: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098464: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (89 bytes))
+1762098464: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (89 bytes))
+1762098464: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098475: New connection from 172.18.0.1:57314 on port 1883.
+1762098475: Client 393031353036376535623530 already connected, closing old connection.
+1762098475: New client connected from 172.18.0.1:57314 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098475: No will message specified.
+1762098475: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098476: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (102 bytes))
+1762098476: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (102 bytes))
+1762098476: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098487: New connection from 172.18.0.1:33608 on port 1883.
+1762098487: Client 393031353036376535623530 already connected, closing old connection.
+1762098487: New client connected from 172.18.0.1:33608 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098487: No will message specified.
+1762098487: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098487: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (89 bytes))
+1762098487: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (89 bytes))
+1762098487: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098499: New connection from 172.18.0.1:45256 on port 1883.
+1762098499: Client 393031353036376535623530 already connected, closing old connection.
+1762098499: New client connected from 172.18.0.1:45256 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098499: No will message specified.
+1762098499: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098509: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (87 bytes))
+1762098509: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (87 bytes))
+1762098509: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098519: Received PINGREQ from nodered91614f9d27a850f0
+1762098519: Sending PINGRESP to nodered91614f9d27a850f0
+1762098523: New connection from 172.18.0.1:57106 on port 1883.
+1762098523: Client 393031353036376535623530 already connected, closing old connection.
+1762098523: New client connected from 172.18.0.1:57106 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098523: No will message specified.
+1762098523: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098523: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098523: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098523: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098535: New connection from 172.18.0.1:47354 on port 1883.
+1762098535: Client 393031353036376535623530 already connected, closing old connection.
+1762098535: New client connected from 172.18.0.1:47354 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098535: No will message specified.
+1762098535: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098538: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098538: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098538: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098547: New connection from 172.18.0.1:51360 on port 1883.
+1762098547: Client 393031353036376535623530 already connected, closing old connection.
+1762098547: New client connected from 172.18.0.1:51360 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098547: No will message specified.
+1762098547: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098547: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098547: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098547: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098559: New connection from 172.18.0.1:55544 on port 1883.
+1762098559: Client 393031353036376535623530 already connected, closing old connection.
+1762098559: New client connected from 172.18.0.1:55544 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098559: No will message specified.
+1762098559: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098560: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098560: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098560: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098571: New connection from 172.18.0.1:38616 on port 1883.
+1762098571: Client 393031353036376535623530 already connected, closing old connection.
+1762098571: New client connected from 172.18.0.1:38616 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098571: No will message specified.
+1762098571: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098571: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098571: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098571: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098579: Received PINGREQ from nodered91614f9d27a850f0
+1762098579: Sending PINGRESP to nodered91614f9d27a850f0
+1762098583: New connection from 172.18.0.1:51338 on port 1883.
+1762098583: Client 393031353036376535623530 already connected, closing old connection.
+1762098583: New client connected from 172.18.0.1:51338 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098583: No will message specified.
+1762098583: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098584: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098584: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098584: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098595: New connection from 172.18.0.1:34286 on port 1883.
+1762098595: Client 393031353036376535623530 already connected, closing old connection.
+1762098595: New client connected from 172.18.0.1:34286 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098595: No will message specified.
+1762098595: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098600: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098600: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098600: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098607: New connection from 172.18.0.1:45974 on port 1883.
+1762098607: Client 393031353036376535623530 already connected, closing old connection.
+1762098607: New client connected from 172.18.0.1:45974 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098607: No will message specified.
+1762098607: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098607: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098607: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098607: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098619: New connection from 172.18.0.1:48586 on port 1883.
+1762098619: Client 393031353036376535623530 already connected, closing old connection.
+1762098619: New client connected from 172.18.0.1:48586 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098619: No will message specified.
+1762098619: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098619: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (102 bytes))
+1762098619: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (102 bytes))
+1762098619: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098631: New connection from 172.18.0.1:44382 on port 1883.
+1762098631: Client 393031353036376535623530 already connected, closing old connection.
+1762098631: New client connected from 172.18.0.1:44382 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098631: No will message specified.
+1762098631: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098635: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (102 bytes))
+1762098635: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (102 bytes))
+1762098635: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098639: Received PINGREQ from nodered91614f9d27a850f0
+1762098639: Sending PINGRESP to nodered91614f9d27a850f0
+1762098643: New connection from 172.18.0.1:44004 on port 1883.
+1762098643: Client 393031353036376535623530 already connected, closing old connection.
+1762098643: New client connected from 172.18.0.1:44004 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098643: No will message specified.
+1762098643: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098643: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098643: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098643: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098655: New connection from 172.18.0.1:38388 on port 1883.
+1762098655: Client 393031353036376535623530 already connected, closing old connection.
+1762098655: New client connected from 172.18.0.1:38388 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098655: No will message specified.
+1762098655: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098655: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098655: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098655: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098667: New connection from 172.18.0.1:32962 on port 1883.
+1762098667: Client 393031353036376535623530 already connected, closing old connection.
+1762098667: New client connected from 172.18.0.1:32962 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098667: No will message specified.
+1762098667: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098667: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (89 bytes))
+1762098667: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (89 bytes))
+1762098667: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098679: New connection from 172.18.0.1:50498 on port 1883.
+1762098679: Client 393031353036376535623530 already connected, closing old connection.
+1762098679: New client connected from 172.18.0.1:50498 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098679: No will message specified.
+1762098679: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098679: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098679: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098679: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098691: New connection from 172.18.0.1:36472 on port 1883.
+1762098691: Client 393031353036376535623530 already connected, closing old connection.
+1762098691: New client connected from 172.18.0.1:36472 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098691: No will message specified.
+1762098691: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098691: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098691: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098691: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098699: Received PINGREQ from nodered91614f9d27a850f0
+1762098699: Sending PINGRESP to nodered91614f9d27a850f0
+1762098703: New connection from 172.18.0.1:55450 on port 1883.
+1762098703: Client 393031353036376535623530 already connected, closing old connection.
+1762098703: New client connected from 172.18.0.1:55450 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098703: No will message specified.
+1762098703: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098703: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098703: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098703: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098715: New connection from 172.18.0.1:48308 on port 1883.
+1762098715: Client 393031353036376535623530 already connected, closing old connection.
+1762098715: New client connected from 172.18.0.1:48308 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098715: No will message specified.
+1762098715: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098737: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098737: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098737: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098742: New connection from 172.18.0.1:40024 on port 1883.
+1762098742: Client 393031353036376535623530 already connected, closing old connection.
+1762098742: New client connected from 172.18.0.1:40024 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098742: No will message specified.
+1762098742: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098742: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098742: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098742: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098754: New connection from 172.18.0.1:37184 on port 1883.
+1762098754: Client 393031353036376535623530 already connected, closing old connection.
+1762098754: New client connected from 172.18.0.1:37184 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098754: No will message specified.
+1762098754: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098759: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (88 bytes))
+1762098759: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (88 bytes))
+1762098759: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098759: Received PINGREQ from nodered91614f9d27a850f0
+1762098759: Sending PINGRESP to nodered91614f9d27a850f0
+1762098768: Client 393031353036376535623530 closed its connection.
+1762098786: New connection from 172.18.0.1:46408 on port 1883.
+1762098786: New client connected from 172.18.0.1:46408 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098786: No will message specified.
+1762098786: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098786: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098786: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098786: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098798: New connection from 172.18.0.1:51484 on port 1883.
+1762098798: Client 393031353036376535623530 already connected, closing old connection.
+1762098798: New client connected from 172.18.0.1:51484 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098798: No will message specified.
+1762098798: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098801: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098801: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098801: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098810: New connection from 172.18.0.1:46758 on port 1883.
+1762098810: Client 393031353036376535623530 already connected, closing old connection.
+1762098810: New client connected from 172.18.0.1:46758 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098810: No will message specified.
+1762098810: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098810: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098810: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098810: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098819: Received PINGREQ from nodered91614f9d27a850f0
+1762098819: Sending PINGRESP to nodered91614f9d27a850f0
+1762098829: Client 393031353036376535623530 closed its connection.
+1762098838: New connection from 172.18.0.1:58212 on port 1883.
+1762098838: New client connected from 172.18.0.1:58212 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098838: No will message specified.
+1762098838: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098838: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098838: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098838: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098850: New connection from 172.18.0.1:40974 on port 1883.
+1762098850: Client 393031353036376535623530 already connected, closing old connection.
+1762098850: New client connected from 172.18.0.1:40974 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098850: No will message specified.
+1762098850: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098850: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098850: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098850: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098862: New connection from 172.18.0.1:46202 on port 1883.
+1762098862: Client 393031353036376535623530 already connected, closing old connection.
+1762098862: New client connected from 172.18.0.1:46202 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098862: No will message specified.
+1762098862: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098862: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098862: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098862: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098874: New connection from 172.18.0.1:53740 on port 1883.
+1762098877: Client 393031353036376535623530 closed its connection.
+1762098879: Received PINGREQ from nodered91614f9d27a850f0
+1762098879: Sending PINGRESP to nodered91614f9d27a850f0
+1762098884: New client connected from 172.18.0.1:53740 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098884: No will message specified.
+1762098884: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098884: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098884: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098884: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098889: New connection from 172.18.0.1:42198 on port 1883.
+1762098889: Client 393031353036376535623530 already connected, closing old connection.
+1762098889: New client connected from 172.18.0.1:42198 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098889: No will message specified.
+1762098889: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098889: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098889: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098889: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098901: New connection from 172.18.0.1:38868 on port 1883.
+1762098901: Client 393031353036376535623530 already connected, closing old connection.
+1762098901: New client connected from 172.18.0.1:38868 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098901: No will message specified.
+1762098901: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098901: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098901: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098901: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098913: New connection from 172.18.0.1:49450 on port 1883.
+1762098913: Client 393031353036376535623530 already connected, closing old connection.
+1762098913: New client connected from 172.18.0.1:49450 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098913: No will message specified.
+1762098913: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098913: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098913: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098913: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098939: Received PINGREQ from nodered91614f9d27a850f0
+1762098939: Sending PINGRESP to nodered91614f9d27a850f0
+1762098949: New connection from 172.18.0.1:46908 on port 1883.
+1762098950: Client 393031353036376535623530 already connected, closing old connection.
+1762098950: New client connected from 172.18.0.1:46908 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098950: No will message specified.
+1762098950: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098952: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098952: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098952: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098961: New connection from 172.18.0.1:43010 on port 1883.
+1762098961: Client 393031353036376535623530 already connected, closing old connection.
+1762098961: New client connected from 172.18.0.1:43010 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098961: No will message specified.
+1762098961: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098961: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098961: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098961: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098973: New connection from 172.18.0.1:49396 on port 1883.
+1762098974: Client 393031353036376535623530 already connected, closing old connection.
+1762098974: New client connected from 172.18.0.1:49396 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762098974: No will message specified.
+1762098974: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762098974: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762098974: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762098974: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762098993: Client 393031353036376535623530 closed its connection.
+1762098999: Received PINGREQ from nodered91614f9d27a850f0
+1762098999: Sending PINGRESP to nodered91614f9d27a850f0
+1762099005: New connection from 172.18.0.1:45630 on port 1883.
+1762099005: New client connected from 172.18.0.1:45630 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762099005: No will message specified.
+1762099005: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762099006: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762099006: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762099006: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762099017: New connection from 172.18.0.1:59174 on port 1883.
+1762099017: Client 393031353036376535623530 already connected, closing old connection.
+1762099017: New client connected from 172.18.0.1:59174 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762099017: No will message specified.
+1762099017: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762099017: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762099017: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762099017: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762099029: New connection from 172.18.0.1:58374 on port 1883.
+1762099029: Client 393031353036376535623530 already connected, closing old connection.
+1762099029: New client connected from 172.18.0.1:58374 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762099029: No will message specified.
+1762099029: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762099033: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762099033: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762099033: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762099043: New connection from 172.18.0.1:56358 on port 1883.
+1762099043: Client 393031353036376535623530 already connected, closing old connection.
+1762099043: New client connected from 172.18.0.1:56358 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762099043: No will message specified.
+1762099043: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762099043: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762099043: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762099043: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762099053: Client 393031353036376535623530 closed its connection.
+1762099053: New connection from 172.18.0.1:40400 on port 1883.
+1762099053: New client connected from 172.18.0.1:40400 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762099053: No will message specified.
+1762099053: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762099053: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762099053: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762099053: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762099054: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1762099059: Received PINGREQ from nodered91614f9d27a850f0
+1762099059: Sending PINGRESP to nodered91614f9d27a850f0
+1762099068: Client 393031353036376535623530 closed its connection.
+1762099081: New connection from 172.18.0.1:55146 on port 1883.
+1762099081: New client connected from 172.18.0.1:55146 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762099081: No will message specified.
+1762099081: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762099081: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762099081: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762099081: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762099093: New connection from 172.18.0.1:51328 on port 1883.
+1762099093: Client 393031353036376535623530 already connected, closing old connection.
+1762099093: New client connected from 172.18.0.1:51328 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762099093: No will message specified.
+1762099093: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762099093: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762099093: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762099093: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762099105: New connection from 172.18.0.1:51782 on port 1883.
+1762099105: Client 393031353036376535623530 already connected, closing old connection.
+1762099105: New client connected from 172.18.0.1:51782 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762099105: No will message specified.
+1762099105: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762099105: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (102 bytes))
+1762099105: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (102 bytes))
+1762099105: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762099117: New connection from 172.18.0.1:52072 on port 1883.
+1762099117: Client 393031353036376535623530 already connected, closing old connection.
+1762099117: New client connected from 172.18.0.1:52072 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762099117: No will message specified.
+1762099117: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762099117: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762099117: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762099117: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762099119: Received PINGREQ from nodered91614f9d27a850f0
+1762099119: Sending PINGRESP to nodered91614f9d27a850f0
+1762099129: New connection from 172.18.0.1:56656 on port 1883.
+1762099131: Client 393031353036376535623530 already connected, closing old connection.
+1762099131: New client connected from 172.18.0.1:56656 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762099131: No will message specified.
+1762099131: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762099131: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762099131: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762099131: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762099141: New connection from 172.18.0.1:60222 on port 1883.
+1762099141: Client 393031353036376535623530 already connected, closing old connection.
+1762099141: New client connected from 172.18.0.1:60222 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762099141: No will message specified.
+1762099141: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762099142: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762099142: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762099142: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762099161: Client 393031353036376535623530 closed its connection.
+1762099167: New connection from 172.18.0.1:60766 on port 1883.
+1762099167: New client connected from 172.18.0.1:60766 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762099167: No will message specified.
+1762099167: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762099169: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (89 bytes))
+1762099169: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (89 bytes))
+1762099169: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762099179: Client 393031353036376535623530 closed its connection.
+1762099179: Received PINGREQ from nodered91614f9d27a850f0
+1762099179: Sending PINGRESP to nodered91614f9d27a850f0
+1762099179: New connection from 172.18.0.1:32776 on port 1883.
+1762099179: New client connected from 172.18.0.1:32776 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762099179: No will message specified.
+1762099179: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762099180: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762099180: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762099180: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762099191: New connection from 172.18.0.1:41170 on port 1883.
+1762099192: Client 393031353036376535623530 already connected, closing old connection.
+1762099192: New client connected from 172.18.0.1:41170 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762099192: No will message specified.
+1762099192: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762099193: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762099193: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762099193: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762099203: Client 393031353036376535623530 closed its connection.
+1762099203: New connection from 172.18.0.1:34702 on port 1883.
+1762099203: New client connected from 172.18.0.1:34702 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762099203: No will message specified.
+1762099203: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762099204: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762099204: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762099204: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762099225: Client 393031353036376535623530 closed its connection.
+1762099239: Received PINGREQ from nodered91614f9d27a850f0
+1762099239: Sending PINGRESP to nodered91614f9d27a850f0
+1762099274: New connection from 172.18.0.1:38464 on port 1883.
+1762099274: New client connected from 172.18.0.1:38464 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762099274: No will message specified.
+1762099274: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762099276: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762099276: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762099276: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762099286: Client 393031353036376535623530 closed its connection.
+1762099286: New connection from 172.18.0.1:45392 on port 1883.
+1762099286: New client connected from 172.18.0.1:45392 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762099286: No will message specified.
+1762099286: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762099287: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (84 bytes))
+1762099287: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (84 bytes))
+1762099287: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762099298: New connection from 172.18.0.1:34528 on port 1883.
+1762099298: Client 393031353036376535623530 already connected, closing old connection.
+1762099298: New client connected from 172.18.0.1:34528 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762099298: No will message specified.
+1762099298: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762099299: Received PINGREQ from nodered91614f9d27a850f0
+1762099299: Sending PINGRESP to nodered91614f9d27a850f0
+1762099359: Received PINGREQ from nodered91614f9d27a850f0
+1762099359: Sending PINGRESP to nodered91614f9d27a850f0
+1762099388: Client 393031353036376535623530 has exceeded timeout, disconnecting.
+1762099419: Received PINGREQ from nodered91614f9d27a850f0
+1762099419: Sending PINGRESP to nodered91614f9d27a850f0
+1762099462: New connection from 172.18.0.1:60598 on port 1883.
+1762099463: New client connected from 172.18.0.1:60598 as 393031353036376535623530 (p2, c1, k60, u'user1').
+1762099463: No will message specified.
+1762099463: Sending CONNACK to 393031353036376535623530 (0, 0)
+1762099466: Received PUBLISH from 393031353036376535623530 (d0, q1, r0, m1, 'ct/current', ... (89 bytes))
+1762099466: Sending PUBLISH to nodered91614f9d27a850f0 (d0, q0, r0, m0, 'ct/current', ... (89 bytes))
+1762099466: Sending PUBACK to 393031353036376535623530 (m1, rc0)
+1762099479: Received PINGREQ from nodered91614f9d27a850f0
+1762099479: Sending PINGRESP to nodered91614f9d27a850f0
+1762099485: Client 393031353036376535623530 closed its connection.
