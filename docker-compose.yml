@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   mosquitto:
     image: eclipse-mosquitto:2.0
@@ -13,6 +11,24 @@ services:
       - ./mosquitto/data:/mosquitto/data
       - ./mosquitto/log:/mosquitto/log
 
+  influxdb:
+    image: influxdb:2
+    container_name: influxdb
+    restart: unless-stopped
+    ports:
+      - "8086:8086"   # InfluxDB API / UI
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_HTTP_FLUX_ENABLED: true
+      DOCKER_INFLUXDB_INIT_ORG: forschungsprojekt-solar
+      DOCKER_INFLUXDB_INIT_BUCKET: forschungsprojekt-solar-data
+      DOCKER_INFLUXDB_INIT_USERNAME: admin
+      DOCKER_INFLUXDB_INIT_PASSWORD: changeme
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: changeme-token
+    volumes:
+      - ./influxdb2:/var/lib/influxdb2
+      - ./influxdb2/config/influxdb2:/etc/influxdb2
+
   node-red:
     build:
       context: ./node-red
@@ -23,6 +39,7 @@ services:
       - "1880:1880"  # Node-RED UI
     depends_on:
       - mosquitto
+      - influxdb
     volumes:
       - ./node-red/data:/data
     environment:

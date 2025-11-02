@@ -1,96 +1,232 @@
 [
     {
-        "id": "afd9a727dc50b527",
+        "id": "a1b2c3d4.e5f6",
         "type": "tab",
-        "label": "Current Tracking",
+        "label": "MQTT -> InfluxDB",
         "disabled": false,
-        "info": "",
-        "env": []
+        "info": ""
     },
     {
-        "id": "81d1e0d7d34f94f3",
+        "id": "broker1",
         "type": "mqtt-broker",
-        "name": "local mqtt",
+        "name": "mosquitto",
         "broker": "mosquitto",
-        "port": 1883,
+        "port": "1883",
         "clientid": "",
         "autoConnect": true,
         "usetls": false,
         "protocolVersion": 4,
-        "keepalive": 60,
+        "keepalive": "60",
         "cleansession": true,
         "autoUnsubscribe": true,
         "birthTopic": "",
         "birthQos": "0",
-        "birthRetain": "false",
         "birthPayload": "",
-        "birthMsg": {},
         "closeTopic": "",
         "closeQos": "0",
-        "closeRetain": "false",
         "closePayload": "",
-        "closeMsg": {},
         "willTopic": "",
         "willQos": "0",
-        "willRetain": "false",
-        "willPayload": "",
-        "willMsg": {},
-        "userProps": "",
-        "sessionExpiry": ""
+        "willPayload": ""
     },
     {
-        "id": "887e14495d43834c",
-        "type": "mqtt out",
-        "z": "afd9a727dc50b527",
-        "name": "",
-        "topic": "",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "81d1e0d7d34f94f3",
-        "x": 630,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "923603596eb5ab02",
+        "id": "n1",
         "type": "mqtt in",
-        "z": "afd9a727dc50b527",
-        "name": "",
+        "z": "a1b2c3d4.e5f6",
+        "name": "MQTT in (JSON)",
         "topic": "ct/current",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "81d1e0d7d34f94f3",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "broker1",
         "nl": false,
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 320,
-        "y": 240,
+        "x": 140,
+        "y": 120,
         "wires": [
             [
-                "f75a7551132b723b"
+                "n2",
+                "ae9ca96071c5a9e6"
             ]
         ]
     },
     {
-        "id": "f75a7551132b723b",
+        "id": "n2",
+        "type": "json",
+        "z": "a1b2c3d4.e5f6",
+        "name": "parse JSON",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 320,
+        "y": 120,
+        "wires": [
+            [
+                "n3",
+                "bb6618817feb38e8"
+            ]
+        ]
+    },
+    {
+        "id": "n3",
+        "type": "function",
+        "z": "a1b2c3d4.e5f6",
+        "name": "to line-protocol",
+        "func": "var p = msg.payload || {};\nfunction esc(v){ return String(v).replace(/\\s|,|=/g, function(m){ return '\\\\' + m; }); }\nvar measurement = 'ina226';\nvar fields = [];\nif(typeof p.power === 'number') fields.push('power=' + p.power);\nif(typeof p.bus_v === 'number') fields.push('bus_v=' + p.bus_v);\nif(typeof p.shunt_v === 'number') fields.push('shunt_v=' + p.shunt_v);\nif(typeof p.current === 'number') fields.push('current=' + p.current);\nif(typeof p.current_mA === 'number') fields.push('current_mA=' + p.current_mA);\nvar tags = [];\nif(p.id) tags.push('device=' + esc(p.id));\nvar line = measurement;\nif(tags.length) line += ',' + tags.join(',');\nline += ' ' + fields.join(',');\nmsg.payload = line;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 120,
+        "wires": [
+            [
+                "n4",
+                "348ff730308b4f41"
+            ]
+        ]
+    },
+    {
+        "id": "n4",
+        "type": "change",
+        "z": "a1b2c3d4.e5f6",
+        "name": "set headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers.Authorization",
+                "pt": "msg",
+                "to": "Token changeme-token",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.Content-Type",
+                "pt": "msg",
+                "to": "text/plain; charset=utf-8",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 120,
+        "wires": [
+            [
+                "n5",
+                "7f1283f4509eee26"
+            ]
+        ]
+    },
+    {
+        "id": "n5",
+        "type": "http request",
+        "z": "a1b2c3d4.e5f6",
+        "name": "write to influx",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://influxdb:8086/api/v2/write?org=myorg&bucket=ina226_bucket&precision=ns",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 920,
+        "y": 120,
+        "wires": [
+            [
+                "n6"
+            ]
+        ]
+    },
+    {
+        "id": "n6",
         "type": "debug",
-        "z": "afd9a727dc50b527",
+        "z": "a1b2c3d4.e5f6",
+        "name": "influx resp",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "ae9ca96071c5a9e6",
+        "type": "debug",
+        "z": "a1b2c3d4.e5f6",
         "name": "debug 1",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "bb6618817feb38e8",
+        "type": "debug",
+        "z": "a1b2c3d4.e5f6",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
         "x": 540,
-        "y": 300,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "348ff730308b4f41",
+        "type": "debug",
+        "z": "a1b2c3d4.e5f6",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "7f1283f4509eee26",
+        "type": "debug",
+        "z": "a1b2c3d4.e5f6",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 260,
         "wires": []
     }
 ]

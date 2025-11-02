@@ -67,6 +67,7 @@ ina226 = {
     'shunt_microampere_correction': -10,
     # shunt resistance used for calibration in mOhm (10.05 Ω -> 10050 mΩ)
     'r_shunt_mohm': 10050,
+    'pwr_pin': 5,
 }
 
 # shutdown at critical battery level

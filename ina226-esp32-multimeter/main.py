@@ -4,6 +4,7 @@ import json
 from current_reader import CurrentReader
 
 def main():
+    print('Initializing CurrentReader...')
     try:
         reader = CurrentReader()
     except Exception as exc:
@@ -23,10 +24,6 @@ def main():
             json.dumps(result)
         )
 
-
-    except KeyboardInterrupt:
-        # allow clean stop from REPL if supported on the port
-        print("Interrupted")
     except Exception as exc:
         print("Error while running reader:", exc)
 

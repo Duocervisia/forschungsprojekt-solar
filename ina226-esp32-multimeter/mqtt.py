@@ -15,5 +15,5 @@ try:
     mqtt.connect(timeout=4)
 except:
     print('mqtt connect failed')
-    from doorplate.ds import ds
+    from ds import ds
     ds(24*60*60)
