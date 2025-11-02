@@ -2,6 +2,7 @@
 import time
 from machine import I2C, Pin
 from lib.ina226 import INA226
+import esp32
 
 try:
 	import config
@@ -55,6 +56,11 @@ class CurrentReader:
 		# to the original hard-coded defaults.
 		cfg = getattr(config, 'ina226', {}) if config else {}
 
+		# Power control (optional): configure pwr_pin from config if available.
+		self.pwr_pin_cfg = cfg.get('pwr_pin')
+		self.pwr_pin = None
+		self.pwr_on_delay_ms = cfg.get('pwr_on_delay_ms', 20)
+
 		self.interval_seconds = interval_seconds if interval_seconds is not None else cfg.get('interval_seconds', 2)
 		self.shunt_microampere_correction = (
 			shunt_microampere_correction
@@ -72,19 +78,24 @@ class CurrentReader:
 		# create or use provided I2C
 		self.i2c = i2c or self.init_i2c(self.sda_pin, self.scl_pin, self.i2c_freq)
 
-		# initialize INA226
-		try:
-			self.ina = INA226(self.i2c, addr=self.ina_addr)
-		except Exception as exc:
-			raise RuntimeError("Failed to initialize INA226: {}".format(exc))
+		# Power control (optional): configure pwr_pin from config if available.
+		
+		# INA object is created only when powering on to avoid touching the bus when
+		# the INA226 is unpowered.
+		self.ina = None
 
-		# calibrate if requested
-		if self.r_shunt_mohm is not None:
+		if self.pwr_pin_cfg is not None:
 			try:
-				self.ina.calibrate(r_shunt=self.r_shunt_mohm)
-			except Exception as exc:
-				# non-fatal: warn via print so the REPL user sees it
-				print("Warning: failed to set custom calibration:", exc)
+				# pwr_pin: active-low MOSFET gate (AO3401) — set HIGH to keep INA powered off
+				self.pwr_pin = Pin(self.pwr_pin_cfg, Pin.OUT, value=0)
+			except Exception:
+				# non-fatal: leave pwr_pin as None if creating Pin failed
+				self.pwr_pin = None
+
+		# track whether we've powered the INA on via pwr(); starts as False
+		self._powered = False
+
+		# calibration will be applied when INA is initialized (after powering on)
 
 	@staticmethod
 	def init_i2c(sda_pin=21, scl_pin=22, freq=100000):
@@ -100,43 +111,71 @@ class CurrentReader:
 		Returns:
 			dict with keys: shunt_v (V), bus_v (V), current (A), current_mA (mA), power (W)
 		"""
-		try:
-			shunt_v = self.ina.shunt_voltage / 1000.0
-			bus_v = self.ina.bus_voltage
-			current = self.ina.current + self.shunt_microampere_correction / 1000000.0
-			power = self.ina.power
-			current_mA = current * 1000.0
+		# At this point the caller must ensure the INA is powered and initialized
+		# (call pwr(True) before calling read()). We do not change power here.
+		if self.ina is None:
+			raise RuntimeError("INA not initialized. Call pwr(True) before read().")
 
-			return {
-				"shunt_v": shunt_v,
-				"bus_v": bus_v,
-				"current": current,
-				"current_mA": current_mA,
-				"power": power,
-			}
+		# perform the actual reading
+		shunt_v = self.ina.shunt_voltage / 1000.0
+		bus_v = self.ina.bus_voltage
+		current = self.ina.current + self.shunt_microampere_correction / 1000000.0
+		power = self.ina.power
+		current_mA = current * 1000.0
 
-		except Exception as e:
-			# bubble up exception so callers can handle or log it
-			raise
+		return {
+			"shunt_v": shunt_v,
+			"bus_v": bus_v,
+			"current": current,
+			"current_mA": current_mA,
+			"power": power,
+		}
 
-	def run(self):
-		"""Blocking loop: continuously read and print measurements to REPL."""
-		print("Starting INA226 reader")
-		print(
-			"I2C SDA={}, SCL={}, addr=0x{:02x}, interval={}s".format(
-				self.sda_pin, self.scl_pin, self.ina_addr, self.interval_seconds
-			)
-		)
+	def pwr(self, on):
+		"""Control power to the INA226.
 
-		while True:
-			try:
-				d = self.read()
-				print(
-					"shunt_v={:.6f}V,bus_v={:.3f}V,current={:.6f}mA,power={:.6f}W".format(
-						d["shunt_v"], d["bus_v"], d["current_mA"], d["power"]
-					)
-				)
-			except Exception as e:
-				print("Error reading INA226:", e)
+		Parameters:
+			on (bool): True to power ON (drive MOSFET gate low), False to power OFF.
 
-			time.sleep(self.interval_seconds)
+		This method is idempotent. When powering ON it will initialize the INA
+		object (and apply calibration). When powering OFF it will deinitialize the
+		INA object and attempt to enable pin hold so the pin state persists during
+		deep sleep.
+		"""
+		if on:
+			if self._powered:
+				return
+			# drive low to power on (active-low MOSFET gate)
+			if self.pwr_pin is not None:
+				try:
+					esp32.gpio_deep_sleep_hold(False)
+					self.pwr_pin = Pin(self.pwr_pin_cfg, Pin.OUT, value=0, hold=False)
+				except Exception:
+					pass
+			# wait for device to become ready
+			time.sleep(self.pwr_on_delay_ms / 1000.0)
+			# initialize INA if not present
+			# if self.ina is None:
+			# 	try:
+			# 		self.ina = INA226(self.i2c, addr=self.ina_addr)
+			# 		if self.r_shunt_mohm is not None:
+			# 			try:
+			# 				self.ina.calibrate(r_shunt=self.r_shunt_mohm)
+			# 			except Exception as exc:
+			# 				print("Warning: failed to set custom calibration:", exc)
+			# 	except Exception as exc:
+			# 		raise RuntimeError("Failed to initialize INA226: {}".format(exc))
+			self._powered = True
+		else:
+			# power off
+			if not self._powered:
+				return
+			if self.pwr_pin is not None:
+				try:
+					esp32.gpio_deep_sleep_hold(True)
+					self.pwr_pin = Pin(self.pwr_pin_cfg, Pin.OUT, value=1, hold=True)
+				except Exception:
+					pass
+			# deinitialize INA reference; will be recreated on next power-on
+			self.ina = None
+			self._powered = False

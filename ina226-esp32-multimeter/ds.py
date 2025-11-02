@@ -1,5 +1,5 @@
 def ds(time):
-    '''Put the MCU into deepsleep. Time in s (int)'''
+    '''Put the MCU into deepsleep. Time in ms (int)'''
     print('> deepsleep')
     from machine import deepsleep, Pin
     import esp32
@@ -11,8 +11,17 @@ def ds(time):
         sleep(0.1)
         print('good night')
         sleep(0.1)
-        deepsleep(time*1000) # ms
+        deepsleep(time) # ms
     
     print('good night')
     sleep(0.1)
     deepsleep()
+
+def ds_interval_seconds():
+    '''Put the MCU into deepsleep for the configured interval seconds'''
+    import config as config
+    from machine import deepsleep, Pin
+    import time
+
+    print("main end ticks_ms:", time.ticks_ms())
+    deepsleep(config.ina226['interval_seconds'] * 1000 - time.ticks_ms())

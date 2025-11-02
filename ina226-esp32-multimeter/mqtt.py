@@ -16,4 +16,4 @@ try:
 except:
     print('mqtt connect failed')
     from ds import ds
-    ds(24*60*60)
+    ds(24*60*60*1000)

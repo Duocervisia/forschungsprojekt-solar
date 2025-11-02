@@ -41,5 +41,5 @@ print('Connecting to WLAN %s...' % config.wlan['ssid'], end='')
 if timeout(nic.isconnected, 12000):
     print('WLAN connect timed out')
     from ds import ds
-    ds(24*60*60)
+    ds(24*60*60*1000)  # sleep for 24 hours
 print(' connected')

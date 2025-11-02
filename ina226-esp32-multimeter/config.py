@@ -62,12 +62,11 @@ ina226 = {
     'scl_pin': 22,
     'i2c_freq': 100000,
     'ina_addr': 0x40,
-    'interval_seconds': 1,
-    # microampere correction applied to INA226 current reading (in µA)
-    'shunt_microampere_correction': -10,
-    # shunt resistance used for calibration in mOhm (10.05 Ω -> 10050 mΩ)
-    'r_shunt_mohm': 10050,
-    'pwr_pin': 5,
+    'interval_seconds': 12, # reading interval in seconds
+    'shunt_microampere_correction': -10, # microampere correction applied to INA226 current reading (in µA)
+    'r_shunt_mohm': 10050, # shunt resistance used for calibration in mOhm (10.05 Ω -> 10050 mΩ)
+    'pwr_pin': 25, #GPIO pin controlling power to INA226 trough AO3401 MOSFET
+    'pwr_on_delay_ms': 20, #delay after powering on INA226 before it can be used
 }
 
 # shutdown at critical battery level
