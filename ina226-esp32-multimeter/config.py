@@ -63,8 +63,10 @@ ina226 = {
     'i2c_freq': 100000,
     'ina_addr': 0x40,
     'interval_seconds': 12, # reading interval in seconds
-    'shunt_microampere_correction': -10, # microampere correction applied to INA226 current reading (in µA)
     'r_shunt_mohm': 10050, # shunt resistance used for calibration in mOhm (10.05 Ω -> 10050 mΩ)
+    'v_shunt_drop_voltage_at_max_current_mv': 10.0, # voltage drop at max current for calibration (mV)
+    'current_multiplicative_correction': 1.024, # multiplicative correction factor for current readings
+    'current_additive_correction': 0.02020, # additive correction
     'pwr_pin': 25, #GPIO pin controlling power to INA226 trough AO3401 MOSFET
     'pwr_on_delay_ms': 100, #delay after powering on INA226 before it can be used
 }

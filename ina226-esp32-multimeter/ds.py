@@ -7,7 +7,7 @@ def ds(time):
     import config as config
 
     if not time == -1:
-        print(f'wakeup in {time}s')
+        print(f'wakeup in {time}ms')
         sleep(0.1)
         print('good night')
         sleep(0.1)

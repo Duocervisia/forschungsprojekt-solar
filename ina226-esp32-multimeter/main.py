@@ -21,7 +21,9 @@ def main():
 
     try:
         reader.pwr(True)
+        sleep(1)
         result = reader.read()
+        print("Read result:", result)
         reader.pwr(False)
 
         mqtt.publish(
@@ -30,12 +32,10 @@ def main():
             qos=1
         )
 
-
     except Exception as exc:
         print("Error while running reader:", exc)
 
     ds.ds_interval_seconds()
-
 
 if __name__ == "__main__":
     main()

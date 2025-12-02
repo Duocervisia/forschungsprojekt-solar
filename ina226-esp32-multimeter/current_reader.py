@@ -32,8 +32,8 @@ class CurrentReader:
 		i2c_freq=None,
 		ina_addr=None,
 		interval_seconds=None,
-		shunt_microampere_correction=None,
 		r_shunt_mohm=None,
+		v_shunt_drop_voltage_at_max_current_mv=None,
 		i2c=None,
 	):
 		"""Initialize reader.
@@ -42,7 +42,6 @@ class CurrentReader:
 			sda_pin, scl_pin, i2c_freq: I2C bus pins and frequency.
 			ina_addr: I2C address of the INA226.
 			interval_seconds: sleep between measurements in `run()`.
-			shunt_microampere_correction: microamp correction applied to current.
 			r_shunt_mohm: shunt resistance in mOhm used for calibration (or None).
 			i2c: optional pre-created I2C instance (useful for testing).
 		"""
@@ -62,18 +61,16 @@ class CurrentReader:
 		self.pwr_on_delay_ms = cfg.get('pwr_on_delay_ms', 20)
 
 		self.interval_seconds = interval_seconds if interval_seconds is not None else cfg.get('interval_seconds', 2)
-		self.shunt_microampere_correction = (
-			shunt_microampere_correction
-			if shunt_microampere_correction is not None
-			else cfg.get('shunt_microampere_correction', -10)
-		)
 		self.r_shunt_mohm = r_shunt_mohm if r_shunt_mohm is not None else cfg.get('r_shunt_mohm', 10050)
+		self.v_shunt_drop_voltage_at_max_current_mv = v_shunt_drop_voltage_at_max_current_mv if v_shunt_drop_voltage_at_max_current_mv is not None else cfg.get('v_shunt_drop_voltage_at_max_current_mv', 10.0)
 
 		# If SDA/SCL/i2c_freq/addr were not provided, fill from cfg or defaults
 		self.sda_pin = sda_pin if sda_pin is not None else cfg.get('sda_pin', 21)
 		self.scl_pin = scl_pin if scl_pin is not None else cfg.get('scl_pin', 22)
 		self.i2c_freq = i2c_freq if i2c_freq is not None else cfg.get('i2c_freq', 100000)
 		self.ina_addr = ina_addr if ina_addr is not None else cfg.get('ina_addr', 0x40)
+		self.current_multiplicative_correction = cfg.get('current_multiplicative_correction', 1.0)
+		self.current_additive_correction = cfg.get('current_additive_correction', 0.0)
 
 		# create or use provided I2C
 		self.i2c = i2c or self.init_i2c(self.sda_pin, self.scl_pin, self.i2c_freq)
@@ -111,15 +108,17 @@ class CurrentReader:
 		# perform the actual reading
 		shunt_v = self.ina.shunt_voltage / 1000.0
 		bus_v = self.ina.bus_voltage
-		current = self.ina.current + self.shunt_microampere_correction / 1000000.0
+		current = self.ina.current
 		power = self.ina.power
 		current_mA = current * 1000.0
+		corrected_current_mA = self.current_multiplicative_correction * current_mA + self.current_additive_correction
 
 		return {
 			"shunt_v": shunt_v,
 			"bus_v": bus_v,
 			"current": current,
 			"current_mA": current_mA,
+			"corrected_current_mA": corrected_current_mA,
 			"power": power,
 		}
 
@@ -151,7 +150,7 @@ class CurrentReader:
 					self.ina = INA226(self.i2c, addr=self.ina_addr)
 					if self.r_shunt_mohm is not None:
 						try:
-							self.ina.calibrate(r_shunt=self.r_shunt_mohm)
+							self.ina.calibrate(r_shunt=self.r_shunt_mohm, v_shunt=self.v_shunt_drop_voltage_at_max_current_mv)
 						except Exception as exc:
 							print("Warning: failed to set custom calibration:", exc)
 				except Exception as exc:
