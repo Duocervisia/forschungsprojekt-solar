@@ -21,7 +21,7 @@ def main():
 
     try:
         reader.pwr(True)
-        sleep(1)
+        sleep(1)  # wait a bit for INA to stabilize
         result = reader.read()
         print("Read result:", result)
         reader.pwr(False)

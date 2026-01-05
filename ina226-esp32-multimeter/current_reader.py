@@ -109,17 +109,17 @@ class CurrentReader:
 		shunt_v = self.ina.shunt_voltage / 1000.0
 		bus_v = self.ina.bus_voltage
 		current = self.ina.current
-		power = self.ina.power
+		power_mW = self.ina.power * 1000.0
 		current_mA = current * 1000.0
 		corrected_current_mA = self.current_multiplicative_correction * current_mA + self.current_additive_correction
 
 		return {
-			"shunt_v": shunt_v,
-			"bus_v": bus_v,
-			"current": current,
-			"current_mA": current_mA,
-			"corrected_current_mA": corrected_current_mA,
-			"power": power,
+			"shunt_V": shunt_v,
+			"bus_V": bus_v,
+			"current_A": current,
+			# "current_mA": current_mA,
+			# "corrected_current_mA": corrected_current_mA,
+			"power_mW": power_mW,
 		}
 
 	def pwr(self, on):
