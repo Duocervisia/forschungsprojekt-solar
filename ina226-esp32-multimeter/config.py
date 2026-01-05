@@ -51,7 +51,7 @@ mqtt = {
     },
 }
 if override:
-    mqtt['host'] = '192.168.178.20'
+    mqtt['host'] = '192.168.178.28'
     mqtt['password'] = 'test'
 
 
@@ -62,7 +62,7 @@ ina226 = {
     'scl_pin': 22,
     'i2c_freq': 100000,
     'ina_addr': 0x40,
-    'interval_seconds': 60, # reading interval in seconds
+    'interval_seconds': 10, # reading interval in seconds
     'r_shunt_mohm': 10050, # shunt resistance used for calibration in mOhm (10.05 Ω -> 10050 mΩ)
     'v_shunt_drop_voltage_at_max_current_mv': 10.0, # voltage drop at max current for calibration (mV)
     'current_multiplicative_correction': 1.024, # multiplicative correction factor for current readings

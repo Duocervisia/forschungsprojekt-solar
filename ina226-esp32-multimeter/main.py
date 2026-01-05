@@ -25,6 +25,9 @@ def main():
         result = reader.read()
         print("Read result:", result)
         reader.pwr(False)
+        
+        from bat import bat_idle
+        result["bat"] = bat_idle()
 
         mqtt.publish(
             config.mqtt['topics']['current'],

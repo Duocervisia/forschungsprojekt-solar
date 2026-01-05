@@ -28196,3 +28196,9 @@
 1767514910: Sending PINGRESP to nodered_b4649f9e0faba407
 1767514970: Received PINGREQ from nodered_b4649f9e0faba407
 1767514970: Sending PINGRESP to nodered_b4649f9e0faba407
+1767607694: mosquitto version 2.0.22 starting
+1767607694: Config loaded from /mosquitto/config/mosquitto.conf.
+1767607694: Opening ipv4 listen socket on port 1883.
+1767607694: Opening ipv6 listen socket on port 1883.
+1767607694: Opening websockets listen socket on port 9001.
+1767607694: mosquitto version 2.0.22 running
