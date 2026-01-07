@@ -1,7 +1,6 @@
 import config as config
 from machine import Pin, ADC
 from time import sleep
-from mqtt import mqtt
 import json
 from machine import deepsleep
 

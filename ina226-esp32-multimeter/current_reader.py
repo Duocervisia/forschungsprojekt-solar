@@ -94,33 +94,62 @@ class CurrentReader:
 		except Exception:
 			return I2C(scl=Pin(scl_pin), sda=Pin(sda_pin), freq=freq)
 
-	def read(self):
-		"""Read values from INA226 and return a dict with processed values.
+	def read(self, samples=1, delay=1):
+		"""Read values from INA226.
 
-		Returns:
-			dict with keys: shunt_v (V), bus_v (V), current (A), current_mA (mA), power (W)
+		If `samples` > 1, take multiple readings and return the median for each
+		measured key. `delay` controls seconds between samples;.
+
+		Returns a dict with keys: `shunt_V`, `bus_V`, `current_A`.
 		"""
 		# At this point the caller must ensure the INA is powered and initialized
 		# (call pwr(True) before calling read()). We do not change power here.
 		if self.ina is None:
 			raise RuntimeError("INA not initialized. Call pwr(True) before read().")
+		
+		print("Taking readings... ", end='')
 
-		# perform the actual reading
-		shunt_v = self.ina.shunt_voltage / 1000.0
-		bus_v = self.ina.bus_voltage
-		current = self.ina.current
-		power_mW = self.ina.power * 1000.0
-		current_mA = current * 1000.0
-		corrected_current_mA = self.current_multiplicative_correction * current_mA + self.current_additive_correction
+		def _single_read():
+			shunt_v = self.ina.shunt_voltage / 1000.0
+			bus_v = self.ina.bus_voltage
+			current = self.ina.current
+			return {"shunt_V": shunt_v, "bus_V": bus_v, "current_A": current}
+		
+		def _median(vals):
+			s = sorted(vals)
+			n = len(s)
+			mid = n // 2
+			if n % 2 == 1:
+				return s[mid]
+			return (s[mid - 1] + s[mid]) / 2
 
-		return {
-			"shunt_V": shunt_v,
-			"bus_V": bus_v,
-			"current_A": current,
-			# "current_mA": current_mA,
-			# "corrected_current_mA": corrected_current_mA,
-			"power_mW": power_mW,
-		}
+		# single sample fast path
+		if not samples or samples <= 1:
+			return _single_read()
+
+		# collect samples
+		raw = []
+		for i in range(int(samples)):
+			raw.append(_single_read())
+			print(i+1, end=' ')
+			if i + 1 < samples:
+				time.sleep(delay)
+
+		print(' done')
+		print('Computing medians...', end='')
+
+		# compute medians
+		keys = set()
+		for rr in raw:
+			keys.update(rr.keys())
+		result = {}
+		for k in keys:
+			vals = [rr[k] for rr in raw if k in rr]
+			if vals:
+				result[k] = _median(vals)
+		print('done')
+		print("Read result (medians):", result)
+		return result
 
 	def pwr(self, on):
 		"""Control power to the INA226.
@@ -136,6 +165,7 @@ class CurrentReader:
 		if on:
 			if self._powered:
 				return
+			print("Powering on INA226...",end='')
 			# drive low to power on (active-low MOSFET gate)
 			try:
 				esp32.gpio_deep_sleep_hold(False)
@@ -156,15 +186,15 @@ class CurrentReader:
 				except Exception as exc:
 					raise RuntimeError("Failed to initialize INA226: {}".format(exc))
 			self._powered = True
+			print(" done")
 		else:
 			# power off
-			print("Powering off INA226...")
+			print("Powering off INA226... ",end='')
 			print(self._powered)
 			if not self._powered:
 				return
 			print(self.pwr_pin)
 			try:
-				print("Powering off INA226...")
 				esp32.gpio_deep_sleep_hold(True)
 				self.pwr_pin = Pin(self.pwr_pin_cfg, Pin.OUT, value=1, hold=True)
 			except Exception:
