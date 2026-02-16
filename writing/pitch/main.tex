@@ -1,0 +1,178 @@
+\documentclass{article}
+
+% Packages
+\usepackage[ngerman]{babel} % For German language support
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} % For proper font encoding
+\usepackage{graphicx} % For including graphics
+\usepackage{multibib}
+\usepackage[a4paper, margin=3cm]{geometry} % Set border to 2 cm
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{tocloft} % Für Anpassung des Abbildungsverzeichnisses
+\usepackage{amsmath} % For advanced math formatting
+% \usepackage{url}
+
+\setlength{\parindent}{0pt} % No indentation for paragraphs
+
+% Seitenzahlen ab Inhaltsverzeichnis in römischen Zahlen
+\pagenumbering{roman}
+
+\begin{document}
+
+% Titelseite ohne Seitenzahl
+\thispagestyle{empty}
+\input{cover.tex}
+
+\renewcommand{\abstractname}{Abstract}
+\begin{abstract}
+Die vorliegende Arbeit beschäftigt sich mit der Entwicklung, Umsetzung und Validierung eines energieeffizienten 
+Hardwareprototyps zur digitalen Darstellung von Raumbelegungsplänen an der Hochschule für Technik und Wirtschaft 
+Berlin (HTW). Ausgangspunkt ist die Problematik, dass die bisherigen Papieraushänge nur zu Semesterbeginn 
+aktualisiert werden und keine Möglichkeit zur Echtzeitaktualisierung bieten. Ziel der Arbeit ist es, durch den 
+Einsatz von E-Ink-Displays und die Auswahl optimierter Hardwarekomponenten eine signifikante Verlängerung der 
+Betriebsdauer im Vergleich zu bisherigen Prototypen zu erreichen und den Wartungsaufwand zu minimieren.
+
+Im Rahmen einer umfassenden Analyse wurden bestehende Projekte an der HTW untersucht, deren Hardware- und 
+Softwarearchitekturen verglichen und deren Laufzeiten bewertet. Darauf aufbauend erfolgte die Konzeption 
+eines neuen Prototyps, bei dem insbesondere auf einen niedrigen Energieverbrauch im Deep-Sleep-Modus Wert 
+gelegt wurde. Für die Umsetzung wurde ein Firebeetle 2 ESP32 Mikrocontroller ausgewählt, der durch seine 
+hohe Energieeffizienz überzeugt. Ergänzend wurde ein Gehäuse entwickelt, das sich nahtlos in die bestehende 
+Wandhalterung für Raumbelegungspläne der HTW einfügt und die Hardwarekomponenten zuverlässig schützt.
+
+Die Implementierung umfasste sowohl die Anpassung der Software an die neue Hardware als auch die Fertigung 
+des Gehäuses mittels Lasercutter. Die Validierung des Prototyps erfolgte durch Messungen 
+der Leistungsaufnahme und Funktionstests im realen Umfeld. Die Ergebnisse zeigen, dass mit dem entwickelten 
+Ansatz eine theoretische Laufzeit von etwa einem Jahr erreicht werden kann, wodurch die Anforderungen an eine 
+energieeffiziente und wartungsarme Lösung erfüllt werden. Abschließend werden Optimierungspotenziale sowie 
+Perspektiven für die Weiterentwicklung, wie etwa die Integration von Photovoltaikzellen, diskutiert.
+\end{abstract}
+
+\newpage
+
+
+% Seitenzahlen ab hier in römischen Zahlen
+\cleardoublepage
+\pagenumbering{roman}
+
+% Inhaltsverzeichnis
+\tableofcontents
+
+\newpage
+
+% Abbildungsverzeichnis
+\listoffigures
+
+% Tabellenverzeichnis
+\listoftables
+
+% Abkürzungsverzeichnis
+\section*{Abkürzungsverzeichnis}
+\begin{description}
+    \item[OTA] Over-the-Air
+    \item[ADC] Analog-Digital-Converter 
+    \item[LSF] Lehre Studium Forschung 
+    \item[API] Application Programming Interface 
+    \item[$V_{\text{REF}}$] Referenzspannung 
+\end{description}
+
+
+% Seitenzahlen ab Einleitung in arabischen Zahlen, beginnend mit 1
+\clearpage
+\pagenumbering{arabic}
+
+\section{Einführung}
+\subsection{Einleitung}
+
+Im Hinblick auf die zunehmenden Anforderungen an Energieeffizienz und nachhaltige Systemkonzepte, gewinnt der Entwicklungsbedarf energieautarker 
+elektronischer Systeme zunehmend an Bedeutung. 
+Besonders im Bereich batteriegetriebener IoT-Anwendungen, stellt die begrenzte Lebensdauer von Energiespeichern eine zentrale Herausforderung dar. 
+Wartungskosten, Batteriewechsel und ökologische Aspekte sprechen für alternative oder ergänzende Energieversorgungskonzepte.
+
+Eine vielversprechende Möglichkeit stellt die Nutzung photovoltaischer Energiegewinnung unter Indoor-Lichtbedingungen dar. 
+Moderne Dünnschicht-Solarzellen ermöglichen selbst bei vergleichsweise geringer Beleuchtungsstärke eine nutzbare Leistungsabgabe. 
+Ob und in welchem Umfang diese Energie ausreicht, um ein energieoptimiertes System dauerhaft oder teilweise autark zu betreiben, 
+ist jedoch stark anwendungsabhängig und erfordert eine systematische Untersuchung.
+
+\subsection{Motivation}
+
+Im ersten Projektsemester wurde ein erster Prototyp eines digitalen Raumbelegungsplans entwickelt, der auf einem E-Ink-Display basiert. 
+Der Fokus lag dabei auf der Entwicklung eines energieeffizienten Systems, das eine lange Laufzeit ermöglicht.
+In einer ersten theoretischen Analyse konnte für einen 1000 mAh 3,7 V Akku eine Laufzeit von etwa einem Jahr prognostiziert werden, 
+was eine signifikante Verbesserung gegenüber bisherigen Prototypen darstellt.
+Der daraus resultierende Energiebedarf lag bei etwa 70,66 mWh pro Woche, was einer mittleren Leistungsaufnahme von etwa 0,42 mWh pro Stunde entspricht. 
+Eine erste Langzeitmessung über den Zeitraum vom 23.10.2025 bis zum 13.02.2026 liegt vor. Eine vorläufige Sichtung der Daten deutet darauf hin, 
+dass die Laufzeit länger sein könnte als in der theoretischen Prognose erwartet.
+Aufgrund dieses vielversprechenden Ergebnisses soll eine mögliche Integrierung von Photovoltaikzellen zur weiteren Verlängerung der Laufzeit 
+untersucht werden.
+
+\subsection{Zielsetzung}
+
+Ziel dieser Arbeit ist die Entwicklung eines energieautarken Versorgungskonzepts mittels Photovoltaikzellen für den im ersten Projektsemester 
+entwickelten Raumbelegungsplan und andere IoT-Anwendungen, die unter ähnlichen Bedingungen betrieben werden. Dabei liegt der Fokus auf einer 
+maximalen Energieeffizienz, um die Laufzeit des Systems zu verlängern und den Wartungsaufwand zu minimieren. Das System soll dabei so konzipiert werden, 
+dass es unabhängig vom Raumbelegungsplan betrieben werden kann, um eine flexible Integration in verschiedene Anwendungsbereiche zu ermöglichen. 
+Im Anschluss soll geprüft werden, in welchem Umfang die Photovoltaikmodule unter normalen Innenlichtbedingungen Energie liefern und ob diese den 
+Verbrauch des Systems langfristig decken oder die Batterielaufzeit messbar verlängern können.
+
+\subsection{Methodik}
+Zu Beginn soll eine umfassende Analyse der Energieverbrauchsmessungen des bisherigen Prototyps durchgeführt werden, um den tatsächlichen 
+Energiebedarf zu ermitteln. Anschließend erfolgt eine Recherche zu geeigneten Photovoltaikzellen, die unter schlechten Lichtbedingungen eine 
+möglichst hohe Energiegewinnung ermöglichen. Ist eine geeignete Zelle gefunden, muss ein dazu passender Laderegler ausgewählt werden. 
+Dieser soll die Energie der Photovoltaikzelle effizient in den Akku einspeisen und gleichzeitig eine Überladung verhindern. Nachdem ein passendes 
+System von Photovoltaikzelle und Laderegler ausgewählt wurde, muss eine kontinuierliche Messung der Stromgewinnung zwischen Laderegler und Akku umgesetzt 
+werden, um die Effektivität der Energiegewinnung zu bewerten. Dazu muss ein geeigneter Strommonitoring-Chip ausgewählt und in die bestehende 
+Hardware integriert werden. Abschließend soll eine Schnittstelle umgesetzt werden, die es ermöglicht, die gewonnenen Daten zur Energiegewinnung und zum 
+Energieverbrauch zu überwachen und auszuwerten.
+
+\section{Analyse}
+
+\subsection{Laufzeitmessung des Raumbelegungsplans}
+Eine Laufzeitmessung des Raumbelegungsplans wurde über den Zeitraum vom 23.10.2025 bis zum 13.02.2026 durchgeführt. Die Messung erfolgte über eine 
+in Node-Red implementierte Schnittstelle, die für jede Aktualisierungsanfrage des Raumbelegungsplans die aktuelle Uhrzeit und die derzeitige Batteriespannung 
+in eine Textdatei schreibt. Innerhalb dem Messzeitraum von 114 Tagen wurden 416 Aktualisierungsanfragen durchgeführt. In dieser Zeit ist die Batteriespannung 
+von 4,05 V auf 3,96 V gesunken (Abbildung \ref{fig:battery_voltage}). 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{../images/battery_voltage.png}
+    \caption{Batteriespannung über die Zeit}
+    \label{fig:battery_voltage}
+\end{figure}
+
+Über folgende Formel kann der anteilige Kapazitätsverlust $\Delta Q$ berechnet werden, wobei $U_\text{max}$ der maximalen Spannung, $U_\text{min}$ der minimalen Spannung, 
+$U_\text{start}$ der Startspannung und $U_\text{end}$ der Endspannung entspricht:
+\[
+\Delta Q = \frac{U_\text{start} - U_\text{end}}{U_\text{max} - U_\text{min}}
+= \frac{4.05 - 3.96}{4.2 - 3.2}
+= \frac{0.09}{1.0} 
+= 0.09
+\]
+
+Dies entspricht einem Kapazitätsverlust von etwa 9\% über den Zeitraum von 114 Tagen. Dadurch könnte die hochgerechnete Laufzeit des Systems bei etwa 1266 Tagen liegen, 
+was etwa 3,5 Jahren entspricht. Es ist jedoch zu beachten, dass dies eine theoretische Prognose ist und die tatsächliche Laufzeit von verschiedenen Faktoren beeinflusst 
+werden kann, wie z.B. der Alterung der Batterie, der Umgebungstemperatur und Selbstentladung. Jedoch deutet die Messung darauf hin, dass die Laufzeit des Systems länger 
+sein könnte als in der theoretischen Prognose erwartet, was auf eine gute Energieeffizienz des Prototyps hindeutet.
+Ein Erklärungsansatz für die längere Laufzeit könnte sein, dass die theoretische Prognose auf der konservativen Annahme basiert, dass die Wachzeit des Raumbelegungsplans 
+bei 9 Minuten pro Woche liegt.
+
+
+\newpage
+
+\section{Erläuterung zur Nutzung von KI}
+
+KI-Tools wurden in dieser Arbeit als assistives Werkzeug im Implementierungs- und Schreibprozess verwendet.
+Im Schreibprozess diente ChatKI als Unterstützung für grobe Strukturierungsideen.
+ChatGPT wurdegenutzt, um Rechtschreib- und Grammatikfehler im Fließtext zu überprüfen und Verbesserungsvorschläge zu erhalten.
+Ebenfalls wurde ChatGPT im Implementierungsprozess verwendet, um Fehler im Code zu finden.
+Es wurden keine Inhalte ungeprüft übernommen. 
+
+\newpage
+
+\addcontentsline{toc}{section}{Literaturverzeichnis}
+\bibliographystyle{plain}
+\bibliography{quellen}
+
+\end{document}
