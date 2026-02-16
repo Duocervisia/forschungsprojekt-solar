@@ -41,17 +41,17 @@ id = id()
 # mqtt credentials + topics
 mqtt = {
     'id': 'umqtt_client',
-    'host': '10.4.128.136',
+    'host': '141.45.191.185',
     'port': 1883,
     'user': 'user1',
-    'password': 'm9tQqvSpE3cLbYpt',
+    'password': 'test',
     'topics': {
         # EPD
         'current'   : 'ct/current',
     },
 }
 if override:
-    mqtt['host'] = '192.168.178.28'
+    mqtt['host'] = '141.45.191.185'
     mqtt['password'] = 'test'
 
 

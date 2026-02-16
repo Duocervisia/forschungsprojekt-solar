@@ -33,7 +33,7 @@ def read_battery_voltage():
     return raw, battery_voltage
 
 
-def bat_idle():
+def bat_idle(reader = None):
     """
     call this method to do actions on low battery
     returns ADC value, voltage, and perc of the battery measurement
@@ -56,6 +56,9 @@ def bat_idle():
         e = f'Battery critical - {round(perc*100)}%, going to sleep'
         print(e)
         its_late = True
-    print(f'Battery: {round(perc*100)}% ({voltage:.2f}V)')
 
+    if its_late:
+       deepsleep()
+
+    print(f'Battery: {round(perc*100)}% ({voltage:.2f}V)')
     return {"voltage_V": voltage, "percentage": perc*100}
