@@ -127,7 +127,7 @@ werden, um die Effektivität der Energiegewinnung zu bewerten. Dazu muss ein gee
 Hardware integriert werden. Abschließend soll eine Schnittstelle umgesetzt werden, die es ermöglicht, die gewonnenen Daten zur Energiegewinnung und zum 
 Energieverbrauch zu überwachen und auszuwerten.
 
-\section{Analyse}
+\section{Analyse und Recherche}
 
 \subsection{Laufzeitmessung des Raumbelegungsplans}
 Eine Laufzeitmessung des Raumbelegungsplans wurde über den Zeitraum vom 23.10.2025 bis zum 13.02.2026 durchgeführt. Die Messung erfolgte über eine 
@@ -142,7 +142,7 @@ von 4,05 V auf 3,96 V gesunken (Abbildung \ref{fig:battery_voltage}).
     \label{fig:battery_voltage}
 \end{figure}
 
-Über folgende Formel kann der anteilige Kapazitätsverlust $\Delta Q$ berechnet werden, wobei $U_\text{max}$ der maximalen Spannung, $U_\text{min}$ der minimalen Spannung, 
+Über folgende Formel kann der anteilige Kapazitätsverlust $\Delta Q$ approximiert werden, wobei $U_\text{max}$ der maximalen Spannung, $U_\text{min}$ der minimalen Spannung, 
 $U_\text{start}$ der Startspannung und $U_\text{end}$ der Endspannung entspricht:
 \[
 \Delta Q = \frac{U_\text{start} - U_\text{end}}{U_\text{max} - U_\text{min}}
@@ -153,10 +153,62 @@ $U_\text{start}$ der Startspannung und $U_\text{end}$ der Endspannung entspricht
 
 Dies entspricht einem Kapazitätsverlust von etwa 9\% über den Zeitraum von 114 Tagen. Dadurch könnte die hochgerechnete Laufzeit des Systems bei etwa 1266 Tagen liegen, 
 was etwa 3,5 Jahren entspricht. Es ist jedoch zu beachten, dass dies eine theoretische Prognose ist und die tatsächliche Laufzeit von verschiedenen Faktoren beeinflusst 
-werden kann, wie z.B. der Alterung der Batterie, der Umgebungstemperatur und Selbstentladung. Jedoch deutet die Messung darauf hin, dass die Laufzeit des Systems länger 
+werden kann, wie z.B. der Alterung der Batterie, der Umgebungstemperatur und Selbstentladung. Ebenfalls geht die verwendete Formel von einem linearen Zusammenhang zwischen 
+Spannung und Kapazität aus, was in der Praxis nicht der Fall ist. Jedoch deutet die Messung darauf hin, dass die Laufzeit des Systems länger 
 sein könnte als in der theoretischen Prognose erwartet, was auf eine gute Energieeffizienz des Prototyps hindeutet.
-Ein Erklärungsansatz für die längere Laufzeit könnte sein, dass die theoretische Prognose auf der konservativen Annahme basiert, dass die Wachzeit des Raumbelegungsplans 
-bei 9 Minuten pro Woche liegt.
+Ein möglicher Erklärungsansatz für die längere Laufzeit liegt darin, dass die theoretische Prognose auf der konservativen Annahme basiert, wonach die Wachzeit des 
+Raumbelegungsplans 9 Minuten pro Woche beträgt. Eine Überschätzung der Wachzeit hat einen erheblichen Einfluss auf den berechneten Energieverbrauch, da der Energiebedarf 
+im Wachmodus im Vergleich zum Deep-Sleep-Modus um etwa den Faktor 10 000 höher liegt. Ebenfalls könnte der Energieverbrauch in der Wachzeit geringer sein als angenommen, 
+was ebenfalls zu einer längeren Laufzeit führen könnte.
+
+\newpage
+
+\subsection{Recherche zu Photovoltaikzellen für Innenlichtbedingungen}
+Die Recherche zu geeigneten Photovoltaikzellen für Innenlichtbedingungen ergab, dass Dünnschicht-Solarzellen, insbesondere solche auf Basis von amorphem Silizium oder 
+organischen Materialien, eine vielversprechende Option darstellen. Diese Zellen sind in der Lage, auch bei geringer Beleuchtungsstärke eine nutzbare Leistung zu 
+liefern. \cite{TransparentThinFilmSiliconSolarCells, D2YA00075J} In diesem Bereich gibt es bereits kommerzielle Produkte, die speziell für den Einsatz unter 
+Innenlichtbedingungen entwickelt wurden. Folgende Kriterien wurden bei der Auswahl berücksichtigt:
+\begin{itemize}
+    \item Energieeffizienz bei geringer Beleuchtungsstärke
+    \item Kosten und Verfügbarkeit
+    \item Größe und Formfaktor
+\end{itemize}
+Basierend auf diesen Kriterien wurden mehrere Kandidaten untersucht. Folgende Photovoltaikzellenanbieter wurden als potenzielle Optionen identifiziert:
+\begin{itemize}
+    \item Epishine – Indoor-Solarzellen \cite{EpishineIndoorSolarCells}
+    \item PowerFilm – Indoor-Light-Module \cite{PowerFilmIndoorSeries}
+    \item Panasonic – Amorton \cite{PanasonicAmorton}
+\end{itemize}
+Diese Zellen besitzen alle eine hohe Effizienz bei geringer Beleuchtungsstärke und sind für den Einsatz in Innenräumen geeignet. Jeder Anbieter bietet verschiedene Modelle 
+mit unterschiedlichen Leistungsstufen und Größen an, die je nach den Anforderungen des Projekts ausgewählt werden können. In Bezug auf die Verfügbarkeit sind die Produkte 
+von PowerFilm und Panasonic leichter zugänglich, wobei PowerFilm schnellere Lieferzeiten bietet. Die Produkte von Epishine sind zwar vielversprechend, aber derzeit nur über eine direkte Anfrage erhältlich, was die 
+Beschaffung erschwert. Die Kosten sind bei den Anbietern PowerFilm und Panasonic vergleichbar. Letztlich wurde die Entscheidung getroffen, die Produkte
+von PowerFilm zu verwenden, da sie eine gute Balance zwischen Effizienz, Verfügbarkeit und Kosten bieten. Es wurden verschiedene Modelle von PowerFilm untersucht, um die 
+am besten geeignete Option für das Projekt zu identifizieren. Die INP-Modelle liefern eine Leistung von 10–30 µW bei einer Beleuchtungsstärke von 200 Lux, was für die Anforderungen 
+des Projekts zu wenig sein könnte. Die INP-100-Modelle liefern eine Leistung von 100 µW bei 200 Lux, was ausreichend sein sollte, um den Energiebedarf des Systems zu decken. 
+Die LL200-Modelle sind deutlich größer und liefern eine dementsprechend größere Leistung. Hervorstechend war das Modell LL200-3.6-75, da dieses eine Leistung von 206 µW bei 
+200 Lux liefert. Ebenfalls liegt die Betriebsspannung bei 2,4 V, was höher als bei anderen Modellen der Reihe ist. Die Betriebsspannung ist ein wichtiger Faktor, da sie die 
+Effizienz der Energiegewinnung beeinflussen kann. insbesondere für den Laderegler, der die Energie der Photovoltaikzelle in den Akku einspeist, ist es wichtig, dass die 
+Betriebsspannung der Zelle ausreichend hoch ist, um eine effiziente Ladung zu ermöglichen. Aus diesen Gründen wurde die PowerFilm LL200-3.6-75 als die am besten geeignete 
+Option für das Projekt ausgewählt (Abbildung \ref{fig:photovoltaik_zelle}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.3\textwidth]{../images/zelle.png}
+    \caption{PowerFilm LL200-3.6-75 Photovoltaikzelle}
+    \label{fig:photovoltaik_zelle}
+\end{figure}
+
+\subsection{Recherche zu Ladereglern für Photovoltaikzellen}
+Die Recherche zu geeigneten Ladereglern für die ausgewählte Photovoltaikzelle ergab dass es verschiedene Optionen gibt, die für die Anforderungen des Projekts geeignet 
+sein könnten. Bei der Auswahl eines Ladereglers wurden folgende Kriterien berücksichtigt:
+\begin{itemize}
+    \item Kompatibilität mit der Betriebsspannung der Photovoltaikzelle
+    \item Effizienz der Energieumwandlung
+    \item Kosten und Verfügbarkeit
+    \item Größe und Formfaktor
+\end{itemize}
+
 
 
 \newpage
