@@ -127,9 +127,9 @@ werden, um die Effektivität der Energiegewinnung zu bewerten. Dazu muss ein gee
 Hardware integriert werden. Abschließend soll eine Schnittstelle umgesetzt werden, die es ermöglicht, die gewonnenen Daten zur Energiegewinnung und zum 
 Energieverbrauch zu überwachen und auszuwerten.
 
-\section{Analyse und Recherche}
+\section{Analyse}
 
-\subsection{Laufzeitmessung des Raumbelegungsplans}
+\subsection{Analyse der Laufzeitmessung des Raumbelegungsplans}
 Eine Laufzeitmessung des Raumbelegungsplans wurde über den Zeitraum vom 23.10.2025 bis zum 13.02.2026 durchgeführt. Die Messung erfolgte über eine 
 in Node-Red implementierte Schnittstelle, die für jede Aktualisierungsanfrage des Raumbelegungsplans die aktuelle Uhrzeit und die derzeitige Batteriespannung 
 in eine Textdatei schreibt. Innerhalb dem Messzeitraum von 114 Tagen wurden 416 Aktualisierungsanfragen durchgeführt. In dieser Zeit ist die Batteriespannung 
@@ -163,8 +163,8 @@ was ebenfalls zu einer längeren Laufzeit führen könnte.
 
 \newpage
 
-\subsection{Recherche zu Photovoltaikzellen für Innenlichtbedingungen}
-Die Recherche zu geeigneten Photovoltaikzellen für Innenlichtbedingungen ergab, dass Dünnschicht-Solarzellen, insbesondere solche auf Basis von amorphem Silizium oder 
+\subsection{Analyse von Photovoltaikzellen für Innenlichtbedingungen}
+Die Analyse zu geeigneten Photovoltaikzellen für Innenlichtbedingungen ergab, dass Dünnschicht-Solarzellen, insbesondere solche auf Basis von amorphem Silizium oder 
 organischen Materialien, eine vielversprechende Option darstellen. Diese Zellen sind in der Lage, auch bei geringer Beleuchtungsstärke eine nutzbare Leistung zu 
 liefern. \cite{TransparentThinFilmSiliconSolarCells, D2YA00075J} In diesem Bereich gibt es bereits kommerzielle Produkte, die speziell für den Einsatz unter 
 Innenlichtbedingungen entwickelt wurden. Folgende Kriterien wurden bei der Auswahl berücksichtigt:
@@ -179,6 +179,7 @@ Basierend auf diesen Kriterien wurden mehrere Kandidaten untersucht. Folgende Ph
     \item PowerFilm – Indoor-Light-Module \cite{PowerFilmIndoorSeries}
     \item Panasonic – Amorton \cite{PanasonicAmorton}
 \end{itemize}
+
 Diese Zellen besitzen alle eine hohe Effizienz bei geringer Beleuchtungsstärke und sind für den Einsatz in Innenräumen geeignet. Jeder Anbieter bietet verschiedene Modelle 
 mit unterschiedlichen Leistungsstufen und Größen an, die je nach den Anforderungen des Projekts ausgewählt werden können. In Bezug auf die Verfügbarkeit sind die Produkte 
 von PowerFilm und Panasonic leichter zugänglich, wobei PowerFilm schnellere Lieferzeiten bietet. Die Produkte von Epishine sind zwar vielversprechend, aber derzeit nur über eine direkte Anfrage erhältlich, was die 
@@ -199,16 +200,92 @@ Option für das Projekt ausgewählt (Abbildung \ref{fig:photovoltaik_zelle}).
     \label{fig:photovoltaik_zelle}
 \end{figure}
 
-\subsection{Recherche zu Ladereglern für Photovoltaikzellen}
-Die Recherche zu geeigneten Ladereglern für die ausgewählte Photovoltaikzelle ergab dass es verschiedene Optionen gibt, die für die Anforderungen des Projekts geeignet 
-sein könnten. Bei der Auswahl eines Ladereglers wurden folgende Kriterien berücksichtigt:
+\subsection{Analyse von Ladereglern für Photovoltaikzellen}
+Die Analyse zu geeigneten Ladereglern für die ausgewählte Photovoltaikzelle ergab, dass es verschiedene Optionen gibt, die für die Anforderungen des Projekts geeignet sein 
+könnten. Ein Laderegler ist notwendig, um die Energie der Photovoltaikzelle effizient in den Akku einzuspeisen und gleichzeitig eine Überladung zu verhindern.
+Bei der Auswahl eines Ladereglers wurden folgende Kriterien berücksichtigt:
 \begin{itemize}
     \item Kompatibilität mit der Betriebsspannung der Photovoltaikzelle
     \item Effizienz der Energieumwandlung
     \item Kosten und Verfügbarkeit
     \item Größe und Formfaktor
 \end{itemize}
+Basierend auf diesen Kriterien wurden mehrere Kandidaten untersucht. Folgende Laderegler wurden als potenzielle Optionen identifiziert:
+\begin{itemize}
+    \item Texas Instruments – BQ25570 \cite{BQ25570}
+    \item Analog Devices – LTC3105 \cite{LTC3105}
+    \item Analog Devices – MAX17222 \cite{MAX17222}
+\end{itemize}
 
+Der BQ25570 ist speziell für Energy-Harvesting-Anwendungen entwickelt worden. Er besitzt eine sehr niedrige Startspannung (330 mV) und integriertes MPPT. 
+Zusätzlich enthält er einen Abwärtswandler zur Versorgung der Last. Aufgrund des sehr geringen Eigenverbrauchs eignet er sich besonders für Systeme mit extrem niedriger 
+Leistungsaufnahme. Es gibt verschiedene Breakout-Boards, die den BQ25570 verwenden, was die Implementierung erleichtert. Die Verfügbarkeit ist gut und die Kosten sind 
+moderat, was ihn zu einer attraktiven Option für das Projekt macht. Die Größe des gängisten Breakout-Boards ist mit etwa 26,5 mm x 28 mm relativ kompakt, was für die 
+Integration in das bestehende System vorteilhaft ist. \cite{BQ25570Breakout}
+Der LTC3105 ist ein Aufwärtswandler mit integriertem MPPT. Er kann bereits bei sehr niedrigen Eingangsspannungen arbeiten und bietet einen relativ hohen Ausgangsstrom. 
+Allerdings ist sein Eigenverbrauch höher als beim BQ25570, wodurch er sich eher für Anwendungen mit etwas höherer verfügbarer Leistung eignet. Leider ist der LTC3105 
+nicht mit einem passenden Breakout-Board erhältlich, was die Implementierung erschwert. Die Verfügbarkeit des LTC3105 ist gut, aber die Kosten sind höher als beim BQ25570.
+Der MAX17222 ist ein stromsparender Boost-Converter mit sehr geringem Ruhestrom im Nanoamperebereich. Er besitzt jedoch keine integrierte Lade- und MPPT-Logik. 
+Daher müsste eine zusätzliche Beschaltung implementiert werden, um eine optimale Energieausbeute sicherzustellen. Ebenfalls ist die Verfügbarkeit des MAX17222 eingeschränkt, 
+was die Beschaffung erschwert. Ein Breakout-Board für den MAX17222 konnte nicht gefunden werden, was die Implementierung weiter erschwert. 
+Aufgrund dieser Faktoren wurde der BQ25570 als die am besten geeignete Option für das Projekt ausgewählt (Abbildung \ref{fig:BQ25570_Vorderseite} und \ref{fig:BQ25570_Vorderseite}).
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../images/BQ25570_Vorderseite.png}
+        \caption{Texas Instruments BQ25570 Laderegler Vorderseite}
+        \label{fig:BQ25570_Vorderseite}
+    \end{minipage}
+    \hspace{0.05\textwidth}
+    \begin{minipage}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../images/BQ25570_Rückseite.png}
+        \caption{Texas Instruments BQ25570 Laderegler Rückseite}
+        \label{fig:BQ25570_Rückseite}
+    \end{minipage}
+\end{figure}
+
+
+\subsection{Analyse von geeigneter Hardware zur Messung von Strömen im Mikroamperebereich}
+Neben der eigentlichen Energiegewinnung ist es wichtig, den Stromfluss zwischen Laderegler und Akku kontinuierlich zu überwachen, um die Effektivität 
+der Energiegewinnung zu bewerten. Dazu muss ein geeigneter Strommonitoring-Chip ausgewählt und in die bestehende Hardware integriert werden.
+Die Analyse ergab, dass es verschiedene Optionen gibt, die für die Anforderungen des Projekts geeignet sein könnten. Bei der Auswahl eines Strommonitoring-Chips 
+wurden folgende Kriterien berücksichtigt:
+\begin{itemize}
+    \item Messbereich und Genauigkeit
+    \item Kompatibilität mit der bestehenden Hardware
+    \item Kosten und Verfügbarkeit
+    \item Größe und Formfaktor
+\end{itemize}
+Basierend auf diesen Kriterien wurden mehrere Kandidaten untersucht. Folgende Strommonitoring-Chips wurden als potenzielle Optionen identifiziert:
+\begin{itemize}
+    \item Texas Instruments – INA226 \cite{INA226}
+    \item Maxim Integrated – MAX471 \cite{MAX471}
+    \item Analog Devices – AD8210 \cite{AD8210}
+\end{itemize}
+
+Der INA226 ist ein digitaler Strom- und Leistungsmonitor mit integrierter 16-Bit-ADC und I²C-Schnittstelle. Er ermöglicht die gleichzeitige Messung von 
+Shunt-Spannung, Busspannung, Strom und Leistung. Durch die hohe Auflösung und die Möglichkeit, den Shunt-Widerstand frei zu wählen, kann der Messbereich 
+optimal auf sehr kleine Ströme angepasst werden. Zudem sind kostengünstige Breakout-Module verfügbar, was die Integration in das bestehende System vereinfacht.
+Der Formfaktor des gängisten Breakout-Moduls ist mit etwa 20 mm x 27 mm relativ kompakt. \cite{INA226Breakout}
+Der MAX471 ist ein analoger High-Side-Strommessverstärker mit integriertem Shunt-Widerstand. Obwohl er einfach zu implementieren ist, ist er primär für höhere 
+Ströme ausgelegt. Die interne Widerstandsdimensionierung sowie der analoge Ausgang begrenzen die Auflösung im Mikroamperebereich. Es gibt eine gute Verfügbarekeit 
+kostengünstiger Breakout-Boards für den MAX471. Die Größe der gängigsten Breakout-Boards liegt bei etwa 19,5 mm x 20,3 mm und ist damit kompakter als das INA226 
+Breakout-Board. \cite{MAX471Breakout}
+Der AD8210 ist ein präziser, bidirektionaler Strommessverstärker mit hoher Gleichtaktspannungsfestigkeit. Er eignet sich vor allem für industrielle Anwendungen 
+mit höheren Spannungen. Da es sich jedoch um eine rein analoge Lösung handelt, ist ein externer ADC erforderlich, um digitale Messwerte zu erhalten. Dies 
+erhöht die Komplexität und den Hardwareaufwand. Die Verfügbarkeit des AD8210 ist gut, aber die Kosten sind höher als bei den anderen Optionen. Ein Breakout-Board 
+für den AD8210 konnte nicht gefunden werden, was die Implementierung weiter erschwert. 
+Aufgrund dieser Faktoren wurde der INA226 als die am besten geeignete Option für das Projekt ausgewählt (Abbildung \ref{fig:INA226}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.3\textwidth]{../images/INA226.png}
+    \caption{Texas Instruments INA226 Strommonitoring-Chip}
+    \label{fig:INA226}
+\end{figure}
 
 
 \newpage
