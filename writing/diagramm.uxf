@@ -1,0 +1,42 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLSequenceAllInOne</id><coordinates><x>0</x><y>0</y><w>1920</w><h>570</h></coordinates><panel_attributes>autoTick=false
+obj=INA266~i
+obj=Firebeetle 2 ESP32~f
+obj=MQTT Broker~m
+obj=NODE-Red~n
+obj=InfluxDB~in
+
+combinedFragment=Endlosschleife~loop2 f i; 
+tick=1
+
+f-&gt;f + : Aufwachen; on=f
+
+tick=2
+combinedFragment=Schleife Messwertabfrage~loop1 f i; f:[1..3]
+tick=1
+
+f-&gt;&gt;&gt;i : Messwert anfordern; on=i
+tick=1
+i .&gt; f : Spannung/Strom; off=i
+--=loop1
+tick=1
+f-&gt;&gt;&gt;f  +: Median der Messdaten bestimmen; 
+tick=2
+f-&gt;m : publish(Messdaten); on=m
+--=loop2
+off=f
+tick=1
+off=m
+m-&gt;n : subcribe(Messdaten); on=n
+
+n-&gt;&gt;&gt;n  +: Datenaufbereitung für InfluxDB; 
+tick=2
+n-&gt;in : Daten speichern; on=in
+off=n
+in-&gt;&gt;&gt;in  +: Daten abspeichern; 
+tick=1
+
+
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>

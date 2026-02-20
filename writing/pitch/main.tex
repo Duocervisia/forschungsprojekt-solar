@@ -40,7 +40,7 @@ Softwarearchitekturen verglichen und deren Laufzeiten bewertet. Darauf aufbauend
 eines neuen Prototyps, bei dem insbesondere auf einen niedrigen Energieverbrauch im Deep-Sleep-Modus Wert 
 gelegt wurde. Für die Umsetzung wurde ein Firebeetle 2 ESP32 Mikrocontroller ausgewählt, der durch seine 
 hohe Energieeffizienz überzeugt. Ergänzend wurde ein Gehäuse entwickelt, das sich nahtlos in die bestehende 
-Wandhalterung für Raumbelegungspläne der HTW einfügt und die Hardwarekomponenten zuverlässig schützt.
+Wandhalterung für digitale Raumbelegungspläne der HTW einfügt und die Hardwarekomponenten zuverlässig schützt.
 
 Die Implementierung umfasste sowohl die Anpassung der Software an die neue Hardware als auch die Fertigung 
 des Gehäuses mittels Lasercutter. Die Validierung des Prototyps erfolgte durch Messungen 
@@ -111,9 +111,10 @@ untersucht werden.
 \subsection{Zielsetzung}
 
 Ziel dieser Arbeit ist die Entwicklung eines energieautarken Versorgungskonzepts mittels Photovoltaikzellen für den im ersten Projektsemester 
-entwickelten Raumbelegungsplan und andere IoT-Anwendungen, die unter ähnlichen Bedingungen betrieben werden. Dabei liegt der Fokus auf einer 
+entwickelten digitalen Raumbelegungsplan und andere IoT-Anwendungen, die unter ähnlichen Bedingungen betrieben werden. Dabei liegt der Fokus auf einer 
 maximalen Energieeffizienz, um die Laufzeit des Systems zu verlängern und den Wartungsaufwand zu minimieren. Das System soll dabei so konzipiert werden, 
-dass es unabhängig vom Raumbelegungsplan betrieben werden kann, um eine flexible Integration in verschiedene Anwendungsbereiche zu ermöglichen. 
+dass es unabhängig vom digitalen Raumbelegungsplan betrieben werden kann, um eine flexible Integration in verschiedene Anwendungsbereiche zu ermöglichen. 
+Der Formfaktor des Systems soll jedoch so gestaltet werden, dass eine nahtlose Integration in den Prototyp des digitalen Raumbelegungsplans möglich ist.
 Im Anschluss soll geprüft werden, in welchem Umfang die Photovoltaikmodule unter normalen Innenlichtbedingungen Energie liefern und ob diese den 
 Verbrauch des Systems langfristig decken oder die Batterielaufzeit messbar verlängern können.
 
@@ -129,9 +130,9 @@ Energieverbrauch zu überwachen und auszuwerten.
 
 \section{Analyse}
 
-\subsection{Analyse der Laufzeitmessung des Raumbelegungsplans}
-Eine Laufzeitmessung des Raumbelegungsplans wurde über den Zeitraum vom 23.10.2025 bis zum 13.02.2026 durchgeführt. Die Messung erfolgte über eine 
-in Node-Red implementierte Schnittstelle, die für jede Aktualisierungsanfrage des Raumbelegungsplans die aktuelle Uhrzeit und die derzeitige Batteriespannung 
+\subsection{Analyse der Laufzeitmessung des digitalen Raumbelegungsplans}
+Eine Laufzeitmessung des digitalen Raumbelegungsplans wurde über den Zeitraum vom 23.10.2025 bis zum 13.02.2026 durchgeführt. Die Messung erfolgte über eine 
+in Node-Red implementierte Schnittstelle, die für jede Aktualisierungsanfrage des digitalen Raumbelegungsplans die aktuelle Uhrzeit und die derzeitige Batteriespannung 
 in eine Textdatei schreibt. Innerhalb dem Messzeitraum von 114 Tagen wurden 416 Aktualisierungsanfragen durchgeführt. In dieser Zeit ist die Batteriespannung 
 von 4,05 V auf 3,96 V gesunken (Abbildung \ref{fig:battery_voltage}). 
 
@@ -156,7 +157,7 @@ was etwa 3,5 Jahren entspricht. Es ist jedoch zu beachten, dass dies eine theore
 werden kann, wie z.B. der Alterung der Batterie, der Umgebungstemperatur und Selbstentladung. Ebenfalls geht die verwendete Formel von einem linearen Zusammenhang zwischen 
 Spannung und Kapazität aus, was in der Praxis nicht der Fall ist. Jedoch deutet die Messung darauf hin, dass die Laufzeit des Systems länger 
 sein könnte als in der theoretischen Prognose erwartet, was auf eine gute Energieeffizienz des Prototyps hindeutet.
-Ein möglicher Erklärungsansatz für die längere Laufzeit liegt darin, dass die theoretische Prognose auf der konservativen Annahme basiert, wonach die Wachzeit des 
+Ein möglicher Erklärungsansatz für die längere Laufzeit liegt darin, dass die theoretische Prognose auf der konservativen Annahme basiert, wonach die Wachzeit des digitalen
 Raumbelegungsplans 9 Minuten pro Woche beträgt. Eine Überschätzung der Wachzeit hat einen erheblichen Einfluss auf den berechneten Energieverbrauch, da der Energiebedarf 
 im Wachmodus im Vergleich zum Deep-Sleep-Modus um etwa den Faktor 10 000 höher liegt. Ebenfalls könnte der Energieverbrauch in der Wachzeit geringer sein als angenommen, 
 was ebenfalls zu einer längeren Laufzeit führen könnte.
@@ -287,6 +288,62 @@ Aufgrund dieser Faktoren wurde der INA226 als die am besten geeignete Option fü
     \label{fig:INA226}
 \end{figure}
 
+\section{Konzeption}
+
+\subsection{Konzeption des Photovoltaik-Systems}
+Die in der Analyse identifizierten Komponenten, bestehend aus der PowerFilm LL200-3.6-75 Photovoltaikzelle und dem Texas Instruments BQ25570 Laderegler 
+bilden die Grundlage für die Konzeption eines energieautarken Versorgungskonzepts. Wie in der Zielsetzung beschrieben, soll das System so konzipiert werden, 
+dass es unabhängig vom digitalen Raumbelegungsplan betrieben werden kann, jedoch vom Formfaktor her so gestaltet ist, dass eine nahtlose Integration in den 
+Prototyp des digitalen Raumbelegungsplans möglich ist. Die untere Freifläche des Gehäuses soll dabei für die Integration der Photovoltaikzelle genutzt werden
+(Abbildung \ref{fig:Prototyp_final}). Diese Fläche besitzt eine Größe von etwa 160 mm x 180 mm, was ausreichend Platz für die Integration von vier 
+PowerFilm LL200-3.6-75 Zellen bietet. Eine Parallelschaltung der vier Zellen würde dabei bei 200 Lux eine Leistung von etwa 824 µW liefern.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.3\textwidth]{../images/Prototyp_final.jpg}
+    \caption{Finaler Prototyp des digitalen Raumbelegungsplans}
+    \label{fig:Prototyp_final}
+\end{figure}
+
+Die vier Photovoltaikzellen werden an den IN+ und IN- Anschlüssen des BQ25570 Ladereglers angeschlossen. Die BAT+ und BAT- Anschlüsse des Ladereglers werden 
+mit dem Akku verbunden, um die gewonnene Energie zu speichern. Der OUT+ und OUT- Anschluss des Ladereglers kann optional genutzt werden, um die Energie direkt 
+an die Last zu liefern, falls dies erforderlich ist. Entsprechende IoT Anwendungen können dann über die OUT-Anschlüsse mit Energie versorgt werden, 
+während der Akku als Puffer dient, um eine kontinuierliche Energieversorgung sicherzustellen (Abbildung \ref{fig:Schematic_Photovoltaic}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{../images/Schematic_Photovoltaic.png}
+    \caption{Schematische Darstellung des Photovoltaik-Systems}
+    \label{fig:Schematic_Photovoltaic}
+\end{figure}
+
+\subsection{Konzeption der Schnittstelle zur Überwachung der Energiegewinnung}
+Um die Effektivität der Energiegewinnung zu bewerten, soll eine Schnittstelle umgesetzt werden, die es ermöglicht, die gewonnenen Daten zur Energiegewinnung und zum 
+Energieverbrauch zu überwachen und auszuwerten. Dazu wird der Texas Instruments INA226 Strommonitoring-Chip verwendet. Dieser Chip muss mit einem Mikrocontroller 
+verbunden werden, der die Messdaten ausliest. Dazu geeignet ist jeglicher Mikrocontroller, der über eine I²C-Schnittstelle verfügt, wie z.B. der bereits im digitalen 
+Raumbelegungsplan verwendete Firebeetle 2 ESP32. Dieser Microcontroller bietet die Möglichkeit über eine WLAN-Verbindung die gesammelten Daten an einen Server zu 
+senden, wo sie gespeichert und analysiert werden können. Ebenfalls beinhaltet der ESP32 einen integrierten Anschluss für einen Akku, wodurch die Messung auch ohne 
+externe Stromversorgung möglich ist (Abbildung \ref{fig:Schematic_Currentmeasure}). 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{../images/Schematic_Currentmeasure.png}
+    \caption{Schematische Darstellung des Strommesssystems}
+    \label{fig:Schematic_Currentmeasure}
+\end{figure}
+
+Die gesammelten Daten können über einen MQTT-Broker versendet werden. Eine Node-Red Instanz kann dann die Daten empfangen und für die langfristige Speicherung in einer 
+InfluxDB-Datenbank aufbereiten und speichern. Innerhalb von InfluxDB können die Daten dann analysiert und visualisiert werden, um die Effektivität der Energiegewinnung 
+zu bewerten und mögliche Optimierungspotenziale zu identifizieren. Ebenfalls ist eine exportierbare CSV-Datei generierbar, um die Daten auch in anderen Tools 
+weiterverarbeiten zu können.
+
+% Add uxf diagram
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{../images/UXF_Diagram.png}
+    \caption{UXF-Diagramm der Schnittstelle zur Überwachung der Energiegewinnung}
+    \label{fig:UXF_Diagram}
+\end{figure}
 
 \newpage
 
