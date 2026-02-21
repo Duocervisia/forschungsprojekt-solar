@@ -332,18 +332,54 @@ externe Stromversorgung möglich ist (Abbildung \ref{fig:Schematic_Currentmeasur
     \label{fig:Schematic_Currentmeasure}
 \end{figure}
 
-Die gesammelten Daten können über einen MQTT-Broker versendet werden. Eine Node-Red Instanz kann dann die Daten empfangen und für die langfristige Speicherung in einer 
-InfluxDB-Datenbank aufbereiten und speichern. Innerhalb von InfluxDB können die Daten dann analysiert und visualisiert werden, um die Effektivität der Energiegewinnung 
+Damit die Messungen der Stromgewinnung möglichst genau sind, muss der Shunt-Widerstand des INA226 entsprechend dimensioniert werden. Ziel ist es, Ströme mit einer 
+hohen Präzision im Mikroamperebereich messen zu können und gleichzeitig zu vermeiden, dass der Spannungsabfall über dem Shunt-Widerstand zu hoch wird, da dies 
+die Energiegewinnung beeinträchtigen und für einen thermischen Drift sorgen könnte.
+Die Auflösung des INA226 beträgt 2,5 µV pro Bit.\cite{INA226} Um eine Auflösung von 1 µA zu erreichen, muss der 
+Shunt-Widerstand so gewählt werden, dass 1 µA einen Spannungsabfall von mindestens 2,5 µV verursacht. Mit folgender Formel kann der benötigte 
+Shunt-Widerstand $R_{\text{shunt}}$ berechnet werden, wobei $V_{\text{LSB}}$ die Auflösung des INA226 und $I_{\text{target}}$ der Zielstrom ist:
+\[
+R_{\text{shunt}} = \frac{V_{\text{LSB}}}{
+I_{\text{target}}} = \frac{2.5 \, \mu\text{V}}{1 \, \mu\text{A}} = 2.5 \, \Omega
+\]
+
+Ein Shunt Widerstand von 2,5 \(\Omega\) ermöglicht es bereits Ströme mit einer Auflösung von 1 µA zu messen. Um jedoch eine höhere Präzision zu erreichen, wird ein 
+Shunt-Widerstand von 10 \(\Omega\) verwendet, wodurch eine Auflösung von 0,25 µA erreicht werden kann. Der Standardmäßige Shunt-Widerstand auf dem INA226 Breakout-Board 
+beträgt 0,01 \(\Omega\), weshalb dieser durch einen 10 \(\Omega\) Widerstand ersetzt werden muss, um die gewünschte Auflösung zu erreichen.
+
+Der Firebeetle 2 ESP32 Mikrocontroller soll so programmiert werden, dass er alle 60 Sekunden aufwacht und drei mal aufeinanderfolgend mit einer Sekunde Pause die Messdaten 
+des INA226 ausliest. Anschließend soll der Median der drei Messungen berechnet werden, um Ausreißer zu minimieren. Die gesammelten Daten sollen über eine WLAN-Verbindung 
+an einen MQTT-Broker gesendet werden. Eine Node-Red Instanz kann anschließend die Daten vom MQTT-Broker anfragen und für die langfristige Speicherung in einer 
+InfluxDB-Datenbank aufbereiten. Innerhalb von InfluxDB können die Daten dann analysiert und visualisiert werden, um die Effektivität der Energiegewinnung 
 zu bewerten und mögliche Optimierungspotenziale zu identifizieren. Ebenfalls ist eine exportierbare CSV-Datei generierbar, um die Daten auch in anderen Tools 
-weiterverarbeiten zu können.
+weiterverarbeiten zu können (Abbildung \ref{fig:sequence_diagram}).
 
 % Add uxf diagram
 \begin{figure}[H]
     \centering
-    \includegraphics[width=.8\textwidth]{../images/UXF_Diagram.png}
-    \caption{UXF-Diagramm der Schnittstelle zur Überwachung der Energiegewinnung}
-    \label{fig:UXF_Diagram}
+    \includegraphics[width=1.\textwidth]{../images/sequence.png}
+    \caption{UML-Sequenzdiagramm zur Darstellung der Interaktion zwischen den Komponenten des Strommesssystems}
+    \label{fig:sequence_diagram}
 \end{figure}
+
+\subsection{Konzeption der Vereinigung von Photovoltaik- und Strommesssystem}
+Die Vereinigung des Photovoltaik-Systems und des Strommesssystems erfolgt an der Schnittstelle zwischen Laderegler und Akku des Photovoltaik-Systems. 
+Der Strommonitoring-Chip (INA226) wird dazu in Reihe mit dem Akku geschaltet, um den Stromfluss zu messen, der vom Laderegler zum Akku fließt. Der 
+BAT+ Anschluss des Ladereglers wird mit dem VIN Anschluss des INA226 verbunden. Der VOUT Anschluss des INA226 wird mit dem positiven Pol des 
+Akkus verbunden, während der negative Pol des Akkus mit dem BAT- Anschluss des Ladereglers verbunden wird. Dadurch kann der INA226 den Strom messen, 
+der vom Laderegler zum Akku fließt, ohne die Funktionalität des Ladereglers zu beeinträchtigen (Abbildung \ref{fig:Schematic_combined}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.65\textwidth]{../images/Schematic_combined.png}
+    \caption{Schematische Darstellung der Vereinigung von Photovoltaik- und Strommesssystem}
+    \label{fig:Schematic_combined}
+\end{figure}
+
+\newpage
+
+\section{Implementierung}
+
 
 \newpage
 
@@ -351,7 +387,7 @@ weiterverarbeiten zu können.
 
 KI-Tools wurden in dieser Arbeit als assistives Werkzeug im Implementierungs- und Schreibprozess verwendet.
 Im Schreibprozess diente ChatKI als Unterstützung für grobe Strukturierungsideen.
-ChatGPT wurdegenutzt, um Rechtschreib- und Grammatikfehler im Fließtext zu überprüfen und Verbesserungsvorschläge zu erhalten.
+ChatGPT wurde genutzt, um Rechtschreib- und Grammatikfehler im Fließtext zu überprüfen und Verbesserungsvorschläge zu erhalten.
 Ebenfalls wurde ChatGPT im Implementierungsprozess verwendet, um Fehler im Code zu finden.
 Es wurden keine Inhalte ungeprüft übernommen. 
 
