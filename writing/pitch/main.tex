@@ -8,6 +8,10 @@
 \usepackage{multibib}
 \usepackage[a4paper, margin=3cm]{geometry} % Set border to 2 cm
 \usepackage{tabularx}
+\usepackage{array}
+\newcolumntype{Y}{>{\centering\arraybackslash\hsize=0.90\hsize}X}
+\newcolumntype{C}{>{\centering\arraybackslash\hsize=1\hsize}X}
+\newcolumntype{Z}{>{\centering\arraybackslash\hsize=1.15\hsize}X}
 \usepackage{xcolor}
 \usepackage{float}
 \usepackage{hyperref}
@@ -71,11 +75,9 @@ Perspektiven für die Weiterentwicklung, wie etwa die Integration von Photovolta
 % Abkürzungsverzeichnis
 \section*{Abkürzungsverzeichnis}
 \begin{description}
-    \item[OTA] Over-the-Air
-    \item[ADC] Analog-Digital-Converter 
-    \item[LSF] Lehre Studium Forschung 
-    \item[API] Application Programming Interface 
-    \item[$V_{\text{REF}}$] Referenzspannung 
+    \item[MQTT] Message Queuing Telemetry Transport
+    \item[BUS-Spannung] Spannung am Eingang des Strommonitoring-Chips 
+    \item[Shunt-Spannung] Spannungsabfall über dem Shunt-Widerstand, der proportional zum gemessenen Strom ist 
 \end{description}
 
 
@@ -130,7 +132,7 @@ Energieverbrauch zu überwachen und auszuwerten.
 
 \section{Analyse}
 
-\subsection{Analyse der Laufzeitmessung des digitalen Raumbelegungsplans}
+\subsection{Laufzeitmessung des digitalen Raumbelegungsplans}
 Eine Laufzeitmessung des digitalen Raumbelegungsplans wurde über den Zeitraum vom 23.10.2025 bis zum 13.02.2026 durchgeführt. Die Messung erfolgte über eine 
 in Node-Red implementierte Schnittstelle, die für jede Aktualisierungsanfrage des digitalen Raumbelegungsplans die aktuelle Uhrzeit und die derzeitige Batteriespannung 
 in eine Textdatei schreibt. Innerhalb dem Messzeitraum von 114 Tagen wurden 416 Aktualisierungsanfragen durchgeführt. In dieser Zeit ist die Batteriespannung 
@@ -164,7 +166,7 @@ was ebenfalls zu einer längeren Laufzeit führen könnte.
 
 \newpage
 
-\subsection{Analyse von Photovoltaikzellen für Innenlichtbedingungen}
+\subsection{Photovoltaikzellen für Innenlichtbedingungen}
 Die Analyse zu geeigneten Photovoltaikzellen für Innenlichtbedingungen ergab, dass Dünnschicht-Solarzellen, insbesondere solche auf Basis von amorphem Silizium oder 
 organischen Materialien, eine vielversprechende Option darstellen. Diese Zellen sind in der Lage, auch bei geringer Beleuchtungsstärke eine nutzbare Leistung zu 
 liefern. \cite{TransparentThinFilmSiliconSolarCells, D2YA00075J} In diesem Bereich gibt es bereits kommerzielle Produkte, die speziell für den Einsatz unter 
@@ -201,7 +203,7 @@ Option für das Projekt ausgewählt (Abbildung \ref{fig:photovoltaik_zelle}).
     \label{fig:photovoltaik_zelle}
 \end{figure}
 
-\subsection{Analyse von Ladereglern für Photovoltaikzellen}
+\subsection{Laderegler für Photovoltaikzellen}
 Die Analyse zu geeigneten Ladereglern für die ausgewählte Photovoltaikzelle ergab, dass es verschiedene Optionen gibt, die für die Anforderungen des Projekts geeignet sein 
 könnten. Ein Laderegler ist notwendig, um die Energie der Photovoltaikzelle effizient in den Akku einzuspeisen und gleichzeitig eine Überladung zu verhindern.
 Bei der Auswahl eines Ladereglers wurden folgende Kriterien berücksichtigt:
@@ -249,7 +251,7 @@ Aufgrund dieser Faktoren wurde der BQ25570 als die am besten geeignete Option f�
 \end{figure}
 
 
-\subsection{Analyse von geeigneter Hardware zur Messung von Strömen im Mikroamperebereich}
+\subsection{Strommesssystem zur Überwachung der Energiegewinnung}
 Neben der eigentlichen Energiegewinnung ist es wichtig, den Stromfluss zwischen Laderegler und Akku kontinuierlich zu überwachen, um die Effektivität 
 der Energiegewinnung zu bewerten. Dazu muss ein geeigneter Strommonitoring-Chip ausgewählt und in die bestehende Hardware integriert werden.
 Die Analyse ergab, dass es verschiedene Optionen gibt, die für die Anforderungen des Projekts geeignet sein könnten. Bei der Auswahl eines Strommonitoring-Chips 
@@ -290,7 +292,7 @@ Aufgrund dieser Faktoren wurde der INA226 als die am besten geeignete Option fü
 
 \section{Konzeption}
 
-\subsection{Konzeption des Photovoltaik-Systems}
+\subsection{Photovoltaik-System}
 Die in der Analyse identifizierten Komponenten, bestehend aus der PowerFilm LL200-3.6-75 Photovoltaikzelle und dem Texas Instruments BQ25570 Laderegler 
 bilden die Grundlage für die Konzeption eines energieautarken Versorgungskonzepts. Wie in der Zielsetzung beschrieben, soll das System so konzipiert werden, 
 dass es unabhängig vom digitalen Raumbelegungsplan betrieben werden kann, jedoch vom Formfaktor her so gestaltet ist, dass eine nahtlose Integration in den 
@@ -306,7 +308,7 @@ PowerFilm LL200-3.6-75 Zellen bietet. Eine Parallelschaltung der vier Zellen wü
 \end{figure}
 
 Die vier Photovoltaikzellen werden an den IN+ und IN- Anschlüssen des BQ25570 Ladereglers angeschlossen. Die BAT+ und BAT- Anschlüsse des Ladereglers werden 
-mit dem Akku verbunden, um die gewonnene Energie zu speichern. Der OUT+ und OUT- Anschluss des Ladereglers kann optional genutzt werden, um die Energie direkt 
+mit einem 1000 mAh 3,7 V Li-Ionen-Akku verbunden, um die erzeugte Energie zu speichern. Der OUT+ und OUT- Anschluss des Ladereglers kann optional genutzt werden, um die Energie direkt 
 an die Last zu liefern, falls dies erforderlich ist. Entsprechende IoT Anwendungen können dann über die OUT-Anschlüsse mit Energie versorgt werden, 
 während der Akku als Puffer dient, um eine kontinuierliche Energieversorgung sicherzustellen (Abbildung \ref{fig:Schematic_Photovoltaic}).
 
@@ -317,13 +319,13 @@ während der Akku als Puffer dient, um eine kontinuierliche Energieversorgung si
     \label{fig:Schematic_Photovoltaic}
 \end{figure}
 
-\subsection{Konzeption der Schnittstelle zur Überwachung der Energiegewinnung}
-Um die Effektivität der Energiegewinnung zu bewerten, soll eine Schnittstelle umgesetzt werden, die es ermöglicht, die gewonnenen Daten zur Energiegewinnung und zum 
-Energieverbrauch zu überwachen und auszuwerten. Dazu wird der Texas Instruments INA226 Strommonitoring-Chip verwendet. Dieser Chip muss mit einem Mikrocontroller 
+\subsection{Strommesssystem}
+Um die Effektivität der Energiegewinnung zu bewerten, soll eine Schnittstelle umgesetzt werden, die es ermöglicht, diese zu überwachen und auszuwerten. Dazu wird 
+der Texas Instruments INA226 Strommonitoring-Chip verwendet. Dieser Chip muss mit einem Mikrocontroller 
 verbunden werden, der die Messdaten ausliest. Dazu geeignet ist jeglicher Mikrocontroller, der über eine I²C-Schnittstelle verfügt, wie z.B. der bereits im digitalen 
-Raumbelegungsplan verwendete Firebeetle 2 ESP32. Dieser Microcontroller bietet die Möglichkeit über eine WLAN-Verbindung die gesammelten Daten an einen Server zu 
+Raumbelegungsplan verwendete Firebeetle 2 ESP32. Dieser Mikrocontroller bietet die Möglichkeit über eine WLAN-Verbindung die gesammelten Daten an einen Server zu 
 senden, wo sie gespeichert und analysiert werden können. Ebenfalls beinhaltet der ESP32 einen integrierten Anschluss für einen Akku, wodurch die Messung auch ohne 
-externe Stromversorgung möglich ist (Abbildung \ref{fig:Schematic_Currentmeasure}). 
+externe Stromversorgung möglich ist. Dazu kann ebenfalls ein 1000 mAh 3,7 V Li-Ionen-Akku verwendet werden (Abbildung \ref{fig:Schematic_Currentmeasure}). 
 
 \begin{figure}[H]
     \centering
@@ -347,8 +349,14 @@ Ein Shunt Widerstand von 2,5 \(\Omega\) ermöglicht es bereits Ströme mit einer
 Shunt-Widerstand von 10 \(\Omega\) verwendet, wodurch eine Auflösung von 0,25 µA erreicht werden kann. Der Standardmäßige Shunt-Widerstand auf dem INA226 Breakout-Board 
 beträgt 0,01 \(\Omega\), weshalb dieser durch einen 10 \(\Omega\) Widerstand ersetzt werden muss, um die gewünschte Auflösung zu erreichen.
 
-Der Firebeetle 2 ESP32 Mikrocontroller soll so programmiert werden, dass er alle 60 Sekunden aufwacht und drei mal aufeinanderfolgend mit einer Sekunde Pause die Messdaten 
-des INA226 ausliest. Anschließend soll der Median der drei Messungen berechnet werden, um Ausreißer zu minimieren. Die gesammelten Daten sollen über eine WLAN-Verbindung 
+Als Proggramiersprache für den Firebeetle 2 ESP32 kann MicroPython verwendet werden, da diese eine einfache und effiziente Möglichkeit bietet, die benötigte Funktionalität 
+zu implementieren. Ebenfalls ist dies eine Sprache die im ersten Projektsemester bereits verwendet wurde, wodurch die Implementierung erleichtert wird.
+Der Mikrocontroller soll so programmiert werden, dass er alle 60 Sekunden aufwacht und über einen AO3401 P-channel MOSFET die Stromversorgung des INA226 
+aktiviert. Der verwendete MOSFET soll eine längere Akkulaufzeit des Firebeetle 2 ESP32 ermöglichen, indem er die Stromversorgung des INA226 nur dann aktiviert, wenn eine 
+Messung durchgeführt wird. Ebenfalls befindet sich der Mikrocontroller im Deep-Sleep-Modus, wenn keine Messung durchgeführt wird, um den Energieverbrauch weiter zu minimieren.
+In der Wachphase soll der Firebeetle 2 ESP32 drei mal aufeinanderfolgend mit einer Sekunde Pause die Messdaten 
+des INA226 auslesen. Zu den Messdaten zählen neben der Stromstärke auch die BUS-Spannung und die Shunt-Spannung. Anschließend soll der Median der drei Messungen berechnet 
+werden, um Ausreißer zu minimieren. Die gesammelten Daten sollen über eine WLAN-Verbindung 
 an einen MQTT-Broker gesendet werden. Eine Node-Red Instanz kann anschließend die Daten vom MQTT-Broker anfragen und für die langfristige Speicherung in einer 
 InfluxDB-Datenbank aufbereiten. Innerhalb von InfluxDB können die Daten dann analysiert und visualisiert werden, um die Effektivität der Energiegewinnung 
 zu bewerten und mögliche Optimierungspotenziale zu identifizieren. Ebenfalls ist eine exportierbare CSV-Datei generierbar, um die Daten auch in anderen Tools 
@@ -362,7 +370,7 @@ weiterverarbeiten zu können (Abbildung \ref{fig:sequence_diagram}).
     \label{fig:sequence_diagram}
 \end{figure}
 
-\subsection{Konzeption der Vereinigung von Photovoltaik- und Strommesssystem}
+\subsection{Vereinigung von Photovoltaik- und Strommesssystem}
 Die Vereinigung des Photovoltaik-Systems und des Strommesssystems erfolgt an der Schnittstelle zwischen Laderegler und Akku des Photovoltaik-Systems. 
 Der Strommonitoring-Chip (INA226) wird dazu in Reihe mit dem Akku geschaltet, um den Stromfluss zu messen, der vom Laderegler zum Akku fließt. Der 
 BAT+ Anschluss des Ladereglers wird mit dem VIN Anschluss des INA226 verbunden. Der VOUT Anschluss des INA226 wird mit dem positiven Pol des 
@@ -378,7 +386,101 @@ der vom Laderegler zum Akku fließt, ohne die Funktionalität des Ladereglers zu
 
 \newpage
 
-\section{Implementierung}
+\section{Technische Umsetzung}
+
+\subsection{Photovoltaik-System}
+Die technische Umsetzung des Photovoltaik-Systems umfasste die Beschaffung der ausgewählten Komponenten und das physische Verbinden der Photovoltaikzellen mit dem 
+Laderegler und dem Akku. Die vier PowerFilm LL200-3.6-75 Photovoltaikzellen wurden in Parallelschaltung verbunden, damit die Beschattung einzelner 
+Zellen die Gesamtleistung nicht zu stark beeinträchtigt. Die Zellen wurden mit den IN+ und IN- Anschlüssen des BQ25570 Ladereglers und die BAT+ und BAT- 
+mit dem Akku verlötet. Eine erste Messung über einen Multimeter bestätigte, dass bei Raumbeleuchtung ein messbarer Stromfluss vom Laderegler zum Akku stattfindet, 
+was darauf hindeutet, dass die Photovoltaikzellen Energie erzeugen und der Laderegler diese Energie in den Akku einspeist.
+
+\subsection{Strommesssystem}
+
+\subsubsection{Hardware-Implementierung des Strommesssystems}
+Zuerst wurde der vorhandene Shunt-Widerstand auf dem INA226 Breakout-Board durch einen 10 \(\Omega\) Widerstand ersetzt, um die gewünschte Auflösung von 
+0,25 µA zu erreichen (Abbildung \ref{fig:INA226_shunt}). Es handelt sich bei dem verrwendeten Shunt nicht um einen Präzisionswiderstand, weshalb im späteren
+Verlauf Kalibrierungen durchgeführt wurden, um die Messgenauigkeit zu verbessern.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.3\textwidth]{../images/INA226_shunt.png}
+    \caption{INA226 Breakout-Board mit ersetztem Shunt-Widerstand}
+    \label{fig:INA226_shunt}
+\end{figure}
+
+Anschließend wurde der INA226 Strommonitoring-Chip mit dem Firebeetle 2 ESP32 Mikrocontroller verbunden. Dazu 
+wurde ein Prototype-Board verwendet, um die Verbindungen herzustellen. SDA und SCL des INA226 wurden mit den entsprechenden Pins des ESP32 verbunden, um die 
+I²C-Kommunikation zu ermöglichen. Der AO3401 P-channel MOSFET wurde ebenfalls in die Schaltung integriert, um die Stromversorgung des INA226 zu steuern. Der
+Gate des MOSFETs wurde mit einem GPIO-Pin des ESP32 verbunden, um diesen über die Software zu steuern (Abbildung \ref{fig:Strommess_vorderseite}, 
+\ref{fig:Strommess_rueckseite}).
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[height=8cm]{../images/Vorderseite-Strommesser.jpg}
+        \caption{Vorderseite des Strommesssystems}
+        \label{fig:Strommess_vorderseite}
+    \end{minipage}
+    \hspace{0.05\textwidth}
+    \begin{minipage}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[height=8cm]{../images/Rückseite-Strommesser.jpg}
+        \caption{Rückseite des Strommesssystems}
+        \label{fig:Strommess_rueckseite}
+    \end{minipage}
+\end{figure}
+
+\subsubsection{Software-Implementierung des Strommesssystems}
+Für die Software-Implementierung des Strommesssystems wurde MicroPython verwendet. Der Code wurde so strukturiert, dass es eine main.py Datei gibt, welche 
+die Hauptlogik des Programms enthält. Die Datei current\_reader.py enthält die Hauptfunktionen zum Auslesen der Messdaten vom INA226, zum 
+Berechnen des Medians der Messungen und zum Steuern des AO3401 MOSFETs, um die Stromversorgung des INA226 zu aktivieren oder zu deaktivieren.
+Die Kommunikation mit dem INA226 Modul erfolgt über eine Bibliothek von elschopi.\cite{elschopi_TI_INA226_micropython_2020} Weitere Dateien 
+enthalten Funktionen zum Herstellen der WLAN-Verbindung, zum Senden der Daten 
+an den MQTT-Broker, zum Berechnen der Batteriespannung und zum Einleiten des Deep-Sleep-Modus.
+
+Der Ablauf im Hauptprogramm sieht dabei wie folgt aus:
+\begin{itemize}
+    \item Der Mikrocontroller wacht alle 60 Sekunden auf 
+    \item CurrentReader wird instanziiert
+    \item Der AO3401 MOSFET c aktiviert, um die Stromversorgung des INA226 zu ermöglichen.
+    \item Internet und MQTTClient werden instanziiert, um die WLAN-Verbindung herzustellen und die Daten an den MQTT-Broker zu senden.
+    \item Es werden drei Messungen der Stromstärke, BUS-Spannung und Shunt-Spannung durchgeführt, wobei zwischen den Messungen eine Sekunde gewartet wird.
+    \item Der Median der Messungen wird berechnet.
+    \item Die Batteriespannung wird berechnet, um den Kapazitätsverlust der Batterie zu überwachen.
+    \item Stromstärke, BUS-Spannung, Shunt-Spannung und Batteriespannung werden in einem JSON-Objekt formatiert.
+    \item Das JSON-Objekt wird über eine WLAN-Verbindung an einen MQTT-Broker gesendet.
+    \item Der AO3401 MOSFET wird deaktiviert, um die Stromversorgung des INA226 zu unterbrechen.
+    \item Der Mikrocontroller geht in den Deep-Sleep-Modus, um den Energieverbrauch zu minimieren, bis der nächste Messzyklus beginnt.
+\end{itemize}
+
+Zur Kalibrierung der Messdaten wurde mit dem Transimpedanzverstärker DLPCAS-S6 der Firma FEMTO die Stromstärke bei verschiedenen 
+angelegten Spannungen an einem Widerstand von 10 k\(\Omega\) gemessen.  Die Spannungen wurden mit einer Schrittweite von 1 V zwischen 
+1 V und 10 V angelegt. Duch die Formel \(I = \frac{U}{R}\) konnte die theoretische Stromstärke berechnet werden.
+
+% create table with columns: Applied Voltage, Theoretical Current, Measured Current FEMTO, Measured Current INA226, Deviation FEMTO, Deviation INA226
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{|Y|C|Z|Z|Y|Y|}
+        \hline
+        Angelegte Spannung (V) & Theoretische Stromstärke (mA) & Gemessene Stromstärke FEMTO (mA) & Gemessene Stromstärke INA226 (mA) & Abweichung FEMTO (\%) & Abweichung INA226 (\%) \\
+        \hline
+        1  & 0.1 & 0.09999 & 0.09999 & -0.01 & -0.01 \\
+        2  & 0.2 & 0.19924 & 0.20099 & -0.38 & 0.50 \\
+        3  & 0.3 & 0.29855 & 0.29912 & -0.48 & -0.29 \\
+        4  & 0.4 & 0.39790 & 0.40026 & -0.53 & 0.07 \\
+        5  & 0.5 & 0.49718 & 0.49939 & -0.56 & -0.12 \\
+        6  & 0.6 & 0.59632 & 0.60304 & -0.61 & 0.51 \\
+        7  & 0.7 & 0.69570 & 0.69972 & -0.61 & -0.04 \\
+        8  & 0.8 & 0.79484 & 0.79484 & -0.65 & -0.65 \\
+        9  & 0.9 & 0.89408 & 0.89408 & -0.66 & -0.66 \\
+        10 & 1.0 & 0.99499 & 0.99334 & -0.50 & -0.67 \\
+        \hline
+    \end{tabularx}
+    \caption{Kalibrierung der Messdaten des INA226 im Vergleich zum Transimpedanzverstärker DLPCAS-S6}
+    \label{tab:calibration}
+\end{table}
 
 
 \newpage
