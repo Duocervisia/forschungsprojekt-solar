@@ -118,7 +118,8 @@ maximalen Energieeffizienz, um die Laufzeit des Systems zu verlängern und den W
 dass es unabhängig vom digitalen Raumbelegungsplan betrieben werden kann, um eine flexible Integration in verschiedene Anwendungsbereiche zu ermöglichen. 
 Der Formfaktor des Systems soll jedoch so gestaltet werden, dass eine nahtlose Integration in den Prototyp des digitalen Raumbelegungsplans möglich ist.
 Im Anschluss soll geprüft werden, in welchem Umfang die Photovoltaikmodule unter normalen Innenlichtbedingungen Energie liefern und ob diese den 
-Verbrauch des Systems langfristig decken oder die Batterielaufzeit messbar verlängern können.
+Verbrauch des Systems langfristig decken oder die Batterielaufzeit messbar verlängern können. Ein entsprechendes Strommesssystem mit einer Abweichung 
+von weniger als 1\% soll dazu implementiert werden, um die Effektivität der Energiegewinnung zu bewerten.
 
 \subsection{Methodik}
 Zu Beginn soll eine umfassende Analyse der Energieverbrauchsmessungen des bisherigen Prototyps durchgeführt werden, um den tatsächlichen 
@@ -456,7 +457,7 @@ Der Ablauf im Hauptprogramm sieht dabei wie folgt aus:
 \end{itemize}
 
 Zur Kalibrierung der Messdaten wurde mit dem Transimpedanzverstärker DLPCAS-S6 der Firma FEMTO die Stromstärke bei verschiedenen 
-angelegten Spannungen an einem Widerstand von 10 k\(\Omega\) gemessen.  Die Spannungen wurden mit einer Schrittweite von 1 V zwischen 
+angelegten Spannungen an einem Widerstand von 10 k\(\Omega\) gemessen. Die Spannungen wurden mit einer Schrittweite von 1 V zwischen 
 1 V und 10 V angelegt. Duch die Formel \(I = \frac{U}{R}\) konnte die theoretische Stromstärke berechnet werden.
 
 % create table with columns: Applied Voltage, Theoretical Current, Measured Current FEMTO, Measured Current INA226, Deviation FEMTO, Deviation INA226
@@ -478,9 +479,44 @@ angelegten Spannungen an einem Widerstand von 10 k\(\Omega\) gemessen.  Die Span
         10 & 1.0 & 0.99499 & 0.99334 & -0.50 & -0.67 \\
         \hline
     \end{tabularx}
-    \caption{Kalibrierung der Messdaten des INA226 im Vergleich zum Transimpedanzverstärker DLPCAS-S6}
+    \caption{Messwerte der Stromstärke bei verschiedenen angelegten Spannungen im Vergleich zum theoretischen Wert}
     \label{tab:calibration}
 \end{table}
+
+Die Ergebnisse der Messwerte zeigen, dass die Abweichung der Messwerte des INA226 im Vergleich zum theoretischen Wert im Bereich von -0,67\% bis 0,51\% 
+liegen und der Transimpedanzverstärker von FEMTO eine Abweichung von -0,66\% bis -0,01\% aufweist. Die Messwerte liegen damit innerhalb der angestrebten 
+Genauigkeit von 1\%. Eine Kalibrierung der Messwerte des INA226 ist daher nicht notwendig.
+
+\subsection{Vereinigung von Photovoltaik- und Strommesssystem}
+Die Vereinigung des Photovoltaik-Systems und des Strommesssystems erfolgte durch die physische Integration der Komponenten entsprechend der schematischen 
+Darstellung in Abbildung \ref{fig:Schematic_combined}. Beide Systeme wurden in eine Abzweigdose integriert, um die Komponenten vor 
+Umwelteinflüssen zu schützen und eine kompakte Bauweise zu ermöglichen. Es wurden zwei Löcher für die Schalter zum An- und Ausschalten des Systems und 
+zum Trennen der Photovoltaikzellen von der Schaltung in die Abzweigdose gebohrt. Ein drittes Loch wurde für die Verkabelung der Photovoltaikzellen, sowie 
+ein USB-Kabel für die Stromversorgung des Mikrocontrollers gebohrt (Abbildung \ref{fig:Abzweigdose}). Die Photovoltaikzellen wurden auf eine Pappe geklebt 
+und mit einem Kabel in die Abzweigdose geführt, um die Verbindung zum Laderegler herzustellen (Abbildung \ref{fig:Photovoltaikzellen}).
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[height=5cm]{../images/Abzweigdose.png}
+        \caption{Abzweigdose mit integrierten Komponenten}
+        \label{fig:Abzweigdose}
+    \end{minipage}
+    \hspace{0.05\textwidth}
+    \begin{minipage}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[height=5cm]{../images/Photovoltaikzellen.png}
+        \caption{Aufgeklebte Photovoltaikzellen}
+        \label{fig:Photovoltaikzellen}
+    \end{minipage}
+\end{figure}
+
+\section{Ergebnisse}
+
+
+
+
 
 
 \newpage
