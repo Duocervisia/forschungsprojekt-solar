@@ -32,26 +32,13 @@
 
 \renewcommand{\abstractname}{Abstract}
 \begin{abstract}
-Die vorliegende Arbeit beschäftigt sich mit der Entwicklung, Umsetzung und Validierung eines energieeffizienten 
-Hardwareprototyps zur digitalen Darstellung von Raumbelegungsplänen an der Hochschule für Technik und Wirtschaft 
-Berlin (HTW). Ausgangspunkt ist die Problematik, dass die bisherigen Papieraushänge nur zu Semesterbeginn 
-aktualisiert werden und keine Möglichkeit zur Echtzeitaktualisierung bieten. Ziel der Arbeit ist es, durch den 
-Einsatz von E-Ink-Displays und die Auswahl optimierter Hardwarekomponenten eine signifikante Verlängerung der 
-Betriebsdauer im Vergleich zu bisherigen Prototypen zu erreichen und den Wartungsaufwand zu minimieren.
-
-Im Rahmen einer umfassenden Analyse wurden bestehende Projekte an der HTW untersucht, deren Hardware- und 
-Softwarearchitekturen verglichen und deren Laufzeiten bewertet. Darauf aufbauend erfolgte die Konzeption 
-eines neuen Prototyps, bei dem insbesondere auf einen niedrigen Energieverbrauch im Deep-Sleep-Modus Wert 
-gelegt wurde. Für die Umsetzung wurde ein Firebeetle 2 ESP32 Mikrocontroller ausgewählt, der durch seine 
-hohe Energieeffizienz überzeugt. Ergänzend wurde ein Gehäuse entwickelt, das sich nahtlos in die bestehende 
-Wandhalterung für digitale Raumbelegungspläne der HTW einfügt und die Hardwarekomponenten zuverlässig schützt.
-
-Die Implementierung umfasste sowohl die Anpassung der Software an die neue Hardware als auch die Fertigung 
-des Gehäuses mittels Lasercutter. Die Validierung des Prototyps erfolgte durch Messungen 
-der Leistungsaufnahme und Funktionstests im realen Umfeld. Die Ergebnisse zeigen, dass mit dem entwickelten 
-Ansatz eine theoretische Laufzeit von etwa einem Jahr erreicht werden kann, wodurch die Anforderungen an eine 
-energieeffiziente und wartungsarme Lösung erfüllt werden. Abschließend werden Optimierungspotenziale sowie 
-Perspektiven für die Weiterentwicklung, wie etwa die Integration von Photovoltaikzellen, diskutiert.
+Die vorliegende Arbeit beschäftigt sich mit der Entwicklung eines energieautarken Versorgungskonzepts mittels Photovoltaikzellen 
+für einen digitalen Raumbelegungsplan und andere IoT-Anwendungen. Ausgangspunkt ist der geringe Energiebedarf eines 
+Raumbelegungsplans-Prototyps in geringen mWh Bereich pro Woche. Eine effiziente Energieversorgung könnte die Laufzeit des Systems 
+erheblich verlängern oder sogar eine vollständige Autarkie ermöglichen. Ziel der Arbeit ist es ein System zu konzipieren, das 
+unter niedrigen Beleuchtungsstärken ausreichend Energie durch Photovoltaikzellen generieren kann, um den Energiebedarf des 
+Systems zu decken.
+Im Rahmen einer Laufzeitanalyse 
 \end{abstract}
 
 \newpage
@@ -133,7 +120,7 @@ Energieverbrauch zu überwachen und auszuwerten.
 
 \section{Analyse}
 
-\subsection{Laufzeitmessung des digitalen Raumbelegungsplans}
+\subsection{Laufzeitmessung des digitalen Raumbelegungsplans}\label{sec:laufzeitmessung}
 Eine Laufzeitmessung des digitalen Raumbelegungsplans wurde über den Zeitraum vom 23.10.2025 bis zum 13.02.2026 durchgeführt. Die Messung erfolgte über eine 
 in Node-Red implementierte Schnittstelle, die für jede Aktualisierungsanfrage des digitalen Raumbelegungsplans die aktuelle Uhrzeit und die derzeitige Batteriespannung 
 in eine Textdatei schreibt. Innerhalb dem Messzeitraum von 114 Tagen wurden 416 Aktualisierungsanfragen durchgeführt. In dieser Zeit ist die Batteriespannung 
@@ -514,10 +501,120 @@ und mit einem Kabel in die Abzweigdose geführt, um die Verbindung zum Laderegle
 
 \section{Ergebnisse}
 
+\subsection{Langzeitmessung der Energiegewinnung durch das Photovoltaik-System}
 
+Die Implementierung des Photovoltaik-Systems und des Strommesssystems wurde erfolgreich abgeschlossen. Das System konnte vom 
+16.01.2026 bis zum 16.02.2026 im Raum C 625 am Wilhemininhofcampus der HTW Berlin in Betrieb genommen werden (Abbildung \ref{fig:System_C625}). 
+Es wurde vom Fenster ausgehend am hinteren Teil des Raumes angebracht, um eine möglichst hohe Distanz zu dem Lichteinfall
+zu gewährleisten. Ziel war es ein realistisches Szenario zu schaffen, in dem die Photovoltaikzellen nicht direkt dem Lichteinfall 
+ausgesetzt sind (Abbildung \ref{fig:Ausblick_C625}). 
 
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[height=5cm]{../images/System_C625.jpg}
+        \caption{Integriertes System im Raum C 625}
+        \label{fig:System_C625}
+    \end{minipage}
+    \hspace{0.04\textwidth}
+    \begin{minipage}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[height=5cm]{../images/Ausblick_C625.jpg}
+        \caption{Blickrichtung der Photovoltaikzellen im Raum C 625}
+        \label{fig:Ausblick_C625}
+    \end{minipage}
+\end{figure}
 
+In dieser Zeit wurden kontinuierlich Messdaten der Stromstärke, BUS-Spannung, Shunt-Spannung und Batteriespannung gesammelt und über 
+eine WLAN-Verbindung an einen MQTT-Broker gesendet. Über eine Node-Red Instanz wurden die Daten vom MQTT-Broker abgefragt und in einer 
+InfluxDB-Datenbank gespeichert. Dabei ergab sich folgender Verlauf der Stromstärke über die Zeit (Abbildung \ref{fig:Stromstärke_über_Zeit}).
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../images/Stromst_rke_in_uA.png}
+    \caption{Verlauf der Stromstärke über die Zeit}
+    \label{fig:Stromstärke_über_Zeit}
+\end{figure}
+
+Wetterdaten zur Untersuchung der Plausibilität der Messdaten konnten dank dem Forschungsprojekt 'PV2City' der HTW Berlin herangezogen werden. \cite{Wetterstation_HTW}
+Bei dem Projekt handelt es sich um eine Wetterstation an der HTW Berlin, welche verschiedene Messwerte erhebt. Besonders die Werte der Diffus- und 
+Direktstrahlung sind dabei relevant, da diese die Stromstärke der Photovoltaikzellen beeinflussen. Es konnte eine Korrelation zwischen den Messwerten der 
+Stromstärke und der Diffus- und Direktstrahlung festgestellt werden, was darauf hindeutet, dass die Messdaten des Strommesssystems plausibel sind (Abbildung \ref{fig:diffus_direct}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../images/diffus_direct.png}
+    \caption{Diffus- und Direktstrahlung an der HTW Berlin im Zeitraum der Messungen}
+    \label{fig:diffus_direct}
+\end{figure}
+
+Darüber hinaus konnten die gesammelten Daten analysiert werden, um die kummulierte Energiegewinnung über den Zeitraum der Messungen zu berechnen. Es konnte 
+eine durchschnittliche Stromstärke von 64,538 µA über den Zeitraum der Messungen festgestellt werden. Da es sich hierbei um einen Durchschnittswert handelt, 
+kann die Ladungsmenge berechnet werden, indem die durchschnittliche Stromstärke mit einer Stunde (3600 Sekunden) multipliziert wird. Dementsprechend ergibt 
+sich eine Ladungsmenge von 64,538 µAh. Bei einer Ladespannung von 3,7 V entspricht dies einer Energiegewinnung von etwa 238,791 µWh. Hochgerechnet auf eine
+Woche ergibt sich eine Energiegewinnung von etwa 40,117 mWh, was zeigt. Dies ist geringer als die theoretisch benötigte Energie von 70,66 mWh pro Woche 
+für den Betrieb des digitalen Raumbelegungsplans. Im Abschnitt \ref{sec:laufzeitmessung} (Laufzeitmessung des digitalen Raumbelegungsplans) konnte jedoch eine 
+Laufzeit von 1266 Tagen für den Betrieb des digitalen Raumbelegungsplans mit einem 1000 mAh Akku ermittelt werden. Durch folgende Formel kann die wöchentlich 
+benötigte Energie für den Betrieb des digitalen Raumbelegungsplans berechnet werden, wobei \(E_{\text{wöchentlich}}\) die wöchentliche Energie und \(E_{\text{total}}\) die
+gesamte Energie des Akkus ist:
+
+\[
+E_{\text{wöchentlich}} = \frac{E_{\text{total}}}{\text{Laufzeit in Wochen}} = \frac{3700 \, \text{mWh}}{1266 \, \text{Tage} / 7 \, \frac{\text{Tage}}{\text{Woche}}} \approx 20,458 \, \frac{\text{mWh}}{\text{Woche}}
+\]
+
+Mit diesem Energiebedarf von etwa 20,458 mWh pro Woche und einer Energiegewinnung von etwa 40,117 mWh pro Woche durch das Photovoltaik-System, kann festgestellt 
+werden, dass die Energiegewinnung durch das Photovoltaik-System ausreichend ist.
+
+\subsection{Diskussion der Ergebnisse}
+Die Ergebnisse der Langzeitmessung der Energiegewinnung durch das Photovoltaik-System zeigen das die implementierte Lösung in der Lage ist, eine kontinuierliche 
+Energiegewinnung zu ermöglichen, die den theoretischen Energiebedarf des digitalen Raumbelegungsplans übersteigt. Die Korrelation zwischen den Messwerten 
+der Stromstärke und der Diffus- und Direktstrahlung unterstützt die Plausibilität der gesammelten Daten. Allerdings ist zu beachten, dass die Messungen in 
+einem spezifischen Raum mit bestimmten Lichtverhältnissen durchgeführt wurden, was die Generalisierbarkeit der Ergebnisse einschränkt. Weitere Untersuchungen 
+in verschiedenen Umgebungen und unter unterschiedlichen Lichtverhältnissen wären notwendig, um die Robustheit der Lösung zu bewerten.
+Die Messzueitraum erstreckte sich von Mitte Januar bis Mitte Februar, was bedeutet, dass die Messungen in den Wintermonaten durchgeführt wurden. In dieser Zeit 
+ist die Sonneneinstrahlung in der Regel geringer als in den Sommermonaten, was die Energiegewinnung durch die Photovoltaikzellen beeinträchtigen könnte. 
+Eine im Jahresschnitt höhere Energiegewinnung wäre dementsprechend zu erwarten, was die Eignung der Lösung für den Betrieb des digitalen Raumbelegungsplans weiter 
+unterstützen würde.
+Eine Messungen über einen längeren Zeitraum wäre aus dem Grund sinnvoll, um die saisonalen Schwankungen der Energiegewinnung zu analysieren und zu bewerten.
+
+Der Standort des Systems im Raum C 625 bestimmt ebenfalls maßgeblich die Energiegewinnung. So hat dieser Raum eine Süd-Ost Ausrichtung, wodurch der 
+Raum besonders in den Morgenstunden eine hohe Sonneneinstrahlung erfährt. Andere Ausrichtungen könnten zu ganz anderen Ergebnissen führen. Ebenfalls 
+gibt es in diesem Raum eine automatisierte Jalousie, die sich je nach Sonneneinstrahlung öffnet und schließt. Dies führt zu plötzlichen Veränderungen 
+der Lichtverhältnisse, was sich in den Messdaten widerspiegelt (Abbildung \ref{fig:Stromstärke_ausreißer}). 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../images/Stromst_rke_in_uA-ausreißer.png}
+    \caption{Verlauf der Stromstärke über die Zeit mit schwankenden Lichtverhältnissen durch die Jalousie}
+    \label{fig:Stromstärke_ausreißer}
+\end{figure}
+
+In den Messdaten zeichnet sich ebenfalls eine obere Grenze der Stromstärke ab. Diese liegt in etwa bei eine rStromstärke von
+994 µA (Abbildung \ref{fig:Stromstärke_plateau}). Dies könnte an der maximalen Leistung der Photovoltaikzellen liegen, 
+die bei den gegebenen Lichtverhältnissen erreicht werden kann. Die theoretische Leistung beim Maximum-Power-Point liegt 
+bei ca. 1,354 mW je Modul. Bei vier Modulen in Parallelschaltung ergibt sich eine Leistung von etwa 5,416 mW. Bei einer 
+Ladespannung von 3,7 V entspricht dies einem maximalen Strom von etwa 1464 µA. Dies liegt zwar über dem beobachteten Plateau, 
+jedoch könnte die tatsächliche Leistung durch verschiedene Faktoren, wie der Effitzienz des Ladereglers, der Alterung der 
+Photovoltaikzellen oder der spezifischen Lichtverhältnisse beeinträchtigt werden.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{../images/Stromst_rke_in_uA-plateau.png}
+    \caption{Verlauf der Stromstärke über die Zeit mit Plateau in den Messdaten}
+    \label{fig:Stromstärke_plateau}
+\end{figure}
+
+\section{Fazit}
+
+Die Ergebnisse der Implementierung und der Langzeitmessung der Energiegewinnung durch das Photovoltaik-System zeigen, dass 
+die entwickelte Lösung in der Lage ist, eine kontinuierliche Energiegewinnung zu ermöglichen, die den theoretischen Energiebedarf 
+des digitalen Raumbelegungsplans übersteigt. Die Korrelation zwischen den Messwerten der Stromstärke und der Diffus- und 
+Direktstrahlung unterstützt die Plausibilität der gesammelten Daten. Allerdings ist zu beachten, dass die Messungen in 
+einem spezifischen Raum mit bestimmten Lichtverhältnissen durchgeführt wurden, was die Generalisierbarkeit der Ergebnisse 
+einschränkt. Weitere Untersuchungen in verschiedenen Umgebungen und unter unterschiedlichen Lichtverhältnissen wären notwendig, 
+um die Robustheit der Lösung zu bewerten. Ebenfalls wäre eine Messungen über einen längeren Zeitraum sinnvoll, um die 
+saisonalen Schwankungen der Energiegewinnung zu analysieren und zu bewerten. 
 
 \newpage
 
