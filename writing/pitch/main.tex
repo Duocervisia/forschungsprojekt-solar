@@ -38,7 +38,15 @@ Raumbelegungsplans-Prototyps in geringen mWh Bereich pro Woche. Eine effiziente 
 erheblich verlängern oder sogar eine vollständige Autarkie ermöglichen. Ziel der Arbeit ist es ein System zu konzipieren, das 
 unter niedrigen Beleuchtungsstärken ausreichend Energie durch Photovoltaikzellen generieren kann, um den Energiebedarf des 
 Systems zu decken.
-Im Rahmen einer Laufzeitanalyse 
+Im Rahmen einer Laufzeitanalyse des im ersten Forschungssemester entwickelten Raumbelegungsplanprototyps konnte eine angestrebter 
+Energiegewinn von mindestens 20,458 mWh pro Woche ermittelt werden um einen autarken betrieb gewährleisten zu können. Basierend 
+darauf konnte eine Recherche von passenden Photovoltaiktzellen und Ladereglern durchgeführt werden, die diesen Energiebedarf decken.
+Eine Kombination von vier LL200-3.6-75 Photofilm Photovoltaikzellen im Verbund mit einem BQ25570 Laderegler stellte sich als 
+vielversprechender Ansatz heraus. Um den Stromverbrauch zu messen wurde zusätzlich ein Strommesssystem mit dem INA226 
+Strommonitoring-Chip und einem Firebeetle 2 ESP32 realisiert, welches eine Messauflösung von 0,25 µA ermöglicht. 
+Das Photovoltaiksystem wurde vom 16.01.2026 bis zum 16.02.2026 im Raum C 625 am Wilhemininhofcampus der HTW Berlin betrieben und 
+konnte in dieser Zeit eine durchschnittlichen wöchentlichen Energiegewinn von 40,117 mWh erzeugen. Dieses Ergebniss übersteigt 
+die Zielsetzung von 20,458 mWh pro Woche deutlich, wodurch der Raumbelegungsplan autark betrieben werden könnte. 
 \end{abstract}
 
 \newpage
@@ -121,7 +129,10 @@ Energieverbrauch zu überwachen und auszuwerten.
 \section{Analyse}
 
 \subsection{Laufzeitmessung des digitalen Raumbelegungsplans}\label{sec:laufzeitmessung}
-Eine Laufzeitmessung des digitalen Raumbelegungsplans wurde über den Zeitraum vom 23.10.2025 bis zum 13.02.2026 durchgeführt. Die Messung erfolgte über eine 
+Im ersten Forschungssemester konnte eine theoretische Laufzeit für den digitalen Raumbelegungsplan von ca. 366 Tagen bei einem wöchentlichen 
+Energieverbrauch von 70,66 mWh ermittelt werden. 
+Um die Laufzeit und den Energiegewinn genauer einschätzen zu können, wurde eine Laufzeitmessung des digitalen Raumbelegungsplans über 
+den Zeitraum vom 23.10.2025 bis zum 13.02.2026 durchgeführt. Die Messung erfolgte über eine 
 in Node-Red implementierte Schnittstelle, die für jede Aktualisierungsanfrage des digitalen Raumbelegungsplans die aktuelle Uhrzeit und die derzeitige Batteriespannung 
 in eine Textdatei schreibt. Innerhalb dem Messzeitraum von 114 Tagen wurden 416 Aktualisierungsanfragen durchgeführt. In dieser Zeit ist die Batteriespannung 
 von 4,05 V auf 3,96 V gesunken (Abbildung \ref{fig:battery_voltage}). 
@@ -151,6 +162,15 @@ Ein möglicher Erklärungsansatz für die längere Laufzeit liegt darin, dass di
 Raumbelegungsplans 9 Minuten pro Woche beträgt. Eine Überschätzung der Wachzeit hat einen erheblichen Einfluss auf den berechneten Energieverbrauch, da der Energiebedarf 
 im Wachmodus im Vergleich zum Deep-Sleep-Modus um etwa den Faktor 10 000 höher liegt. Ebenfalls könnte der Energieverbrauch in der Wachzeit geringer sein als angenommen, 
 was ebenfalls zu einer längeren Laufzeit führen könnte.
+
+Durch folgende Formel kann die wöchentlich benötigte Energie für den Betrieb des digitalen Raumbelegungsplans berechnet werden, wobei \(E_{\text{wöchentlich}}\) die 
+wöchentliche Energie und \(E_{\text{total}}\) die gesamte Energie des Akkus ist:
+
+\[
+E_{\text{wöchentlich}} = \frac{E_{\text{total}}}{\text{Laufzeit in Wochen}} = \frac{3700 \, \text{mWh}}{1266 \, \text{Tage} / 7 \, \frac{\text{Tage}}{\text{Woche}}} \approx 20,458 \, \frac{\text{mWh}}{\text{Woche}}
+\]
+Als Ergebniss kommt eine verbrauchte Energiemenge von 20,458 mWh pro Woche heraus. Dieser Wert bildet die gewünschte Mindestenergiemenge, die durch das 
+Photovoltaiksystem in einer Woche erzeugt werden sollte.
 
 \newpage
 
@@ -555,16 +575,9 @@ kann die Ladungsmenge berechnet werden, indem die durchschnittliche Stromstärke
 sich eine Ladungsmenge von 64,538 µAh. Bei einer Ladespannung von 3,7 V entspricht dies einer Energiegewinnung von etwa 238,791 µWh. Hochgerechnet auf eine
 Woche ergibt sich eine Energiegewinnung von etwa 40,117 mWh, was zeigt. Dies ist geringer als die theoretisch benötigte Energie von 70,66 mWh pro Woche 
 für den Betrieb des digitalen Raumbelegungsplans. Im Abschnitt \ref{sec:laufzeitmessung} (Laufzeitmessung des digitalen Raumbelegungsplans) konnte jedoch eine 
-Laufzeit von 1266 Tagen für den Betrieb des digitalen Raumbelegungsplans mit einem 1000 mAh Akku ermittelt werden. Durch folgende Formel kann die wöchentlich 
-benötigte Energie für den Betrieb des digitalen Raumbelegungsplans berechnet werden, wobei \(E_{\text{wöchentlich}}\) die wöchentliche Energie und \(E_{\text{total}}\) die
-gesamte Energie des Akkus ist:
-
-\[
-E_{\text{wöchentlich}} = \frac{E_{\text{total}}}{\text{Laufzeit in Wochen}} = \frac{3700 \, \text{mWh}}{1266 \, \text{Tage} / 7 \, \frac{\text{Tage}}{\text{Woche}}} \approx 20,458 \, \frac{\text{mWh}}{\text{Woche}}
-\]
-
-Mit diesem Energiebedarf von etwa 20,458 mWh pro Woche und einer Energiegewinnung von etwa 40,117 mWh pro Woche durch das Photovoltaik-System, kann festgestellt 
-werden, dass die Energiegewinnung durch das Photovoltaik-System ausreichend ist.
+Laufzeit von 1266 Tagen bei einem wöchentlichen Energiebedarf von 20,458 mWh für den Betrieb des digitalen Raumbelegungsplans mit einem 1000 mAh Akku ermittelt werden. 
+Dieser Bedarf liegt detulich unterhalb der Energiegewinnung von etwa 40,117 mWh pro Woche durch das Photovoltaik-System. Es kann festgestellt 
+werden, dass die Energiegewinnung durch das Photovoltaik-System somit ausreichend ist.
 
 \subsection{Diskussion der Ergebnisse}
 Die Ergebnisse der Langzeitmessung der Energiegewinnung durch das Photovoltaik-System zeigen das die implementierte Lösung in der Lage ist, eine kontinuierliche 
