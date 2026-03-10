@@ -30,6 +30,9 @@
 \thispagestyle{empty}
 \input{cover.tex}
 
+% Abstractseite ohne Seitenzahl
+\thispagestyle{empty}
+
 \renewcommand{\abstractname}{Abstract}
 \begin{abstract}
 Die vorliegende Arbeit beschäftigt sich mit der Entwicklung eines energieautarken Versorgungskonzepts mittels Photovoltaikzellen 
@@ -48,6 +51,7 @@ Ergebnisse können deshalb nur als Anhaltspunkt für die Energiegewinnung unter 
 Dennoch zeigte sich, dass die Nutzung von Photovoltaikzellen unter Innenlichtbedingungen eine vielversprechende 
 Möglichkeit darstellt, um die Laufzeit von energieeffizienten IoT-Systemen zu verlängern oder sogar eine vollständige 
 Autarkie zu ermöglichen.
+\end{abstract}
 \newpage
 
 
@@ -72,6 +76,7 @@ Autarkie zu ermöglichen.
     \item[MQTT] Message Queuing Telemetry Transport
     \item[BUS-Spannung] Spannung am Eingang des Strommonitoring-Chips 
     \item[Shunt-Spannung] Spannungsabfall über dem Shunt-Widerstand, der proportional zum gemessenen Strom ist 
+    \item[MPPT] Maximum Power Point Tracking, eine Technik zur Optimierung der Energiegewinnung von Photovoltaikzellen 
 \end{description}
 
 
@@ -82,25 +87,25 @@ Autarkie zu ermöglichen.
 \section{Einführung}
 \subsection{Einleitung}
 
-Im Hinblick auf die zunehmenden Anforderungen an Energieeffizienz und nachhaltige Systemkonzepte, gewinnt der Entwicklungsbedarf energieautarker 
+Im Hinblick auf die zunehmenden Anforderungen an nachhaltige Systemkonzepte gewinnt der Entwicklungsbedarf energieautarker 
 elektronischer Systeme zunehmend an Bedeutung. 
-Besonders im Bereich batteriegetriebener IoT-Anwendungen, stellt die begrenzte Lebensdauer von Energiespeichern eine zentrale Herausforderung dar. 
+Besonders im Bereich batteriebetriebener IoT-Anwendungen stellt die begrenzte Kapazität von Energiespeichern eine zentrale Herausforderung dar. 
 Wartungskosten, Batteriewechsel und ökologische Aspekte sprechen für alternative oder ergänzende Energieversorgungskonzepte.
 
 Eine vielversprechende Möglichkeit stellt die Nutzung photovoltaischer Energiegewinnung unter Indoor-Lichtbedingungen dar. 
 Moderne Dünnschicht-Solarzellen ermöglichen selbst bei vergleichsweise geringer Beleuchtungsstärke eine nutzbare Leistungsabgabe. 
-Ob und in welchem Umfang diese Energie ausreicht, um ein energieoptimiertes System dauerhaft oder teilweise autark zu betreiben, 
+Ob und in welchem Umfang diese Energie ausreicht, um ein energieoptimiertes System dauerhaft oder sogar autark zu betreiben, 
 ist jedoch stark anwendungsabhängig und erfordert eine systematische Untersuchung.
 
 \subsection{Motivation}
 
-Im ersten Projektsemester wurde ein erster Prototyp eines digitalen Raumbelegungsplans entwickelt, der auf einem E-Ink-Display basiert. 
-Der Fokus lag dabei auf der Entwicklung eines energieeffizienten Systems, das eine lange Laufzeit ermöglicht.
+Im ersten Projektsemester wurde ein Prototyp eines digitalen Raumbelegungsplans entwickelt, welcher auf einem E-Ink-Display basiert. 
+Der Fokus lag dabei auf der Entwicklung eines energieeffizienten Systems mit möglichst langer Laufzeit.
 In einer ersten theoretischen Analyse konnte für einen 1000 mAh 3,7 V Akku eine Laufzeit von etwa einem Jahr prognostiziert werden, 
 was eine signifikante Verbesserung gegenüber bisherigen Prototypen darstellt.
-Der daraus resultierende Energiebedarf lag bei etwa 70,66 mWh pro Woche, was einer mittleren Leistungsaufnahme von etwa 0,42 mWh pro Stunde entspricht. 
-Eine erste Langzeitmessung über den Zeitraum vom 23.10.2025 bis zum 13.02.2026 liegt vor. Eine vorläufige Sichtung der Daten deutet darauf hin, 
-dass die Laufzeit länger sein könnte als in der theoretischen Prognose erwartet.
+Der daraus resultierende Energiebedarf liegt bei etwa 70,66 mWh pro Woche, was einer mittleren Leistungsaufnahme von etwa 0,42 mWh pro Stunde entspricht. 
+Eine erste Sichtung einer Langzeitmessung über den Zeitraum vom 23.10.2025 bis zum 13.02.2026 ergab, dass die Laufzeit des Systems länger 
+sein könnte als in der theoretischen Prognose erwartet.
 Aufgrund dieses vielversprechenden Ergebnisses soll eine mögliche Integrierung von Photovoltaikzellen zur weiteren Verlängerung der Laufzeit 
 untersucht werden.
 
@@ -108,22 +113,23 @@ untersucht werden.
 
 Ziel dieser Arbeit ist die Entwicklung eines energieautarken Versorgungskonzepts mittels Photovoltaikzellen für den im ersten Projektsemester 
 entwickelten digitalen Raumbelegungsplan und andere IoT-Anwendungen, die unter ähnlichen Bedingungen betrieben werden. Dabei liegt der Fokus auf einer 
-maximalen Energieeffizienz, um die Laufzeit des Systems zu verlängern und den Wartungsaufwand zu minimieren. Das System soll dabei so konzipiert werden, 
+maximalen Energieeffizienz, um die Laufzeit des Systems zu verlängern und den Wartungsaufwand zu minimieren. Das System soll so konzipiert werden, 
 dass es unabhängig vom digitalen Raumbelegungsplan betrieben werden kann, um eine flexible Integration in verschiedene Anwendungsbereiche zu ermöglichen. 
-Der Formfaktor des Systems soll jedoch so gestaltet werden, dass eine nahtlose Integration in den Prototyp des digitalen Raumbelegungsplans möglich ist.
+Der Formfaktor des Systems soll so gestaltet werden, dass eine nahtlose Integration in den Prototyp des digitalen Raumbelegungsplans möglich ist.
 Im Anschluss soll geprüft werden, in welchem Umfang die Photovoltaikmodule unter normalen Innenlichtbedingungen Energie liefern und ob diese den 
 Verbrauch des Systems langfristig decken oder die Batterielaufzeit messbar verlängern können. Ein entsprechendes Strommesssystem mit einer Abweichung 
 von weniger als 1\% soll dazu implementiert werden, um die Effektivität der Energiegewinnung zu bewerten.
 
 \subsection{Methodik}
 Zu Beginn soll eine umfassende Analyse der Energieverbrauchsmessungen des bisherigen Prototyps durchgeführt werden, um den tatsächlichen 
-Energiebedarf zu ermitteln. Anschließend erfolgt eine Recherche zu geeigneten Photovoltaikzellen, die unter schlechten Lichtbedingungen eine 
+Energiebedarf zu ermitteln. Anschließend erfolgt eine Recherche zu geeigneten Photovoltaikzellen, die unter Innenlichtbedingungen eine 
 möglichst hohe Energiegewinnung ermöglichen. Ist eine geeignete Zelle gefunden, muss ein dazu passender Laderegler ausgewählt werden. 
 Dieser soll die Energie der Photovoltaikzelle effizient in den Akku einspeisen und gleichzeitig eine Überladung verhindern. Nachdem ein passendes 
 System von Photovoltaikzelle und Laderegler ausgewählt wurde, muss eine kontinuierliche Messung der Stromgewinnung zwischen Laderegler und Akku umgesetzt 
 werden, um die Effektivität der Energiegewinnung zu bewerten. Dazu muss ein geeigneter Strommonitoring-Chip ausgewählt und in die bestehende 
 Hardware integriert werden. Abschließend soll eine Schnittstelle umgesetzt werden, die es ermöglicht, die gewonnenen Daten zur Energiegewinnung und zum 
-Energieverbrauch zu überwachen und auszuwerten.
+Energieverbrauch zu überwachen und auszuwerten. Eine langfristige Messung über einen Zeitraum von mindestens einem Monat soll durchgeführt werden, um 
+die Effektivität der Energiegewinnung zu bewerten.
 
 \section{Analyse}
 
@@ -133,7 +139,7 @@ Energieverbrauch von 70,66 mWh ermittelt werden.
 Um die Laufzeit und den Energiegewinn genauer einschätzen zu können, wurde eine Laufzeitmessung des digitalen Raumbelegungsplans über 
 den Zeitraum vom 23.10.2025 bis zum 13.02.2026 durchgeführt. Die Messung erfolgte über eine 
 in Node-Red implementierte Schnittstelle, die für jede Aktualisierungsanfrage des digitalen Raumbelegungsplans die aktuelle Uhrzeit und die derzeitige Batteriespannung 
-in eine Textdatei schreibt. Innerhalb dem Messzeitraum von 114 Tagen wurden 416 Aktualisierungsanfragen durchgeführt. In dieser Zeit ist die Batteriespannung 
+in eine Textdatei schreibt. Innerhalb des Messzeitraums von 114 Tagen wurden 416 Aktualisierungsanfragen durchgeführt. In dieser Zeit ist die Batteriespannung 
 von 4,05 V auf 3,96 V gesunken (Abbildung \ref{fig:battery_voltage}). 
 
 \begin{figure}[H]
@@ -143,8 +149,8 @@ von 4,05 V auf 3,96 V gesunken (Abbildung \ref{fig:battery_voltage}).
     \label{fig:battery_voltage}
 \end{figure}
 
-Über folgende Formel kann der anteilige Kapazitätsverlust $\Delta Q$ approximiert werden, wobei $U_\text{max}$ der maximalen Spannung, $U_\text{min}$ der minimalen Spannung, 
-$U_\text{start}$ der Startspannung und $U_\text{end}$ der Endspannung entspricht:
+Über folgende Formel kann der anteilige Kapazitätsverlust $\Delta Q$ approximiert werden, wobei $U_\text{max}$ der maximalen Batteriespannung, $U_\text{min}$ der minimalen 
+Batteriespannung, $U_\text{start}$ der Startspannung und $U_\text{end}$ der Endspannung entspricht:
 \[
 \Delta Q = \frac{U_\text{start} - U_\text{end}}{U_\text{max} - U_\text{min}}
 = \frac{4.05 - 3.96}{4.2 - 3.2}
@@ -152,14 +158,16 @@ $U_\text{start}$ der Startspannung und $U_\text{end}$ der Endspannung entspricht
 = 0.09
 \]
 
-Dies entspricht einem Kapazitätsverlust von etwa 9\% über den Zeitraum von 114 Tagen. Dadurch könnte die hochgerechnete Laufzeit des Systems bei etwa 1266 Tagen liegen, 
-was etwa 3,5 Jahren entspricht. Es ist jedoch zu beachten, dass dies eine theoretische Prognose ist und die tatsächliche Laufzeit von verschiedenen Faktoren beeinflusst 
-werden kann, wie z.B. der Alterung der Batterie, der Umgebungstemperatur und Selbstentladung. Ebenfalls geht die verwendete Formel von einem linearen Zusammenhang zwischen 
+In dem Zeitraum von 114 Tagen ist die Batteriespannung um 0,09 V gesunken, was einem Kapazitätsverlust von etwa 9\% entspricht.
+Die hochgerechnete Laufzeit des Systems liegt somit bei 1266 Tagen, 
+was ca. 3,5 Jahren entspricht. Es ist jedoch zu beachten, dass dies eine theoretische Prognose ist und die tatsächliche Laufzeit von verschiedenen Faktoren beeinflusst 
+werden kann, wie z.B. der Alterung der Batterie, der Umgebungstemperatur und der Selbstentladung. Ebenfalls geht die verwendete Formel von einem linearen Zusammenhang zwischen 
 Spannung und Kapazität aus, was in der Praxis nicht der Fall ist. Jedoch deutet die Messung darauf hin, dass die Laufzeit des Systems länger 
 sein könnte als in der theoretischen Prognose erwartet, was auf eine gute Energieeffizienz des Prototyps hindeutet.
-Ein möglicher Erklärungsansatz für die längere Laufzeit liegt darin, dass die theoretische Prognose auf der konservativen Annahme basiert, wonach die Wachzeit des digitalen
-Raumbelegungsplans 9 Minuten pro Woche beträgt. Eine Überschätzung der Wachzeit hat einen erheblichen Einfluss auf den berechneten Energieverbrauch, da der Energiebedarf 
-im Wachmodus im Vergleich zum Deep-Sleep-Modus um etwa den Faktor 10 000 höher liegt. Ebenfalls könnte der Energieverbrauch in der Wachzeit geringer sein als angenommen, 
+Ein möglicher Erklärungsansatz für die längere Laufzeit liegt darin, dass die theoretische Prognose auf einer konservativen Annahme basiert, die die Wachzeit des 
+digitalen Raumbelegungsplans auf 9 Minuten pro Woche beschränkt. Eine Überschätzung der tatsächlichen Wachzeit hat erhebliche Auswirkungen auf den berechneten 
+Energieverbrauch, da die Leistungsaufnahme im Wachmodus etwa um den Faktor 10.000 höher liegt als im Deep-Sleep-Modus. Darüber hinaus könnte der tatsächliche 
+Energieverbrauch während der Wachphase geringer ausfallen als in der theoretischen Analyse angenommen, 
 was ebenfalls zu einer längeren Laufzeit führen könnte.
 
 Durch folgende Formel kann die wöchentlich benötigte Energie für den Betrieb des digitalen Raumbelegungsplans berechnet werden, wobei \(E_{\text{wöchentlich}}\) die 
@@ -168,10 +176,9 @@ wöchentliche Energie und \(E_{\text{total}}\) die gesamte Energie des Akkus ist
 \[
 E_{\text{wöchentlich}} = \frac{E_{\text{total}}}{\text{Laufzeit in Wochen}} = \frac{3700 \, \text{mWh}}{1266 \, \text{Tage} / 7 \, \frac{\text{Tage}}{\text{Woche}}} \approx 20,458 \, \frac{\text{mWh}}{\text{Woche}}
 \]
-Als Ergebniss kommt eine verbrauchte Energiemenge von 20,458 mWh pro Woche heraus. Dieser Wert bildet die gewünschte Mindestenergiemenge, die durch das 
-Photovoltaiksystem in einer Woche erzeugt werden sollte.
+Als Ergebnis kommt eine verbrauchte Energiemenge von 20,458 mWh pro Woche heraus. Dieser Wert bildet die gewünschte Mindestenergiemenge, die durch das 
+Photovoltaiksystem in einer Woche erzeugt werden sollte, um ein autarkes Betriebskonzept zu ermöglichen. 
 
-\newpage
 
 \subsection{Photovoltaikzellen für Innenlichtbedingungen}
 Die Analyse zu geeigneten Photovoltaikzellen für Innenlichtbedingungen ergab, dass Dünnschicht-Solarzellen, insbesondere solche auf Basis von amorphem Silizium oder 
@@ -183,7 +190,7 @@ Innenlichtbedingungen entwickelt wurden. Folgende Kriterien wurden bei der Auswa
     \item Kosten und Verfügbarkeit
     \item Größe und Formfaktor
 \end{itemize}
-Basierend auf diesen Kriterien wurden mehrere Kandidaten untersucht. Folgende Photovoltaikzellenanbieter wurden als potenzielle Optionen identifiziert:
+Basierend auf diesen Kriterien wurden mehrere Kandidaten untersucht:
 \begin{itemize}
     \item Epishine – Indoor-Solarzellen \cite{EpishineIndoorSolarCells}
     \item PowerFilm – Indoor-Light-Module \cite{PowerFilmIndoorSeries}
@@ -191,15 +198,15 @@ Basierend auf diesen Kriterien wurden mehrere Kandidaten untersucht. Folgende Ph
 \end{itemize}
 
 Diese Zellen besitzen alle eine hohe Effizienz bei geringer Beleuchtungsstärke und sind für den Einsatz in Innenräumen geeignet. Jeder Anbieter bietet verschiedene Modelle 
-mit unterschiedlichen Leistungsstufen und Größen an, die je nach den Anforderungen des Projekts ausgewählt werden können. In Bezug auf die Verfügbarkeit sind die Produkte 
-von PowerFilm und Panasonic leichter zugänglich, wobei PowerFilm schnellere Lieferzeiten bietet. Die Produkte von Epishine sind zwar vielversprechend, aber derzeit nur über eine direkte Anfrage erhältlich, was die 
+mit unterschiedlichen Leistungsstufen und Größen an, die je nach den Anforderungen ausgewählt werden können. In Bezug auf die Verfügbarkeit sind die Produkte 
+von PowerFilm und Panasonic leichter zugänglich, wobei PowerFilm schnellere Lieferzeiten bietet. Die Produkte von Epishine sind zwar vielversprechend, aber derzeit nur über eine direkte 
+Anfrage erhältlich, was die 
 Beschaffung erschwert. Die Kosten sind bei den Anbietern PowerFilm und Panasonic vergleichbar. Letztlich wurde die Entscheidung getroffen, die Produkte
-von PowerFilm zu verwenden, da sie eine gute Balance zwischen Effizienz, Verfügbarkeit und Kosten bieten. Es wurden verschiedene Modelle von PowerFilm untersucht, um die 
-am besten geeignete Option für das Projekt zu identifizieren. Die INP-Modelle liefern eine Leistung von 10–30 µW bei einer Beleuchtungsstärke von 200 Lux, was für die Anforderungen 
-des Projekts zu wenig sein könnte. Die INP-100-Modelle liefern eine Leistung von 100 µW bei 200 Lux, was ausreichend sein sollte, um den Energiebedarf des Systems zu decken. 
-Die LL200-Modelle sind deutlich größer und liefern eine dementsprechend größere Leistung. Hervorstechend war das Modell LL200-3.6-75, da dieses eine Leistung von 206 µW bei 
+am besten geeignete Option für das Projekt zu identifizieren. Die INP-Modelle liefern eine Leistung von 10 bis 30 µW bei einer Beleuchtungsstärke von 200 Lux, was für die Anforderungen 
+des Projekts zu wenig sein könnte. Hingegen liefern die INP-100-Modelle eine Leistung von 100 µW bei 200 Lux, was ausreichend sein sollte, um den Energiebedarf des Systems zu decken. 
+Deutlich größer und leistungsstärker sind die LL200-Modelle. Hervorstechend war das Modell LL200-3.6-75, da dieses eine Leistung von 206 µW bei 
 200 Lux liefert. Ebenfalls liegt die Betriebsspannung bei 2,4 V, was höher als bei anderen Modellen der Reihe ist. Die Betriebsspannung ist ein wichtiger Faktor, da sie die 
-Effizienz der Energiegewinnung beeinflussen kann. insbesondere für den Laderegler, der die Energie der Photovoltaikzelle in den Akku einspeist, ist es wichtig, dass die 
+Effizienz der Energiegewinnung beeinflussen kann. Insbesondere für den Laderegler, der die Energie der Photovoltaikzelle in den Akku einspeist, ist es wichtig, dass die 
 Betriebsspannung der Zelle ausreichend hoch ist, um eine effiziente Ladung zu ermöglichen. Aus diesen Gründen wurde die PowerFilm LL200-3.6-75 als die am besten geeignete 
 Option für das Projekt ausgewählt (Abbildung \ref{fig:photovoltaik_zelle}).
 
@@ -220,7 +227,7 @@ Bei der Auswahl eines Ladereglers wurden folgende Kriterien berücksichtigt:
     \item Kosten und Verfügbarkeit
     \item Größe und Formfaktor
 \end{itemize}
-Basierend auf diesen Kriterien wurden mehrere Kandidaten untersucht. Folgende Laderegler wurden als potenzielle Optionen identifiziert:
+Basierend auf diesen Kriterien wurden mehrere Kandidaten untersucht:
 \begin{itemize}
     \item Texas Instruments – BQ25570 \cite{BQ25570}
     \item Analog Devices – LTC3105 \cite{LTC3105}
@@ -228,16 +235,17 @@ Basierend auf diesen Kriterien wurden mehrere Kandidaten untersucht. Folgende La
 \end{itemize}
 
 Der BQ25570 ist speziell für Energy-Harvesting-Anwendungen entwickelt worden. Er besitzt eine sehr niedrige Startspannung (330 mV) und integriertes MPPT. 
-Zusätzlich enthält er einen Abwärtswandler zur Versorgung der Last. Aufgrund des sehr geringen Eigenverbrauchs eignet er sich besonders für Systeme mit extrem niedriger 
-Leistungsaufnahme. Es gibt verschiedene Breakout-Boards, die den BQ25570 verwenden, was die Implementierung erleichtert. Die Verfügbarkeit ist gut und die Kosten sind 
-moderat, was ihn zu einer attraktiven Option für das Projekt macht. Die Größe des gängisten Breakout-Boards ist mit etwa 26,5 mm x 28 mm relativ kompakt, was für die 
+Zusätzlich verfügt er über einen integrierten Abwärtswandler zur Stromversorgung der Last. Sein äußerst niedriger Eigenverbrauch macht ihn besonders geeignet 
+für Anwendungen mit extrem geringer Leistungsaufnahme. Da verschiedene kommerzielle Breakout-Boards auf Basis des BQ25570 verfügbar sind, wird die praktische 
+Implementierung erheblich vereinfacht. Die Komponente ist leicht beschaffbar und kosteneffizient. 
+Die Größe des gängigsten Breakout-Boards ist mit etwa 26,5 mm x 28 mm relativ kompakt, was für die 
 Integration in das bestehende System vorteilhaft ist. \cite{BQ25570Breakout}
 Der LTC3105 ist ein Aufwärtswandler mit integriertem MPPT. Er kann bereits bei sehr niedrigen Eingangsspannungen arbeiten und bietet einen relativ hohen Ausgangsstrom. 
 Allerdings ist sein Eigenverbrauch höher als beim BQ25570, wodurch er sich eher für Anwendungen mit etwas höherer verfügbarer Leistung eignet. Leider ist der LTC3105 
 nicht mit einem passenden Breakout-Board erhältlich, was die Implementierung erschwert. Die Verfügbarkeit des LTC3105 ist gut, aber die Kosten sind höher als beim BQ25570.
 Der MAX17222 ist ein stromsparender Boost-Converter mit sehr geringem Ruhestrom im Nanoamperebereich. Er besitzt jedoch keine integrierte Lade- und MPPT-Logik. 
-Daher müsste eine zusätzliche Beschaltung implementiert werden, um eine optimale Energieausbeute sicherzustellen. Ebenfalls ist die Verfügbarkeit des MAX17222 eingeschränkt, 
-was die Beschaffung erschwert. Ein Breakout-Board für den MAX17222 konnte nicht gefunden werden, was die Implementierung weiter erschwert. 
+Daher wäre eine zusätzliche Beschaltung erforderlich, um eine optimale Energieausbeute zu gewährleisten. Zudem ist die Verfügbarkeit des MAX17222 begrenzt, was die 
+Beschaffung komplizierter macht. Da kein geeignetes Breakout-Board für den MAX17222 verfügbar ist, würde sich die praktische Implementierung erheblich erschweren.
 Aufgrund dieser Faktoren wurde der BQ25570 als die am besten geeignete Option für das Projekt ausgewählt (Abbildung \ref{fig:BQ25570_Vorderseite} und \ref{fig:BQ25570_Vorderseite}).
 
 \begin{figure}[H]
@@ -259,7 +267,7 @@ Aufgrund dieser Faktoren wurde der BQ25570 als die am besten geeignete Option f�
 
 
 \subsection{Strommesssystem zur Überwachung der Energiegewinnung}
-Neben der eigentlichen Energiegewinnung ist es wichtig, den Stromfluss zwischen Laderegler und Akku kontinuierlich zu überwachen, um die Effektivität 
+Neben der eigentlichen Energiegewinnung ist es wichtig den Stromfluss zwischen Laderegler und Akku kontinuierlich zu überwachen, um die Effektivität 
 der Energiegewinnung zu bewerten. Dazu muss ein geeigneter Strommonitoring-Chip ausgewählt und in die bestehende Hardware integriert werden.
 Die Analyse ergab, dass es verschiedene Optionen gibt, die für die Anforderungen des Projekts geeignet sein könnten. Bei der Auswahl eines Strommonitoring-Chips 
 wurden folgende Kriterien berücksichtigt:
@@ -278,10 +286,10 @@ Basierend auf diesen Kriterien wurden mehrere Kandidaten untersucht. Folgende St
 
 Der INA226 ist ein digitaler Strom- und Leistungsmonitor mit integrierter 16-Bit-ADC und I²C-Schnittstelle. Er ermöglicht die gleichzeitige Messung von 
 Shunt-Spannung, Busspannung, Strom und Leistung. Durch die hohe Auflösung und die Möglichkeit, den Shunt-Widerstand frei zu wählen, kann der Messbereich 
-optimal auf sehr kleine Ströme angepasst werden. Zudem sind kostengünstige Breakout-Module verfügbar, was die Integration in das bestehende System vereinfacht.
-Der Formfaktor des gängisten Breakout-Moduls ist mit etwa 20 mm x 27 mm relativ kompakt. \cite{INA226Breakout}
+optimal auf sehr kleine Ströme angepasst werden. Zudem sind kostengünstige Breakout-Boards verfügbar, was die Integration in das bestehende System vereinfacht.
+Der Formfaktor des gängigsten Breakout-Boards ist mit etwa 20 mm x 27 mm relativ kompakt. \cite{INA226Breakout}
 Der MAX471 ist ein analoger High-Side-Strommessverstärker mit integriertem Shunt-Widerstand. Obwohl er einfach zu implementieren ist, ist er primär für höhere 
-Ströme ausgelegt. Die interne Widerstandsdimensionierung sowie der analoge Ausgang begrenzen die Auflösung im Mikroamperebereich. Es gibt eine gute Verfügbarekeit 
+Ströme ausgelegt. Die interne Widerstandsdimensionierung sowie der analoge Ausgang begrenzen die Auflösung im Mikroamperebereich. Es gibt eine gute Verfügbarkeit 
 kostengünstiger Breakout-Boards für den MAX471. Die Größe der gängigsten Breakout-Boards liegt bei etwa 19,5 mm x 20,3 mm und ist damit kompakter als das INA226 
 Breakout-Board. \cite{MAX471Breakout}
 Der AD8210 ist ein präziser, bidirektionaler Strommessverstärker mit hoher Gleichtaktspannungsfestigkeit. Er eignet sich vor allem für industrielle Anwendungen 
