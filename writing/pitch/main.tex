@@ -74,22 +74,13 @@ Autarkie zu ermöglichen.
 \section*{Abkürzungsverzeichnis}
 \begin{description}
     \item[MQTT] Message Queuing Telemetry Transport
-    \item[BUS-Spannung] Spannung am Eingang des Strommonitoring-Chips 
-    \item[Shunt-Spannung] Spannungsabfall über dem Shunt-Widerstand, der proportional zum gemessenen Strom ist 
     \item[MPPT] Maximum Power Point Tracking, eine Technik zur Optimierung der Energiegewinnung von Photovoltaikzellen 
     \item[I²C] Inter-Integrated Circuit, ein serielles Kommunikationsprotokoll für die Verbindung von Mikrocontrollern und Peripheriegeräten 
     \item[SDA] Serial Data Line, die Datenleitung für die I²C-Kommunikation
     \item[SCL] Serial Clock Line, die Taktleitung für die I²C-Kommunikation
-    \item[VIN] Eingangsspannung des Strommonitoring-Chips
-    \item[VOUT] Ausgangsspannung des Strommonitoring-Chips
-    \item[BAT+] Positiver Anschluss des Akkus
-    \item[BAT-] Negativer Anschluss des Akkus
-    \item[IN+] Positiver Anschluss der Photovoltaikzelle am Laderegler
-    \item[IN-] Negativer Anschluss der Photovoltaikzelle am Laderegler
     \item[GPIO] General Purpose Input/Output, ein universeller Ein-/Ausgangspin an Mikrocontrollern
     \item[JSON] JavaScript Object Notation, ein leichtgewichtiges Datenformat zur Speicherung und Übertragung von Daten
 \end{description}
-
 
 % Seitenzahlen ab Einleitung in arabischen Zahlen, beginnend mit 1
 \clearpage
@@ -509,17 +500,18 @@ Durch die Formel \(I = \frac{U}{R}\) konnte die theoretische Stromstärke berech
     \label{tab:calibration}
 \end{table}
 
-Die Ergebnisse der Messwerte zeigen, dass die Abweichung der Messwerte des INA226 im Vergleich zum theoretischen Wert im Bereich von -0,67\% bis 0,51\% 
-liegen und der Transimpedanzverstärker von FEMTO eine Abweichung von -0,66\% bis -0,01\% aufweist. Die Messwerte liegen damit innerhalb der angestrebten 
-Genauigkeit von 1\%. Eine Kalibrierung der Messwerte des INA226 ist daher nicht notwendig.
+Die Messergebnisse zeigen, dass die Abweichung der Werte des INA226 im Vergleich zum theoretischen Wert zwischen 
+-0,67 \% und 0,51 \% liegt, während der Transimpedanzverstärker von FEMTO Abweichungen von -0,66 \% bis -0,01 \%
+aufweist. Damit liegen alle Messwerte innerhalb der angestrebten Genauigkeit von 1 \%, sodass eine Kalibrierung des INA226 nicht erforderlich ist.
 
 \subsection{Vereinigung von Photovoltaik- und Strommesssystem}
-Die Vereinigung des Photovoltaik-Systems und des Strommesssystems erfolgte durch die physische Integration der Komponenten entsprechend der schematischen 
-Darstellung in Abbildung \ref{fig:Schematic_combined}. Beide Systeme wurden in eine Abzweigdose integriert, um die Komponenten vor 
-Umwelteinflüssen zu schützen und eine kompakte Bauweise zu ermöglichen. Es wurden zwei Löcher für die Schalter zum An- und Ausschalten des Systems und 
-zum Trennen der Photovoltaikzellen von der Schaltung in die Abzweigdose gebohrt. Ein drittes Loch wurde für die Verkabelung der Photovoltaikzellen, sowie 
-ein USB-Kabel für die Stromversorgung des Mikrocontrollers gebohrt (Abbildung \ref{fig:Abzweigdose}). Die Photovoltaikzellen wurden auf eine Pappe geklebt 
-und mit einem Kabel in die Abzweigdose geführt, um die Verbindung zum Laderegler herzustellen (Abbildung \ref{fig:Photovoltaikzellen}).
+Die Integration des Photovoltaik-Systems mit dem Strommesssystem erfolgte durch die physische Zusammenführung der Komponenten gemäß der schematischen Darstellung 
+in Abbildung \ref{fig:Schematic_combined}. Beide Systeme wurden in eine Abzweigdose eingebaut, um die Komponenten vor Umwelteinflüssen zu schützen und eine 
+kompakte Bauweise zu gewährleisten.
+In die Abzweigdose wurden zwei Löcher für Schalter zum Ein- und Ausschalten des Systems sowie zum Trennen der Photovoltaikzellen von der Schaltung gebohrt. 
+Ein weiteres Loch diente der Verkabelung der Photovoltaikzellen und eines USB-Kabels zur Stromversorgung des Mikrocontrollers (Abbildung \ref{fig:Abzweigdose}).
+Die Photovoltaikzellen wurden auf einer Pappe fixiert und über ein Kabel in die Abzweigdose geführt, um die Verbindung zum Laderegler 
+herzustellen (Abbildung \ref{fig:Photovoltaikzellen}).
 
 \begin{figure}[H]
     \centering
@@ -542,11 +534,10 @@ und mit einem Kabel in die Abzweigdose geführt, um die Verbindung zum Laderegle
 
 \subsection{Langzeitmessung der Energiegewinnung durch das Photovoltaik-System}
 
-Die Implementierung des Photovoltaik-Systems und des Strommesssystems wurde erfolgreich abgeschlossen. Das System konnte vom 
-16.01.2026 bis zum 16.02.2026 im Raum C 625 am Wilhemininhofcampus der HTW Berlin in Betrieb genommen werden (Abbildung \ref{fig:System_C625}). 
-Es wurde vom Fenster ausgehend am hinteren Teil des Raumes angebracht, um eine möglichst hohe Distanz zu dem Lichteinfall
-zu gewährleisten. Ziel war es ein realistisches Szenario zu schaffen, in dem die Photovoltaikzellen nicht direkt dem Lichteinfall 
-ausgesetzt sind (Abbildung \ref{fig:Ausblick_C625}). 
+Die Implementierung des Photovoltaik- und Strommesssystems wurde erfolgreich abgeschlossen. Das System konnte im Zeitraum vom 16.01.2026 bis 16.02.2026 im 
+Raum C 625 auf dem Wilhelminenhofcampus der HTW Berlin in Betrieb genommen werden (Abbildung \ref{fig:System_C625}).
+Es wurde am hinteren Teil des Raumes, ausgehend vom Fenster, angebracht, um eine möglichst große Distanz zum direkten Lichteinfall zu gewährleisten. 
+Ziel war es, ein realistisches Szenario zu schaffen, in dem die Photovoltaikzellen nicht unmittelbar dem Licht ausgesetzt sind (Abbildung \ref{fig:Ausblick_C625}).
 
 \begin{figure}[H]
     \centering
@@ -566,7 +557,7 @@ ausgesetzt sind (Abbildung \ref{fig:Ausblick_C625}).
 \end{figure}
 
 In dieser Zeit wurden kontinuierlich Messdaten der Stromstärke, BUS-Spannung, Shunt-Spannung und Batteriespannung gesammelt und über 
-eine WLAN-Verbindung an einen MQTT-Broker gesendet. Über eine Node-Red Instanz wurden die Daten vom MQTT-Broker abgefragt und in einer 
+eine WLAN-Verbindung an einen MQTT-Broker gesendet. Über eine Node-Red-Instanz wurden die Daten vom MQTT-Broker abgefragt und in einer 
 InfluxDB-Datenbank gespeichert. Dabei ergab sich folgender Verlauf der Stromstärke über die Zeit (Abbildung \ref{fig:Stromstärke_über_Zeit}).
 
 \begin{figure}[H]
@@ -576,10 +567,12 @@ InfluxDB-Datenbank gespeichert. Dabei ergab sich folgender Verlauf der Stromstä
     \label{fig:Stromstärke_über_Zeit}
 \end{figure}
 
-Wetterdaten zur Untersuchung der Plausibilität der Messdaten konnten dank dem Forschungsprojekt 'PV2City' der HTW Berlin herangezogen werden. \cite{Wetterstation_HTW}
-Bei dem Projekt handelt es sich um eine Wetterstation an der HTW Berlin, welche verschiedene Messwerte erhebt. Besonders die Werte der Diffus- und 
-Direktstrahlung sind dabei relevant, da diese die Stromstärke der Photovoltaikzellen beeinflussen. Es konnte eine Korrelation zwischen den Messwerten der 
-Stromstärke und der Diffus- und Direktstrahlung festgestellt werden, was darauf hindeutet, dass die Messdaten des Strommesssystems plausibel sind (Abbildung \ref{fig:diffus_direct}).
+Zur Untersuchung der Plausibilität der Messdaten konnten Wetterdaten aus dem Forschungsprojekt „PV2City“ der HTW Berlin herangezogen 
+werden. \cite{Wetterstation_HTW} Bei diesem Projekt handelt es sich um eine Wetterstation an der HTW Berlin, die verschiedene meteorologische 
+Messwerte erfasst.
+Besonders relevant sind dabei die Werte der Diffus- und Direktstrahlung, da diese die von den Photovoltaikzellen erzeugte Stromstärke beeinflussen. 
+Zwischen den gemessenen Stromstärken und den Werten der Diffus- und Direktstrahlung konnte eine Korrelation festgestellt werden. Dies deutet 
+darauf hin, dass die Messdaten des Strommesssystems plausibel sind (Abbildung \ref{fig:diffus_direct}).
 
 \begin{figure}[H]
     \centering
@@ -588,29 +581,29 @@ Stromstärke und der Diffus- und Direktstrahlung festgestellt werden, was darauf
     \label{fig:diffus_direct}
 \end{figure}
 
-Darüber hinaus konnten die gesammelten Daten analysiert werden, um die kummulierte Energiegewinnung über den Zeitraum der Messungen zu berechnen. Es konnte 
+Darüber hinaus konnten die gesammelten Daten analysiert werden, um die kumulierte Energiegewinnung über den Zeitraum der Messungen zu berechnen. Es konnte 
 eine durchschnittliche Stromstärke von 64,538 µA über den Zeitraum der Messungen festgestellt werden. Da es sich hierbei um einen Durchschnittswert handelt, 
-kann die Ladungsmenge berechnet werden, indem die durchschnittliche Stromstärke mit einer Stunde (3600 Sekunden) multipliziert wird. Dementsprechend ergibt 
+kann die Ladungsmenge berechnet werden, indem die durchschnittliche Stromstärke mit einer Stunde multipliziert wird. Dementsprechend ergibt 
 sich eine Ladungsmenge von 64,538 µAh. Bei einer Ladespannung von 3,7 V entspricht dies einer Energiegewinnung von etwa 238,791 µWh. Hochgerechnet auf eine
-Woche ergibt sich eine Energiegewinnung von etwa 40,117 mWh, was zeigt. Dies ist geringer als die theoretisch benötigte Energie von 70,66 mWh pro Woche 
+Woche ergibt sich eine Energiegewinnung von etwa 40,117 mWh. Dies ist geringer als die theoretisch benötigte Energie von 70,66 mWh pro Woche 
 für den Betrieb des digitalen Raumbelegungsplans. Im Abschnitt \ref{sec:laufzeitmessung} (Laufzeitmessung des digitalen Raumbelegungsplans) konnte jedoch eine 
 Laufzeit von 1266 Tagen bei einem wöchentlichen Energiebedarf von 20,458 mWh für den Betrieb des digitalen Raumbelegungsplans mit einem 1000 mAh Akku ermittelt werden. 
-Dieser Bedarf liegt detulich unterhalb der Energiegewinnung von etwa 40,117 mWh pro Woche durch das Photovoltaik-System. Es kann festgestellt 
+Dieser Bedarf liegt deutlich unterhalb der Energiegewinnung von etwa 40,117 mWh pro Woche durch das Photovoltaik-System. Es kann festgestellt 
 werden, dass die Energiegewinnung durch das Photovoltaik-System somit ausreichend ist.
 
 \subsection{Diskussion der Ergebnisse}
-Die Ergebnisse der Langzeitmessung der Energiegewinnung durch das Photovoltaik-System zeigen das die implementierte Lösung in der Lage ist, eine kontinuierliche 
+Die Ergebnisse der Langzeitmessung der Energiegewinnung durch das Photovoltaik-System zeigen, dass die implementierte Lösung in der Lage ist, eine kontinuierliche 
 Energiegewinnung zu ermöglichen, die den theoretischen Energiebedarf des digitalen Raumbelegungsplans übersteigt. Die Korrelation zwischen den Messwerten 
 der Stromstärke und der Diffus- und Direktstrahlung unterstützt die Plausibilität der gesammelten Daten. Allerdings ist zu beachten, dass die Messungen in 
 einem spezifischen Raum mit bestimmten Lichtverhältnissen durchgeführt wurden, was die Generalisierbarkeit der Ergebnisse einschränkt. Weitere Untersuchungen 
 in verschiedenen Umgebungen und unter unterschiedlichen Lichtverhältnissen wären notwendig, um die Robustheit der Lösung zu bewerten.
-Die Messzueitraum erstreckte sich von Mitte Januar bis Mitte Februar, was bedeutet, dass die Messungen in den Wintermonaten durchgeführt wurden. In dieser Zeit 
-ist die Sonneneinstrahlung in der Regel geringer als in den Sommermonaten, was die Energiegewinnung durch die Photovoltaikzellen beeinträchtigen könnte. 
-Eine im Jahresschnitt höhere Energiegewinnung wäre dementsprechend zu erwarten, was die Eignung der Lösung für den Betrieb des digitalen Raumbelegungsplans weiter 
-unterstützen würde.
+Der Messzeitraum erstreckte sich von Mitte Januar bis Mitte Februar, sodass die Messungen in den Wintermonaten durchgeführt wurden. In dieser Zeit ist die 
+Sonneneinstrahlung in der Regel geringer als in den Sommermonaten, was die Energiegewinnung durch die Photovoltaikzellen reduziert.
+Über das gesamte Jahr betrachtet wäre daher eine höhere Energiegewinnung zu erwarten, was die Eignung der Lösung für den Betrieb des digitalen Raumbelegungsplans 
+zusätzlich unterstützen würde.
 Eine Messungen über einen längeren Zeitraum wäre aus dem Grund sinnvoll, um die saisonalen Schwankungen der Energiegewinnung zu analysieren und zu bewerten.
 
-Der Standort des Systems im Raum C 625 bestimmt ebenfalls maßgeblich die Energiegewinnung. So hat dieser Raum eine Süd-Ost Ausrichtung, wodurch der 
+Der Standort des Systems im Raum C 625 bestimmt ebenfalls maßgeblich die Energiegewinnung. So hat dieser Raum eine Süd-Ost-Ausrichtung, wodurch der 
 Raum besonders in den Morgenstunden eine hohe Sonneneinstrahlung erfährt. Andere Ausrichtungen könnten zu ganz anderen Ergebnissen führen. Ebenfalls 
 gibt es in diesem Raum eine automatisierte Jalousie, die sich je nach Sonneneinstrahlung öffnet und schließt. Dies führt zu plötzlichen Veränderungen 
 der Lichtverhältnisse, was sich in den Messdaten widerspiegelt (Abbildung \ref{fig:Stromstärke_ausreißer}). 
@@ -618,17 +611,16 @@ der Lichtverhältnisse, was sich in den Messdaten widerspiegelt (Abbildung \ref{
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{../images/Stromst_rke_in_uA-ausreißer.png}
-    \caption{Verlauf der Stromstärke über die Zeit mit schwankenden Lichtverhältnissen durch die Jalousie}
+    \caption{Verlauf der Stromstärke über die Zeit mit charakteristischen Schwankungen zwischen 13 und 15 Uhr aufgrund der Jalousie}
     \label{fig:Stromstärke_ausreißer}
 \end{figure}
 
-In den Messdaten zeichnet sich ebenfalls eine obere Grenze der Stromstärke ab. Diese liegt in etwa bei eine rStromstärke von
-994 µA (Abbildung \ref{fig:Stromstärke_plateau}). Dies könnte an der maximalen Leistung der Photovoltaikzellen liegen, 
-die bei den gegebenen Lichtverhältnissen erreicht werden kann. Die theoretische Leistung beim Maximum-Power-Point liegt 
-bei ca. 1,354 mW je Modul. Bei vier Modulen in Parallelschaltung ergibt sich eine Leistung von etwa 5,416 mW. Bei einer 
-Ladespannung von 3,7 V entspricht dies einem maximalen Strom von etwa 1464 µA. Dies liegt zwar über dem beobachteten Plateau, 
-jedoch könnte die tatsächliche Leistung durch verschiedene Faktoren, wie der Effitzienz des Ladereglers, der Alterung der 
-Photovoltaikzellen oder der spezifischen Lichtverhältnisse beeinträchtigt werden.
+In den Messdaten ist zudem eine obere Grenze der Stromstärke erkennbar. Diese liegt bei etwa 994 µA (Abbildung \ref{fig:Stromstärke_plateau}). Dies 
+könnte darauf hindeuten, dass unter den gegebenen Lichtverhältnissen die maximale Leistung der Photovoltaikzellen erreicht wird.
+Die theoretische Leistung am Maximum-Power-Point beträgt etwa 1,354 mW pro Modul. Bei vier parallel geschalteten Modulen ergibt sich somit 
+eine Gesamtleistung von ungefähr 5,416 mW. Bei einer Ladespannung von 3,7 V entspricht dies einem maximalen Strom von etwa 1464 µA.
+Dieser Wert liegt zwar über dem beobachteten Plateau, jedoch kann die tatsächlich erreichbare Leistung durch verschiedene Faktoren reduziert 
+werden. Dazu zählen beispielsweise die Effizienz des Ladereglers, die Alterung der Photovoltaikzellen oder die spezifischen Lichtverhältnisse am Messort.
 
 \begin{figure}[H]
     \centering
@@ -645,7 +637,7 @@ des digitalen Raumbelegungsplans übersteigt. Die Korrelation zwischen den Messw
 Direktstrahlung unterstützt die Plausibilität der gesammelten Daten. Allerdings ist zu beachten, dass die Messungen in 
 einem spezifischen Raum mit bestimmten Lichtverhältnissen durchgeführt wurden, was die Generalisierbarkeit der Ergebnisse 
 einschränkt. Weitere Untersuchungen in verschiedenen Umgebungen und unter unterschiedlichen Lichtverhältnissen wären notwendig, 
-um die Robustheit der Lösung zu bewerten. Ebenfalls wäre eine Messungen über einen längeren Zeitraum sinnvoll, um die 
+um die Robustheit der Lösung zu bewerten. Ebenfalls wären Messungen über einen längeren Zeitraum sinnvoll, um die 
 saisonalen Schwankungen der Energiegewinnung zu analysieren und zu bewerten. 
 
 \newpage
