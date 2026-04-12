@@ -1,5 +1,5 @@
 <diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLSequenceAllInOne</id><coordinates><x>0</x><y>0</y><w>1460</w><h>610</h></coordinates><panel_attributes>autoTick=false
-obj=INA266~i
+obj=INA226~i
 obj=Firebeetle 2 ESP32~f
 obj=MQTT Broker~m
 obj=NODE-Red~n
